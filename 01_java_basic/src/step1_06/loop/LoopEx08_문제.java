@@ -3,6 +3,10 @@ package step1_06.loop;
 import java.util.Scanner;
 
 /*
+ * 
+ * 17시24분
+ * 
+ * 
  * # ATM[2단계]
  * 
  * identfier 변수가 -1 이면 로그아웃 상태이고
@@ -32,6 +36,9 @@ public class LoopEx08_문제 {
 		int dbAcc2 = 2222;
 		int dbPw2 = 2345;
 		
+	
+		
+		
 		int identifier = -1;						// -1(로그아웃), 1(dbAcc1로그인), 2(dbAcc2로그인)
 		boolean isRun = true;
 		
@@ -46,16 +53,48 @@ public class LoopEx08_문제 {
 			int selectMenu = scan.nextInt();
 			
 			if (selectMenu == 1) {
-				System.out.println("계좌번호를 입력해주세요");
-				int myId1 = scan.nextInt();
-				System.out.println("비밀번호를 입력해주세요");
-				int myPw1 = scan.nextInt();
-				if(dbAcc1 == myId1 && myPw1 == dbPw1 ) {
-					
+				if(identifier == -1) {
+					System.out.println("계좌번호를 입력해주세요");
+					int myAcc = scan.nextInt();
+					System.out.println("비밀번호를 입력해주세요");
+					int myPw = scan.nextInt();
+					if(dbAcc1 == myAcc && myPw == dbPw1 )  {
+						identifier = 1;
+						System.out.println("Acc1님 환영합니다.");	
+					}
+				
+					if(dbAcc2 == myAcc && myPw == dbPw2) {
+						identifier = 2;
+						System.out.println("2222님 환영합니다.");
+					}
+					else {
+						System.out.println("틀렸습니다. 다시한번확인해주세요");
+					}
+					}
+				if(identifier == 1) {
+					System.out.println("Acc1님께서 로그아웃해야 사용가능합니다.");
+				}
+				if(identifier == 2) {
+					System.out.println("Acc2님께서 로그아웃해야 사용가능합니다.");
+				}
+		
+			 	}
+			
+			
+			else if (selectMenu == 2) {
+				if(identifier == 1 ) {
+					selectMenu = -1;
+					System.out.println("로그아웃되었습니다.");
+				}
+				else if(identifier == 2 ) {
+					selectMenu = -1;
+					System.out.println("로그아웃되었습니다.");
+				}
+				else {
+					System.out.println("로그인 후에 이용해주세요");
 				}
 			}
-			else if (selectMenu == 2) {}
-			else if (selectMenu == 0) {
+			else if (identifier == 0) {
 				isRun = false;
 				System.out.println("프로그램 종료");
 			}
@@ -63,5 +102,6 @@ public class LoopEx08_문제 {
 
 		scan.close();
 	}
+	}
 
-}
+

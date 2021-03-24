@@ -23,8 +23,8 @@ public class LoopEx04_문제 {
 		
 		
 		while(i < 6) {
-			int x =ran.nextInt(9)+1;
-			int y =ran.nextInt(9)+1;
+			int x =ran.nextInt(8)+2;
+			int y =ran.nextInt(6)+4;
 			System.out.println(x+"x"+y+"="+"?");
 			int answer = scan.nextInt();
 			if(x*y==answer) {
