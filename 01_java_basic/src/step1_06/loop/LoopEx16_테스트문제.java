@@ -46,8 +46,8 @@ public class LoopEx16_테스트문제 {
 		
 		boolean isRun = true;
 		int myPosition = 0;
-		desX = ran.nextInt(21)-10;
-		desY = ran.nextInt(21)-10;
+		desX = 1;//ran.nextInt(21)-10;
+		desY = 0;//ran.nextInt(21)-10;
 		
 		
 		
@@ -92,30 +92,31 @@ public class LoopEx16_테스트문제 {
 			}
 			else if (selectMenu == 3) {
 				if(dir==1){
-					x = myPosition;
-					fee = myPosition;
+					x = x+myPosition;
+					fee = fee+ myPosition;
 				}
 				if(dir==2){
-					x = myPosition-myPosition-myPosition;
-					fee = myPosition;
+					x = x+myPosition-myPosition-myPosition;
+					fee = fee+ myPosition;
 				}
 				if(dir==3){
-					  y=myPosition-myPosition-myPosition;
-					fee = myPosition;
+					  y=y+myPosition-myPosition-myPosition;
+					fee = fee+ myPosition;
 				}
 				if(dir==4){
-					 y = myPosition;
-					fee = myPosition;
+					 y =y+ myPosition;
+					fee =fee+ myPosition;
 				}
 			
 			 
 			}
-			
+		
+			if(desX == x && desY == y) {
+		    	System.out.println("도착했습니다.");
+		    	System.out.println("요금은:"+(fee/2*50+fee%2*50)+"입니다.");
+		    	isRun = false;
 		}
-    if(desX == x && desY == y) {
-    	System.out.println("도착했습니다.");
-    	System.out.println("요금은:"+fee/2*50+"입니다.");
-    	isRun = false;
+    
     }
     
     
