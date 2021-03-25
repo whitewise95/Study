@@ -26,11 +26,7 @@ public class LoopEx15_문제 {
 		int randomNumber3=0;
 		int randomNumber4=0;
 		int randomNumber5=0;
-		int randomNumber6=0;
-		int randomNumber7=0;
-		int randomNumber8=0;
-		int randomNumber9=0;
-		int randomNumber10=0;
+		
 		
 		
 		while(i<6) {
@@ -39,7 +35,7 @@ public class LoopEx15_문제 {
 					i++;
 					randomNumber1 = randomNumber;
 					 if(randomNumber1>=60){
-						 System.out.println("randomNumber1"+randomNumber1+"합격");
+						 System.out.println("randomNumber1:"+randomNumber1+"합격");
 					 }
 			 
 			 
@@ -50,7 +46,7 @@ public class LoopEx15_문제 {
 					i++;
 					randomNumber2 = randomNumber;
 					 if(randomNumber2>=60){
-						 System.out.println("randomNumber2"+randomNumber2+"합격");
+						 System.out.println("randomNumber2:"+randomNumber2+"합격");
 					 }
 			 
 			 
@@ -61,7 +57,7 @@ public class LoopEx15_문제 {
 					i++;
 					randomNumber3 = randomNumber;
 					 if(randomNumber3>=60){
-						 System.out.println("randomNumber3"+randomNumber3+"합격");
+						 System.out.println("randomNumber3:"+randomNumber3+"합격");
 					 }
 			 
 			 
@@ -72,7 +68,7 @@ public class LoopEx15_문제 {
 					i++;
 					randomNumber4 = randomNumber;
 					 if(randomNumber4>=60){
-						 System.out.println("randomNumber4"+randomNumber4+"합격");
+						 System.out.println("randomNumber4:"+randomNumber4+"합격");
 					 }
 			 
 			 
@@ -81,9 +77,9 @@ public class LoopEx15_문제 {
 				else if(i==5) {
 					int randomNumber = ran.nextInt(100)+1;
 					i++;
-					randomNumber = randomNumber;
-					 if(randomNumber>=60){
-						 System.out.println("randomNumber5"+randomNumber+"합격");
+					randomNumber5 = randomNumber;
+					 if(randomNumber5>=60){
+						 System.out.println("randomNumber5:"+randomNumber5+"합격");
 					 }
 			 
 			 
@@ -98,9 +94,24 @@ public class LoopEx15_문제 {
 			 
 			
 		}
-		
-				
+		System.out.println("평균 :"+(randomNumber1+randomNumber2+randomNumber3+randomNumber4+randomNumber5)/5);
+		if(randomNumber1>=60) {
+		System.out.println("합격자:"+"randomNumber1:"+randomNumber1);	
 		}
+		if(randomNumber2>=60) {
+			System.out.println("합격자:"+"randomNumber2:"+randomNumber2);	
+		}
+		if(randomNumber3>=60) {
+			System.out.println("합격자:"+"randomNumber3:"+randomNumber3);	
+		}
+		if(randomNumber4>=60) {
+			System.out.println("합격자:"+"randomNumber4:"+randomNumber4);	
+		}
+		if(randomNumber5>=60) {
+			System.out.println("합격자:"+"randomNumber5:"+randomNumber5);	
+		}
+		}
+	  
 		
 		
 	}
