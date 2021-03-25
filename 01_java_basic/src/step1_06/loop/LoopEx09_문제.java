@@ -3,6 +3,8 @@ package step1_06.loop;
 import java.util.Scanner;
 
 /*
+ * 
+ * 3:14~
  * # ATM[2단계]
  * 
  * 1. 입금
@@ -43,9 +45,36 @@ public class LoopEx09_문제 {
 			System.out.print("메뉴 선택 : ");
 			int selectMenu = scan.nextInt();
 			
-			if (selectMenu == 1) {}
-			else if (selectMenu == 2) {}
-			else if (selectMenu == 3) {}
+			if (selectMenu == 1) {
+				System.out.println("입금할 금액을 입력해주세요");
+				int depositMoney = scan.nextInt();
+				myMoney = depositmoney+myMoney;
+				
+			}
+			else if (selectMenu == 2) {
+				System.out.println("출금할 금액을 입력해주세요");
+				int withdrawalMoney = scan.nextInt();
+				if(myMoney >= withdrawalMoney) {
+					System.out.println("출금되었습니다.");
+					myMoney = myMoney - withdrawalMoney;
+				}
+				else if(myMoney < withdrawalMoney) {
+					System.out.println("출금할 금액이 계좌에 있는 금액보다 많습니다.");
+				}
+			}
+			else if (selectMenu == 3) {
+				System.out.println("이체할 계좌를 입력해주세요");
+				int accountTransfer = scan.nextInt();
+				if(accountTransfer == yourAcc) {
+					System.out.println("금액을 입력해주세요");
+					int accountTransferMoney = scan.nextInt();
+					if(accountTransferMoney <= myMoney) {
+						System.out.println("계좌이체되었습니다.");
+					}
+				}
+			}
+
+
 			else if (selectMenu == 4) {}
 			else if (selectMenu == 0) {
 				isRun = false;
