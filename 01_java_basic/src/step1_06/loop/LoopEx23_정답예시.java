@@ -22,11 +22,11 @@ public class LoopEx23_정답예시 {
 		int getPrimeNumber = scan.nextInt();
 		int pnCnt = 0;
 		
-		for (int i=2; i<=getPrimeNumber; i++) {
+		for (int i=2; i<=getPrimeNumber; i++) {  // i는2인데 정답과같을때까지 돈다
 			
 			pnCnt = 0;
-			for (int j=1; j<=i; j++) {
-				if (i%j == 0) pnCnt++;
+			for (int j=1; j<=i; j++) {          //j=1 j는i와같아질때까지 돈다
+				if (i%j == 0) pnCnt++;           //i나누기j의 나머지가0이면 카운트1
 			}
 			
 			if (pnCnt ==2) {

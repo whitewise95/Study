@@ -21,9 +21,29 @@ public class LoopEx26_테스트문제 {
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
+		int cnt = 0;
+		int i = 0;
 		
 		System.out.print("Enter Number ? ");
 		int getNumber = scan.nextInt();
+		
+		for( i = getNumber; i< getNumber+1; i++  )
+			cnt = 0;
+			for(int j = getNumber-2; j<=i; j++) {
+				if(i%j==0) {
+					cnt++;
+				}
+				
+			}
+		
+				
+				
+			
+		
+		
+		
+		
+		
 		
 		scan.close();
 		
