@@ -18,7 +18,7 @@ import java.util.Scanner;
  * 
  */
 
-public class LoopEx13_문제 {
+public class LoopEx13_문제_소수찾기1단계 {
 
 	public static void main(String[] args) {
         Scanner  scan = new Scanner(System.in);
