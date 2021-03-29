@@ -46,10 +46,11 @@ public class ArrayEx04_문제 {
 		for(int i =0; i<arr.length; i++) {
 			int ran1 = ran.nextInt(100)+1;
 		    arr[i]= ran1; 
-		    if(arr[i]>=60) {
+		    if(arr[i]>=60) {sum1++;
 		    	
 		    }
 		}
+		System.out.println(sum1+"명");
 		
 
 	}
