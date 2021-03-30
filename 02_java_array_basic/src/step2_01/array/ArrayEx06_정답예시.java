@@ -38,12 +38,14 @@ public class ArrayEx06_정답예시 {
 				} 			
 			}
 			if (isExists == true)
+				
 				System.out.print("학번 입력 : " + getHakbuns + "   성적 : " + outputScore + "\n");
 			else
 				System.out.println("해당학번은 존재하지 않습니다.");
-				
+			
 			
 		}
+		
 		
 		scan.close();
 		

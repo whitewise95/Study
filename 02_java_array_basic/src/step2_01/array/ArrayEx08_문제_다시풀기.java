@@ -1,5 +1,7 @@
 package step2_01.array;
 
+import java.util.Random;
+
 /*
  * # OMR카드
  * 
@@ -16,12 +18,32 @@ package step2_01.array;
  */
 
 
-public class ArrayEx08_문제 {
+public class ArrayEx08_문제_다시풀기 {
 
 	public static void main(String[] args) {
-		
+		Random ran = new Random();
 		int[] answer = {1, 3, 4, 2, 5};
 		int[] hgd = new int[5];
+		int score=0;
+		for(int i= 0; i<5; i++) {
+			hgd[i] = ran.nextInt(4)+1;
+			if(hgd[i]==answer[i]) {
+				System.out.print("hgd"+hgd[i]+" ");
+				System.out.println("answer"+answer[i]);
+				score+=20;
+				
+			}
+		}
+	
+		
+					
+					
+				
+			
+		
+		
+		System.out.println(score);
+		
 		
 	}
 	
