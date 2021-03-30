@@ -1,5 +1,6 @@
 package step2_01.array;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /*
@@ -24,27 +25,37 @@ import java.util.Random;
 public class ArrayEx11_문제 {
 
 	public static void main(String[] args) {
-		int rannumber = 0;
-		int cnt = 0;
-	
-		Random ran  = new Random(); 
-		
-		boolean[] check = new boolean[5];
-		int[] arr   = new int[5];
-		
-	  for(int i =0; true; i++) {
-		  rannumber = ran.nextInt();
-		  	if(check[rannumber]==false) {
-		  		
-		  	}
-	  }
-	
-		
-		
-		
-		
-		
+			Random ran = new Random();
+			boolean[] check  = new boolean[5];
+			int[] arr        = new int[5];
+			int getRandomInt = 0;
+			int idx          = 0;
+			
+			int cnt=0;
+			
+			while(cnt<5){
+				
+				getRandomInt=ran.nextInt(5);
+				if(check[getRandomInt] == false) {
+					arr[cnt] = getRandomInt;
+					cnt++;
+					check[getRandomInt] = true;
 					
+				}
+				if(check[getRandomInt] == true) {
+					continue;
+				
+				}
+				
+					
+				
+			}
+			
+			System.out.println(Arrays.toString(arr));
+			
+			
+				
 	}
-	
+
 }
+
