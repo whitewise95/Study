@@ -1,5 +1,6 @@
 package step_01.string;
 
+import java.util.Arrays;
 
 public class StringEx07_문제 {
 
@@ -11,7 +12,17 @@ public class StringEx07_문제 {
 		
 		String[] name = new String[3];
 		int[] score = new int[3];
-				
+		String[] sScore = new String[3];		
+		
+		String[] temp1 = str.split(",");
+		for (int i = 0; i < temp1.length; i++) {
+			String[] temp2 = temp1[i].split("/");
+			name[i] = temp2[0];
+			score[i] =Integer.parseInt(temp2[1]);
+			
+		} 
+		System.out.println(Arrays.toString(name));
+		System.out.println(Arrays.toString(score));
 		
 		
 		

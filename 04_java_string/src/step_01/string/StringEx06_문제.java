@@ -10,13 +10,14 @@ public class StringEx06_문제 {
 		// 문제 1) arr 배열에 각 점수를 저장하고, 총점 출력
 		// 정답 1) 200
 		int[] arr = new int[3];
+		int temp =0;
+		String[]sNum = str.split("/");
+		for (int i = 0; i < sNum.length; i++) {
+			arr[i] = Integer.parseInt(sNum[i]);
+			temp+=arr[i];
+		}
+		System.out.println(temp);
 		
-		
-		String[] str1 =str.split("/");
-		arr[0] = Integer.parseInt(str1[0]);
-		arr[1] = Integer.parseInt(str1[1]);
-		arr[2] = Integer.parseInt(str1[2]);
-		System.out.println(arr[0]+arr[1]+arr[2]);
 		
 		
 		
@@ -28,16 +29,19 @@ public class StringEx06_문제 {
 		// 정답 2) 11/100/89
 		int[] scores = {11, 100, 89};
 		String text = "";
-		
+		String Scores[] = new String[3];
 		for (int i = 0; i < scores.length; i++) {
-			text +=scores[i]+"";
-			if(i != scores.length-1) {
-				text+="/";
-			}
+			 Scores[i] = Integer.toString(scores[i]);
+			 
+		}	
+		for (int i = 0; i < Scores.length; i++) {
+			          text +=Scores[i];
+			          if(i!=Scores.length-1) {
+			        	  text+="/";
+			          }
 			
 		}
-		System.out.println(text);
-		
+	System.out.println(text);
 		
 		
 		

@@ -13,19 +13,23 @@ public class StringEx05_문제 {
 		// 문제 2) 성별 출력
 		// 정답 2) 여성
 
-		String strAge = jumin.substring(0,2);
-		int intAge = Integer.parseInt(strAge);
-		int age=2021-(intAge+1900)+1;
-		System.out.println(age+"세");
+		String[] temp =jumin.split("-");
+		String sAge = jumin.substring(0,2);
+		int iAge = Integer.parseInt(sAge);
+		System.out.println(2021-1900-iAge+1);
 		
-	 System.out.println("============================");
+		System.out.println("===============================");
 		
-	 
-	 	String strw = jumin.substring(7,8);	
-	 	int intw = Integer.parseInt(strw);
-		if(intw==2) {
+		char mW = jumin.charAt(7);
+		if(mW == '2'||mW =='4') {
 			System.out.println("여성");
 		}
+		if(mW =='1'||mW =='3') {
+			System.out.println("남성");
+		}
+		
+		
+		
 		
 		
 		
