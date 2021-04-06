@@ -43,6 +43,10 @@ public class StringEx12_문제 {
 		
 		while(true) {
 			
+			System.out.println("================================");
+			if(identifier==-1) {System.out.println("로\t그\t아\t웃");}
+			else{System.out.println(ids[identifier]+"님\t환영합니다.");}
+			System.out.println("================================");
 			System.out.println("[MEGA MART]");
 			System.out.println("[1]로 그 인");
 			System.out.println("[2]로그아웃");
@@ -62,14 +66,15 @@ public class StringEx12_문제 {
 					for (int i = 0; i < items.length; i++) {   //아이디 비교
 						if(myId.equals(ids[i]) && myPw.equals(pws[i])) {
 							System.out.println("로그인되었습니다.");
-							if(myId.equals(ids[0]) && myPw.equals(pws[0])) {identifier=1111;}
-							else if(myId.equals(ids[1]) && myPw.equals(pws[1])) {identifier=2222;}
-							else if(myId.equals(ids[2]) && myPw.equals(pws[2])) {identifier=3333;}
+							if(myId.equals(ids[0]) && myPw.equals(pws[0])) {identifier=0;}
+							if(myId.equals(ids[1]) && myPw.equals(pws[1])) {identifier=1;}
+							if(myId.equals(ids[2]) && myPw.equals(pws[2])) {identifier=2;}
+							else {System.out.println("잘못된 아이디나 비밀번호 입니다.");}       //잘못된 비밀번호나 아이디
 						}
-						else {System.out.println("잘못된 아이디나 비밀번호 입니다.");}       //잘못된 비밀번호나 아이디
+						
 					}
 				}
-				else {System.out.println("이미 로그인 되었습니다.");}          //이미 로그인 되었을때
+				else{System.out.println("이미 로그인 되었습니다.");}          //이미 로그인 되었을때
 			}
 			else if (sel == 2) {
 				if(identifier!=-1) {
@@ -80,17 +85,40 @@ public class StringEx12_문제 {
 				
 			}
 			else if (sel == 3) { 
-				for (int i = 0; i < items.length; i++) {
-					System.out.println("["+i+"]+"+items[i]);
+				if(identifier!=-1) {
+					while(true) {
+					for (int i = 0; i < items.length; i++) {
+						System.out.println("["+i+"]"+items[i]);
+					}
+					System.out.println("[4]뒤로가기");
+					
+					System.out.println("장바구니에 담을 아이템을 선택해주세요");
+					int itemNum = scan.nextInt();
+					if(itemNum==4) {break;}
+					jang[count][0]=identifier;
+					jang[count][1]=itemNum;
+					count++;
+					
+					}
 				}
-				System.out.println("장바구니에 담을 아이템을 선택해주세요");
-				String itemNum = scan.next();
-				jang[0][0]=identifier;
-				jang[0][1]=
-				
-				
+				else {System.out.println("로그인해주세요");}
 			}
-			else if (sel == 4) {}
+			
+			else if (sel == 4) {
+				int apple = 0;
+				int banana = 0;
+				int stroberry = 0;
+				for (int i = 0; i < count; i++) {
+					if(jang[i][1]==0){apple++;}
+					else if(jang[i][1]==1){banana++;}
+					else if(jang[i][1]==2){stroberry++;}
+					
+					
+		     	}
+				System.out.println("사과 : "+apple+"개");
+				System.out.println("바나나 : "+banana+"개");
+				System.out.println("딸기 : "+stroberry+"개");
+			}
 			else if (sel == 0) {
 				System.out.println("프로그램 종료");
 				break;

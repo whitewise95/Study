@@ -49,40 +49,29 @@ public class StringEx11_문제 {
 			int sel = scan.nextInt();
 			
 			if (sel == 1) {
-				System.out.println("등록할 카테고리명를 입력해주세요");
-				String myCategory = scan.next();
-				items[itemCount][0] = myCategory+",";
+				System.out.println("등록할 카테고리명을 입력해주세요");
+				String myName = scan.next();
+				items[itemCount][0]=myName+",";
 				itemCount++;
-				}
-			
+			}
 			else if (sel == 2) {
 				for (int i = 0; i < itemCount; i++) {
 					System.out.println("["+i+"]"+items[i][0]);
-						}
-				System.out.println("카테고리를 선택해주세요");
-				int num = scan.nextInt();
-				System.out.println("등록할 아이템명을 입력해주세요");
-				String myitems = scan.next();
-				items[num][1] += myitems+"/";
-				//items[num][1] +="/";
-			}
-	
-			else if (sel == 3) {
-				for (int i = 0; i <itemCount; i++) {
-					System.out.println();
-					for (int j = 0; j < itemCount; j++) {
-						System.out.print(items[i][0]+": "+items[i][1]);
-						
-					}
 				}
+				System.out.println("카테고리를 선택해주세요 입력: ");
+				sel = scan.nextInt();
+				System.out.println("아이템 명을 입력해주세요");
+				String myItemName = scan.next();
+				items[sel][1] += myItemName+"/";
 				
 			}
-			System.out.println();
-			
-			
-			
-		
-
+			else if (sel == 3) {
+				for (int i = 0; i < itemCount; i++) {
+					for (int j = 0; j <= 1; j++) {
+						System.out.print(items[i][j]);
+					}
+				}
+			}
 		}
 	}
 
