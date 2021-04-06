@@ -51,7 +51,7 @@ public class StringEx11_문제 {
 			if (sel == 1) {
 				System.out.println("등록할 카테고리명을 입력해주세요");
 				String myName = scan.next();
-				items[itemCount][0]=myName+",";
+				items[itemCount][0]=myName+": ";
 				itemCount++;
 			}
 			else if (sel == 2) {
