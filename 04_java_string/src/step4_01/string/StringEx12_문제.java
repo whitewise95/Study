@@ -90,7 +90,7 @@ public class StringEx12_문제 {
 					for (int i = 0; i < items.length; i++) {
 						System.out.println("["+i+"]"+items[i]);
 					}
-					System.out.println("[4]뒤로가기");
+					System.out.println("[3]뒤로가기");
 					
 					System.out.println("장바구니에 담을 아이템을 선택해주세요");
 					int itemNum = scan.nextInt();
@@ -115,9 +115,11 @@ public class StringEx12_문제 {
 					
 					
 		     	}
+				System.out.println("==============================");
 				System.out.println("사과 : "+apple+"개");
 				System.out.println("바나나 : "+banana+"개");
 				System.out.println("딸기 : "+stroberry+"개");
+				
 			}
 			else if (sel == 0) {
 				System.out.println("프로그램 종료");
