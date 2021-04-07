@@ -27,21 +27,52 @@ public class StringEx17_문제 {
 		
 		System.out.print("변경하고 싶은 단어를 입력하세요 : ");
 		String word = scan.nextLine();
-		
 		char[] arr = new char[text.length()];
-		int iWord = word.length();
-		int x = 0;
-		int y = 0;
-		
-		String temp[] = text.split(" ");
-		for (int i = 0; i < temp.length; i++) {
-			if(temp[i].equals(word)){
-				temp[i]= word;
-			}
+		for (int i = 0; i < text.length(); i++) {
+			arr[i]=text.charAt(i);
 		}
-		for (int i = 0; i < temp.length; i++) {
+		
+		int wordsize = word.length();
+		boolean is = false;
+		int first = 0;
+		int last = 0;
+		for (int i = 0; i < arr.length-wordsize+1; i++) {
+			int cnt = 0;
+			for (int j = 0; j<word.length(); j++) {
+				if(arr[i+j]==word.charAt(j)) {
+					cnt++;
+				}
+				
+				}
+			if(cnt==wordsize) {
+				first = i;
+				is = true;
+			}
 			
 		}
+		if(is) {
+			int firstText = first;
+			int lastText = first+word.length();
+			char[] temp = arr;
+			String front = "";
+			String back = "";
+			System.out.println("바꾸고 싶은 단어를 써주세요 : ");
+			String change = scan.next();
+			
+			for (int i = 0; i < firstText; i++) {
+				front += temp[i];
+			}
+			for (int i = lastText; i <temp.length;  i++) {
+				back += temp[i];
+			}
+			String fullText = front+change+back;
+			System.out.println(fullText);
+		}
+		else {System.out.println(" 그런 단어는 존재 하지않습니다.");}
+		
+		
+		
+		
 		
 		
 	}
