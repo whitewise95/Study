@@ -2,6 +2,7 @@ package step5_02.file;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Iterator;
 
 //# 파일 저장하기 : 연습문제2
 
@@ -22,39 +23,14 @@ public class FileEx04_문제 {
 		String data = "";
 		String full [][]= new String[3][1];
 		String[] sNum=new String[3];
-		for (int i = 0; i < moneys.length; i++) {
+		for (int i = 0; i < 3; i++) {
 			 sNum[i] =Integer.toString(moneys[i]);
+			 full[i][0] = names[i]+"/"+pws[i]+"/"+sNum[i];
+			 data += full[i][0]+"\n";
 		}
-	
-		
-		
 		try {fw = new FileWriter(fileName);
-		
-		for (int i = 0; i < full.length; i++) {
-			
-				full[i][0]+= names[i]+"/"+pws[i]+"/"+sNum[i];
-				System.out.println();
-			
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		 fw.write(data);
+	
 		} catch (IOException e) {e.printStackTrace();}
 		try {fw.close();} catch (IOException e) {e.printStackTrace();}
 

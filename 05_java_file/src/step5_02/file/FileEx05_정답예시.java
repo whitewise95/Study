@@ -31,14 +31,17 @@ public class FileEx05_정답예시 {
 				fr = new FileReader(file);
 				br = new BufferedReader(fr);
 				int i = 0;
-				
+			
 				while (true) {
 					
 					String line = br.readLine();
+					System.out.println(line);
 					
 					if (line == null) {
 						break;
+						
 					}
+				
 					
 					String[] info = line.split("/");
 					names[i] = info[0];
@@ -57,7 +60,7 @@ public class FileEx05_정답예시 {
 				e.printStackTrace();
 			} finally {
 				try {br.close();} catch (IOException e) {e.printStackTrace();}
-				try {fr.close();} catch (IOException e) {e.printStackTrace();}
+				
 			}
 			
 		}
