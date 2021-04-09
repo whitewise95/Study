@@ -12,13 +12,12 @@ public class VarEx02_문제 {
 			System.out.println("내돈 : "+my+"원" );
 			System.out.println("과자 : "+you+"원" );
 			System.out.println("구매후 : "+(my-you)+"원" );
-		
-			
-		
-		
-		
 		//문제1) 월급이 100원이다. 연봉은? (조건 : 세금 10% 제외)
 	
+			
+			
+			
+			
 		//문제2) 시험점수를 30, 50, 4점 을 받았다. 평균은?
 
 				
