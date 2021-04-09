@@ -12,7 +12,7 @@ import java.util.Iterator;
 
 public class FileEx05_문제 {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args)  {
 		
 		
 		// 4번 연습문제에서 작성된 테스트파일을 읽어들여와 아래 배열에 저장하시오.
