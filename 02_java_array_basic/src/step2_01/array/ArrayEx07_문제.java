@@ -1,5 +1,7 @@
 package step2_01.array;
 
+import java.util.Iterator;
+
 /*
  * # 학생성적관리 프로그램[4단계] : 1등학생
  */
@@ -14,6 +16,25 @@ public class ArrayEx07_문제 {
 		
 		// 문제) 1등학생의 학번과 성적 출력
 		// 정답) 1004번(98점)
+		int temp = scores[0];
+		int iHak = 0;
+		for (int i = 0; i < scores.length; i++) {
+			if(scores[i]>temp) {
+				temp= scores[i];
+				iHak = hakbuns[i];
+				
+			}
+		}
+		System.out.println(iHak+"번"+"("+temp+"점)" );
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 	

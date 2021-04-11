@@ -25,33 +25,46 @@ import java.util.Random;
 public class ArrayEx11_문제 {
 
 	public static void main(String[] args) {
+		
 			Random ran = new Random();
 			boolean[] check  = new boolean[5];
 			int[] arr        = new int[5];
 			int getRandomInt = 0;
 			int idx          = 0;
+			int cnt =0;
+		
 			
-			int cnt=0;
 			
-			while(cnt<5){
-				
-				getRandomInt=ran.nextInt(5);
-				if(check[getRandomInt] == false) {
-					arr[cnt] = getRandomInt;
-					cnt++;
-					check[getRandomInt] = true;
+			
+			while(true) {
+					int num = ran.nextInt(5);
+					if(check[num]==false ) {
+						 ++idx;
+						check[num]=true;
+						arr[idx-1]=num;
+						cnt++;
+					}
+					else if(cnt==5) {
+						System.out.println(arr[0]);
+						System.out.println(arr[1]);
+						System.out.println(arr[2]);
+						System.out.println(arr[3]);
+						System.out.println(arr[4]);
+						System.out.println("======================");
+						break;
+					}	
+						
 					
-				}
-				if(check[getRandomInt] == true) {
-					continue;
-				
-				}
-				
-					
-				
+						
+		
 			}
 			
-			System.out.println(Arrays.toString(arr));
+			
+			
+			
+			
+			
+	
 			
 			
 				

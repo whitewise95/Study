@@ -1,6 +1,7 @@
 package step2_01.array;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 /*
  * # 4의 배수만 저장
@@ -34,27 +35,25 @@ public class ArrayEx13_문제 {
 		int cnt =0;
 		int newCnt = 0;
 		
-		for (int i =0; i<5; i++) {
+		
+		for (int i = 0; i < arr.length; i++) {
 			if(arr[i]%4==0) {
 				cnt++;
 			}
-			
-			temp = new int[cnt];
+			System.out.println(Arrays.toString(temp));
+	
 		}
-		for(int i =0; i<5; i++) {
+		temp = new int[cnt];
+		
+		for (int i = 0; i <  arr.length; i++) {
 			if(arr[i]%4==0) {
-			temp[newCnt] = arr[i];
-			newCnt++;
+				System.out.println(Arrays.toString(temp));
+				temp[newCnt] =arr[i];
+				newCnt++;
 			}
+			System.out.println(Arrays.toString(temp));
 		}
-		System.out.println("4의배수갯수 : "+cnt);
 		System.out.println(Arrays.toString(temp));
-		
-		
-		
-		
-		
-		
 		
 	}
 	

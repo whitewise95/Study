@@ -1,6 +1,7 @@
 package step2_01.array;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /* 15:27~
@@ -60,45 +61,47 @@ public class ArrayEx09_문제_다시풀기 {
 		char seat[] = {'X','X','X','X','X','X','X'};
 	   int  price = 0;
 	   int getSeat = 0;
-	   
-	   
+	
 	   
 	   
 	   while(true) {
-		   for(int i=0; i<7; i++) {
-				System.out.print("["+seat[i]+"]");
-		   }	
-			System.out.println();
-			System.out.println("1. 좌석예매");
-			System.out.println("2. 종료");
-			int choice = scan.nextInt();
-			if(choice==1) {
-				
-				System.out.println("좌석을 선택해주세요");
-				int seatChoice = scan.nextInt();
-				getSeat = seatChoice-1;
-			
-				if(seat[getSeat]=='X') {
-					seat[getSeat] = 'o';
-					price += 12000;
-					System.out.println("예매되었습니다.");
-				}
-				if(getSeat<0 || getSeat>7) {
-					System.out.println("1~7중에 선택해주세요");
-					
-				}
-				else if(seat[getSeat]=='o') {
-					System.out.println("예매된 좌석입니다.");
-				}
-				
-			}
-			if(choice==2) {
-				System.out.println("총판매금액 : "+price);
-			}
-			
-	   }	
-		
-		
+		   System.out.println("=======메가씨네마======");
+		   for (int i = 0; i < seat.length; i++) {
+			   System.out.print("["+seat[i]+"]");
+		}
+		   System.out.println();
+		   System.out.println("========메뉴==========");
+		   System.out.println("[1] 예매하기");
+		   System.out.println("[2] 종료하기");
+		   System.out.println("선택 : ");
+		   
+		   int answer = scan.nextInt();
+		   
+		   if(answer==1) {
+			   System.out.println("좌석을 0~6중 선택해주세요 : ");
+			   int answer1 = scan.nextInt();
+			   if(seat[answer1] == 'X') {
+				   System.out.println("예매되었습니다.");
+				   seat[answer1] = 'ㅇ';
+				   price += 12000;
+			   }
+			   else if(seat[answer] == 'ㅇ') {
+				   System.out.println("이미 예매된 좌석입니다.");
+				   continue;
+			   }
+		   }
+		   else if(answer==2) {
+			   System.out.println("--------------");
+			   System.out.println("매출액"+price+"원");
+			   break;
+		   }
+		   
+		   
+		   
+	   }
+   
+	   
+
 		
 	}
 	

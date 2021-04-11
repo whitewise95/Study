@@ -21,14 +21,10 @@ public class ArrayEx06_문제 {
 		// 예)
 		// 학번 입력 : 1002		성적 : 11점
 		// 학번 입력 : 1000		해당학번은 존재하지 않습니다.
+
 		
-		System.out.println("학번을 입력해주세요");
-		int hakbun = scan.nextInt();
-		if(hakbun==hakbuns.length) {
-			for(int i=0; i<5; i++) {
-				
-			}
-		}
+		
+		
 		
 		
 	}

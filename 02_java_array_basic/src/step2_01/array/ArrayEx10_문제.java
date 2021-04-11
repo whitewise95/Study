@@ -1,5 +1,6 @@
 package step2_01.array;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 /*
@@ -33,65 +34,48 @@ public class ArrayEx10_문제 {
 			System.out.print("메뉴 선택 : ");
 			sel = scan.nextInt();
 			if(sel==1) {
-				for(int i= 0; i<8; i++) {
+				for (int i = 0; i < lotto1.length; i++) {
 					if(lotto1[i]==7) {
-						cnt++;
+						cnt+=1;
 						if(cnt==3) {
-							System.out.println("당첨");
+							System.out.println("당첨되었습니다.");
 						}
-					}
-					if(i==8) {
-						if(cnt!=3) {
-							System.out.println("당첨");
+						else if(lotto1[i]!=7) {
+							cnt=0;
 						}
-					}
-					else {
-						cnt=0;
-					}
-					
-			}
-			}
-			if(sel==2) {
-				for(int i= 0; i<8; i++) {
-					if(lotto2[i]==7) {
-						cnt++;
-						if(cnt==3) {
-							System.out.println("당첨");
-						}
-					}
-						if(i==8) {
-							if(cnt!=3) {
-								System.out.println("당첨");
-							}
-						}
-					else {
-						cnt=0;
-						
-					}
-			
-			
-			}
-			}
-			if(sel==3) {
-				for(int i= 0; i<8; i++) {
-					if(lotto3[i]==7) {
-						cnt++;
-					}
-				if(i==8) {
-					if(cnt!=3) {
-						System.out.println("당첨");
 					}
 				}
-					else {
-						cnt=0;
-					}
 				
 			}
+			if(sel==2) {
+				for (int i = 0; i < lotto2.length; i++) {
+					if(lotto2[i]==7) {
+						cnt+=1;
+						if(cnt==3) {
+							System.out.println("당첨되었습니다.");
+						}
+					}
+					else if(lotto2[i]!=7) {
+						cnt=0;
+					}
+				}
 			}
-			else if ( sel == 0 ) break;
-			else                 continue;	
-			
-		
+			if(sel==3) {
+				for (int i = 0; i < lotto3.length; i++) {
+					if(lotto3[i]==7) {
+						cnt+=1;
+						if(cnt==3) {
+							System.out.println("당첨되었습니다.");
+						}
+						else if(lotto3[i]!=7) {
+							cnt=0;
+						}
+					}
+				}
+			}
+			if(sel==0) {
+				break;
+			}
 			
 			
 		}

@@ -24,25 +24,46 @@ public class ArrayEx08_문제_다시풀기 {
 		Random ran = new Random();
 		int[] answer = {1, 3, 4, 2, 5};
 		int[] hgd = new int[5];
-		int score=0;
-		for(int i= 0; i<5; i++) {
-			hgd[i] = ran.nextInt(4)+1;
-			if(hgd[i]==answer[i]) {
-				System.out.print("hgd"+hgd[i]+" ");
-				System.out.println("answer"+answer[i]);
+		int score = 0;
+		char[] x = new char[5];
+
+		for (int i = 0; i < hgd.length; i++) {
+			hgd[i]= ran.nextInt(5)+1;
+			
+		}
+		for (int i = 0; i < hgd.length; i++) {
+			if(answer[i]==hgd[i]) {
+				x[i]= 'o';
 				score+=20;
-				
+			}
+			else if(answer[i]!=hgd[i]){
+				x[i]='x';
 			}
 		}
-	
-		
-					
-					
-				
+		System.out.print("답안지 ="+"{");
+		for (int i = 0; i < hgd.length; i++) {
+			System.out.print(hgd[i]+", ");
+		}
+		System.out.print("}");
+		System.out.println();
+		System.out.print("내정답 ="+"{");
+		for (int i = 0; i < x.length; i++) {
+			System.out.print(answer[i]+", ");
 			
+		}
+		System.out.print("}");	
+		System.out.println();
+		System.out.print("정오표 ="+"{");
+		for (int i = 0; i < x.length; i++) {
+			System.out.print(x[i]+", ");
+			
+		}	
+		System.out.print("}");
+		System.out.println();
+		System.out.println("점수 : "+score);
 		
 		
-		System.out.println(score);
+
 		
 		
 	}
