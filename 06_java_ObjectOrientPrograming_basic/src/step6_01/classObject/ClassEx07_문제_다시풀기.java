@@ -34,7 +34,7 @@ class Ex07_1 {
 }
 
 
-public class ClassEx07_문제 {
+public class ClassEx07_문제_다시풀기 {
 
 	public static void main(String[] args) {
 		Ex07_1 e = new Ex07_1();
