@@ -89,6 +89,7 @@ public class ArrayEx38_문제여귀까쮜 {
 		 for (int i = 0; i < pay.length; i++) {
 			for (int j = 0; j < pay[i].length; j++) {
 				if(temp<pay[i][j]){
+					temp = pay[i][j];
 					x=i;
 					y=j;
 					 System.out.println("가장많이 나온집"+(apt[x][y]));
