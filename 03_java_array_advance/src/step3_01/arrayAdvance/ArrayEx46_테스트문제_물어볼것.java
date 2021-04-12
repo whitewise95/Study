@@ -12,7 +12,7 @@ public class ArrayEx46_테스트문제_물어볼것 {
 
 	public static void main(String[] args) {
 
-		
+	
 		
 	}
 
