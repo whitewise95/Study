@@ -14,6 +14,8 @@ package step6_01.classObject;
  * 
  */
 
+import java.util.Scanner;
+
 /*
 class Ex12{
 	String[][] game = new String[3][3];

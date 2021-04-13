@@ -71,15 +71,35 @@ public class ClassEx11_문제 {
 			int sel = scan.nextInt();
 			
 			if		(sel == 1) {
+				int check = 0;
 				System.out.println("사용하실 계좌번호를  입력해주세요");
-				e.arAcc[e.accCnt] = scan.next();
-				System.out.println("사용하실 계좌번호 비밀번호를  입력해주세요");
-				e.arPw[e.accCnt] = scan.next();
-				System.out.println("사용할 금액을 입력해주세요");
-				e.arMoney[e.accCnt] = scan.nextInt();
-				System.out.println("회원 가입 되었습니다.");
-				e.accCnt++;
+				String useAcc = scan.next();
+				for (int i = 0; i < e.arAcc.length; i++) {
+					if(useAcc.equals(e.arAcc[i])) {
+						
+						check=-1;
+					}
+				}
+				if(check==-1) {
+					System.out.println("이미 있는 계좌번호입니다.");
+				}
+				
+				else if(check==0){
+					System.out.println("사용하실 계좌번호 비밀번호를  입력해주세요");
+					
+					String usePw= scan.next();
+					System.out.println("사용할 금액을 입력해주세요");
+					int useMoney = scan.nextInt();
+					
+						
+					e.arAcc[e.accCnt] =  useAcc;
+					e.arPw[e.accCnt] =  usePw;
+					e.arMoney[e.accCnt] =  useMoney;
+					System.out.println("회원 가입 되었습니다.");
+					e.accCnt++;
+				}
 			}
+			
 			else if (sel == 2) {
 				System.out.println("탈퇴할 계좌번호를 입력해주세요");
 				String myAcc = scan.next();
@@ -88,11 +108,13 @@ public class ClassEx11_문제 {
 				String myPw = scan.next();
 				String[] temp = new String[5];
 				String[] temp2 = new String[5];
+				int[] temp3 = new int[5];
 				
 				for (int i = 0; i <e.arAcc.length; i++) {
 					
 					temp[i] = e.arAcc[i];
 					temp2[i] = e.arPw[i];
+					temp3[i] = e.arMoney[i];
 					if(myAcc.equals(e.arAcc[i]) && myPw.equals(e.arPw[i]) ) {
 						System.out.println("탈퇴되었습니다.");
 						e.x=i;
@@ -100,13 +122,17 @@ public class ClassEx11_문제 {
 				}
 				e.arAcc = new String [5];
 				e.arPw = new String [5];
+				e.arMoney = new int[5];
+				
 				for (int i = 0; i < e.x; i++) {
 					e.arAcc[i] = temp[i];
 					e.arPw[i]= temp2[i];
+					e.arMoney[i]= temp3[i];
 				}
 				for (int i = e.x; i < e.arAcc.length-1; i++) {
 					e.arAcc[i] = temp[i+1];
 					e.arPw[i]= temp2[i+1];
+					e.arMoney[i] =temp3[i+1];
 				}
 				e.accCnt--;
 		
@@ -143,50 +169,18 @@ public class ClassEx11_문제 {
 			}
 			else if (sel == 5) {//입금으로 만들어야함
 				if(e.identifier>0) {
-					System.out.println("입금할 계좌를 입력해주세요");
-					String yourAcc = scan.next();
-					for (int i = 0; i < e.arAcc.length; i++) {
-						if(yourAcc.equals(e.arAcc[i])) {
-							System.out.println("얼마를 보내겠습니까?");
-							int myMoney = scan.nextInt();
-							if(e.identifier==1) {
-								if(e.arMoney[0]>=myMoney) {
-									e.arMoney[0] -=myMoney;
-									e.arMoney[i] += myMoney;
-								}
-							}
-							if(e.identifier==2) {
-								if(e.arMoney[1]>=myMoney) {
-									e.arMoney[1] -=myMoney;
-									e.arMoney[i] += myMoney;
-								}
-							}
-							if(e.identifier==3) {
-								if(e.arMoney[2]>=myMoney) {
-									e.arMoney[2] -=myMoney;
-									e.arMoney[i] += myMoney;
-								}
-							}
-							if(e.identifier==4) {
-								if(e.arMoney[3]>=myMoney) {
-									e.arMoney[3] -=myMoney;
-									e.arMoney[i] += myMoney;
-								}
-							}
-							if(e.identifier==5) {
-								if(e.arMoney[4]>=myMoney) {
-									e.arMoney[4] -=myMoney;
-									e.arMoney[i] += myMoney;
-								}
-							}
-							
+					System.out.println("얼마를 보내겠습니까?");
+					int myMoney = scan.nextInt();
+							if(e.identifier==1) {e.arMoney[0]+=myMoney;}
+							if(e.identifier==2) {e.arMoney[1]+=myMoney;}
+							if(e.identifier==3) {e.arMoney[2]+=myMoney;}
+							if(e.identifier==4) {e.arMoney[3]+=myMoney;}
+							if(e.identifier==5) {e.arMoney[4]+=myMoney;}
 						}
+				if(e.identifier<0) {System.out.println("로그인 후 사용해주세요");}
 							
-						
-					}
-					
-				}
-			}
+			}		
+		
 			else if (sel == 6) {
 				if(e.identifier>0) {
 					System.out.println("이체할 계좌를 입력해주세요");
@@ -233,7 +227,19 @@ public class ClassEx11_문제 {
 					
 				}
 			}
-			else if (sel == 7) {}
+			else if (sel == 7) {
+				if(e.identifier>0) {
+					
+							if(e.identifier==1) {System.out.println(e.arMoney[0]);}
+							if(e.identifier==2) {System.out.println(e.arMoney[1]);}
+							if(e.identifier==3) {System.out.println(e.arMoney[2]);}
+							if(e.identifier==4) {System.out.println(e.arMoney[3]);}
+							if(e.identifier==5) {System.out.println(e.arMoney[4]);}
+						}
+				if(e.identifier<0) {System.out.println("로그인 후 사용해주세요");}
+			}
+							
+			
 			else if (sel == 0) {
 				System.out.println("프로그램 종료");
 				break;
