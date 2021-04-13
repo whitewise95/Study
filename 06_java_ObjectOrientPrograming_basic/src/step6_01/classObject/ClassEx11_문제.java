@@ -109,9 +109,7 @@ public class ClassEx11_문제 {
 					e.arPw[i]= temp2[i+1];
 				}
 				e.accCnt--;
-				System.out.println("e.x : " + e.x);
-				System.out.println("arAcc : " + Arrays.toString(e.arAcc));
-				System.out.println("arPw : " + Arrays.toString(e.arPw));
+		
 			}
 			else if (sel == 3) {
 				System.out.println("계좌번호를  입력해주세요");
@@ -143,20 +141,98 @@ public class ClassEx11_문제 {
 				else if(e.identifier==4) {System.out.println("로그아웃 되었습니다.");e.identifier=-1;}
 				else if(e.identifier==5) {System.out.println("로그아웃 되었습니다.");e.identifier=-1;}
 			}
-			else if (sel == 5) {
+			else if (sel == 5) {//입금으로 만들어야함
 				if(e.identifier>0) {
 					System.out.println("입금할 계좌를 입력해주세요");
 					String yourAcc = scan.next();
 					for (int i = 0; i < e.arAcc.length; i++) {
 						if(yourAcc.equals(e.arAcc[i])) {
 							System.out.println("얼마를 보내겠습니까?");
-						
+							int myMoney = scan.nextInt();
+							if(e.identifier==1) {
+								if(e.arMoney[0]>=myMoney) {
+									e.arMoney[0] -=myMoney;
+									e.arMoney[i] += myMoney;
+								}
+							}
+							if(e.identifier==2) {
+								if(e.arMoney[1]>=myMoney) {
+									e.arMoney[1] -=myMoney;
+									e.arMoney[i] += myMoney;
+								}
+							}
+							if(e.identifier==3) {
+								if(e.arMoney[2]>=myMoney) {
+									e.arMoney[2] -=myMoney;
+									e.arMoney[i] += myMoney;
+								}
+							}
+							if(e.identifier==4) {
+								if(e.arMoney[3]>=myMoney) {
+									e.arMoney[3] -=myMoney;
+									e.arMoney[i] += myMoney;
+								}
+							}
+							if(e.identifier==5) {
+								if(e.arMoney[4]>=myMoney) {
+									e.arMoney[4] -=myMoney;
+									e.arMoney[i] += myMoney;
+								}
+							}
+							
 						}
+							
+						
 					}
 					
 				}
 			}
-			else if (sel == 6) {}
+			else if (sel == 6) {
+				if(e.identifier>0) {
+					System.out.println("이체할 계좌를 입력해주세요");
+					String yourAcc = scan.next();
+					for (int i = 0; i < e.arAcc.length; i++) {
+						if(yourAcc.equals(e.arAcc[i])) {
+							System.out.println("얼마를 보내겠습니까?");
+							int myMoney = scan.nextInt();
+							if(e.identifier==1) {
+								if(e.arMoney[0]>=myMoney) {
+									e.arMoney[0] -=myMoney;
+									e.arMoney[i] += myMoney;
+								}
+							}
+							if(e.identifier==2) {
+								if(e.arMoney[1]>=myMoney) {
+									e.arMoney[1] -=myMoney;
+									e.arMoney[i] += myMoney;
+								}
+							}
+							if(e.identifier==3) {
+								if(e.arMoney[2]>=myMoney) {
+									e.arMoney[2] -=myMoney;
+									e.arMoney[i] += myMoney;
+								}
+							}
+							if(e.identifier==4) {
+								if(e.arMoney[3]>=myMoney) {
+									e.arMoney[3] -=myMoney;
+									e.arMoney[i] += myMoney;
+								}
+							}
+							if(e.identifier==5) {
+								if(e.arMoney[4]>=myMoney) {
+									e.arMoney[4] -=myMoney;
+									e.arMoney[i] += myMoney;
+								}
+							}
+							
+						}
+							
+						
+					}
+					
+				}
+			}
 			else if (sel == 7) {}
 			else if (sel == 0) {
 				System.out.println("프로그램 종료");
