@@ -8,6 +8,8 @@ package step6_01.classObject;
  *    숫자 10~18은 back 배열에 저장한다.
  */
 
+import java.util.Scanner;
+
 /*
 class Ex13{
 	final int SIZE = 9;
@@ -21,7 +23,7 @@ class Ex13{
 public class ClassEx13_문제 {
 
 	public static void main(String[] args) {
-
+		Scanner
 	}
 
 }

@@ -1,4 +1,7 @@
 package step6_01.classObject;
+
+import java.util.Scanner;
+
 /*
  * # 사다리 게임
  * 1. 0을 만나면 아래로 내려간다.
@@ -30,7 +33,7 @@ class Ex14{
 */
 
 public class ClassEx14_문제 {
-
+	Scanner
 	public static void main(String[] args) {
 
 	}
