@@ -48,7 +48,7 @@ class movie{
 	void result() {
 		System.out.println("--------------------");
 		System.out.println("매출액 : "+tot+"원");
-		return;
+		
 		
 	}
 	
