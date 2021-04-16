@@ -47,7 +47,8 @@ public class ArrayEx14_문제다시풀기 {
 				}
 			}
 			if(move==2) {
-				for (int i = 0; i < game.length; i++) {
+				int cnt= 10;
+				for (int i = 0; i < cnt; i++) {
 					if(game[i]==2) {
 						if(i==6) {
 							continue;
@@ -55,8 +56,7 @@ public class ArrayEx14_문제다시풀기 {
 							player = game[i];
 							game[i+1]=player;
 							game[i]=0;
-							continue;
-						
+							cnt= i;
 					}
 				}
 			}
