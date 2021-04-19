@@ -7,7 +7,7 @@ import java.util.Scanner;
  *	# 관리비
 */
 
-public class ArrayEx38_문제여귀까쮜 {
+public class ArrayEx38 {
 
 	public static void main(String[] args) {
 		

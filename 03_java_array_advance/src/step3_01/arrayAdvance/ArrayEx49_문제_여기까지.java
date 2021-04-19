@@ -1,5 +1,7 @@
 package step3_01.arrayAdvance;
 
+import java.util.Scanner;
+
 /*
  * 
  * # 나만의 마블
@@ -16,9 +18,10 @@ package step3_01.arrayAdvance;
  */
 
 
-public class ArrayEx49_문제 {
+public class ArrayEx49_문제_여기까지 {
 
 	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
 
 		int[][] map = {
 				{0,   1,  2,  3, 4},	
@@ -29,7 +32,22 @@ public class ArrayEx49_문제 {
 			};
 			
 			int player = 0;
-
+			int x = 0;
+			int y = 0;
+			
+			
+			
+	
+						
+						
+						
+						
+						
+						
+						
+						
+		
+			}
 	}
 
 }

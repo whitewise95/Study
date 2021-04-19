@@ -1,10 +1,16 @@
 package step3_01.arrayAdvance;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
 //# 빙고 Ver1(플레이어 1명)
+
+
+
+
+
 
 public class ArrayEx44_문제2_문제풀이 {
 
@@ -12,123 +18,97 @@ public class ArrayEx44_문제2_문제풀이 {
 		
 		Scanner scan = new Scanner(System.in);
 		Random ran = new Random();
-		int size= 5;
-		int binggo = 0;
-		int[] mapmini = new int[size*size];
-		int[][]map = new int[size][size];
-		int add = 0;
-		int win =0;
+		int max = 5;
+		int size = 50;
+		int[][] bingo = new int[max][max];
+		int [] temp = new int[max*max];
+		int win = 0;
+		int turn = 0;
 		
-		//중복없는 빙고판 임시 빙고판
-		for (int i = 0; i < mapmini.length; i++) {
-			int number = ran.nextInt(50)+1;
-			mapmini[i] = number;
+		
+		//빙고판 중복없이
+		
+		for (int i = 0; i <  max*max; i++) {
+			temp[i] = ran.nextInt(size)+1;
 			for (int j = 0; j < i; j++) {
-				if(mapmini[i]==mapmini[j]) {
-					i--;
-				}
+				if(temp[i]==temp[j]) {i--;}
+			} 
+		}
+	
+		//빙고판 대입
+		int k = 0;
+		for (int i = 0; i < bingo.length; i++) {
+			for (int j = 0; j < bingo[i].length; j++) {
+				bingo[i][j] = temp[k];
+				k++;
 			}
 		}
-		//임시 빙고판 최종빙고판에 대입
-		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				map[i][j]=mapmini[j]+add;
-			}
-			add=add+5;
-		}
-		
-		
-		
-		
-		//빙고판 화면출력
-		
 		while(true) {
-			System.out.println("=============빙고=================");
-			for (int i = 0; i < 5; i++) {
-				System.out.print("\t"+ i);
+			//화면 출력 
+			System.out.print(" ");
+			for (int i = 0; i < max; i++) {
+				System.out.print(" ");
+				System.out.print(i);
+				System.out.print("\t");
 			}
-	
 			System.out.println();
-			for (int i = 0; i < map.length; i++) {
-				System.out.print(i+"\t");
-				for (int j = 0; j < map[i].length; j++) {
-					System.out.print(map[i][j]+"\t");
+			for (int i = 0; i < bingo.length; i++) {
+				System.out.print(i);
+				System.out.print(" ");
+				for (int j = 0; j < bingo[i].length; j++) {
+					System.out.print(bingo[i][j]+"\t");
 				}
-				System.out.println();
-			}
-			if(win==1) {
-				System.out.println("빙고");
-				break;
-			}
-			//숫자선택
-			System.out.println("x 좌표를 입력해주세요");
-			int myx = scan.nextInt();
-			System.out.println("y 좌표를 입력해주세요");
-			int myy = scan.nextInt();
-			
-			if(map[myy][myx]!=0) {
-				map[myy][myx]=0;
-			}
-			else if(map[myy][myx]==0) {
-				System.out.println("이미 선택되었습니다.");
+				System.out.println("\n");
 			}
 			
-			//승리조건
-			//가로
-			for (int i = 0; i < size; i++) {
-				int cnt = 0;
-				for (int j = 0; j < size; j++) {
-					if(map[i][j]==0) {
-						cnt+=1;
+			
+			//승리
+			
+			if(win==1) {System.out.println("1p 승");break;}
+			
+			
+			//진행
+			System.out.println("x의 좌표를 입력  :  ");
+			int x = scan.nextInt();
+			System.out.println("y의 좌표를 입력  :  ");
+			int y = scan.nextInt();
+			
+			if(bingo[y][x]!=0) {bingo[y][x]=0;}
+			else {System.out.println("이미 입력된 좌표입니다.");}
+			
+			
+			
+			// 승패 조건
+			
+			//가로 스캔
+			for (int i = 0; i < bingo.length; i++) {
+				for (int j = 0; j < 1; j++) {
+					if(bingo[i][j]==0&&bingo[i][j+1]==0&&bingo[i][j+2]==0&&bingo[i][j+3]==0&&bingo[i][j+4]==0) {win=1;}
+				}
+			}
+			
+			//세로 스캔
+			for (int i = 0; i < 1; i++) {
+				for (int j = 0; j < bingo.length; j++) {
+					if(bingo[i][j]==0&&bingo[i+1][j]==0&&bingo[i+2][j]==0&&bingo[i+3][j]==0&&bingo[i+4][j]==0) {win=1;}
+				}
+			}
+			//대각선 스캔
+					for (int i = 0; i < 1; i++) {
+						for (int j = 0; j < 1; j++) {
+							if(bingo[i][j]==0&&bingo[i+1][j+1]==0&&bingo[i+2][j+2]==0&&bingo[i+3][j+3]==0&&bingo[i+4][j+4]==0) {win=1;}
+						}
 					}
-				}
-				if(cnt==5) {
-					win = 1;
-				}
-			}
-			//세로
-			for (int i = 0; i < size; i++) {
-				int cnt = 0;
-				for (int j = 0; j < size; j++) {
-					if(map[j] [i]==0) {
-						cnt+=1;
+			//역대각선 스캔
+					for (int i = 0; i < 1; i++) {
+						for (int j = 4; j > 3; j--) {
+							if(bingo[i][j]==0&&bingo[i+1][j-1]==0&&bingo[i+2][j-2]==0&&bingo[i+3][j-3]==0&&bingo[i+4][j-4]==0) {win=1;}
+						}
 					}
-				}
-				if(cnt==5) {
-					win = 1;
-				}
-			}
-			
-			//대각선
-			int cnt = 0;
-			for (int i = 0; i < size; i++) {
-				
-				if(map[i][i]==0) {
-					cnt++;
-				}
-				System.out.println("a"+cnt);
-				if(cnt==5) {
-					win = 1;
-				}
-			}
-			
-			// 역 대각선
-			cnt =0 ;
-			for (int i = 0; i < size; i++) {
-				
-				if (map[i][(size-1)-i] == 0) {
-					cnt+=1;
-					System.out.println("b"+cnt);
-					}
-				if(cnt==5) {
-					win = 1;
-				}
-			}
-			
-		
-	
 		}
-	
+		
+		
+		
 	}
 
 }

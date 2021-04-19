@@ -57,7 +57,7 @@ public class ArrayEx49_정답예시 {
 			player += move;
 			
 			player %= 16;
-			
+			System.out.println(player%16);
 		}
 
 	}
