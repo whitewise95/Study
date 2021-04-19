@@ -32,7 +32,7 @@ public class StringEx01 {
 	System.out.println("age : "+age);
 	scan.nextLine();   //버퍼에 있는 enter을 제거(비우기)
 	
-	System.out.println("특이상항을 입력하세요 :");
+	System.out.println("특이사항을 입력하세요 :");
 	
 	String comment = scan.nextLine();
 	System.out.println("comment : "+comment);
