@@ -51,8 +51,10 @@ public class StringEx17_문제 {
 			System.out.println("변경할 단어를 입력해주세요");
 			String change =scan.next();
 			char[] cChange = new char[change.length()];
+			char[] temp = new char[Text.sub]
 			for (int i = 0; i < cChange.length; i++) {
 				cChange[i]=change.charAt(i);
+				
 			}
 			int j = 0;
 			for (int i = x; i < change.length(); x++) {
