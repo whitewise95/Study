@@ -15,41 +15,30 @@ public class StringEx16_문제 {
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-
+		
 		String text = "Life is too short.";
 		System.out.print("검색할 단어를 입력하세요 : ");
-		String word = scan.next();
-		char[] cText = new char[text.length()];
+		String str = scan.next();
 		
-		for (int i = 0; i < cText.length; i++) {
-			cText[i]=text.charAt(i);
+		char[] Ctext = new char[text.length()];
+		for (int i = 0; i < Ctext.length; i++) {
+			Ctext[i]=text.charAt(i);
 		}
-		int textsize = word.length();
-		boolean isSame = false;
-		for (int i = 0; i < cText.length-textsize+1; i++) {
-			int cnt =0;
-			for (int j = 0; j < textsize; j++) {
-				if(cText[i+j]==word.charAt(j)) {
+		boolean that = false;
+		int strSize = str.length();
+		for (int i = 0; i < Ctext.length-strSize+1; i++) {
+			int cnt = 0;
+			
+			for (int j = 0; j < strSize; j++) {
+				if(Ctext[i+j]==str.charAt(j)) {
 					cnt++;
 				}
-				
 			}
-			if(cnt==textsize) {
-				isSame=true;
-			}
+			if(cnt==strSize) {that =true;}
+			
 		}
-		
-		if(isSame) {System.out.println("일치");}
-		else {System.out.println("불일치");}
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	if(that) {System.out.println("true");}
+	else {System.out.println("false");}
 		
 		
 	}

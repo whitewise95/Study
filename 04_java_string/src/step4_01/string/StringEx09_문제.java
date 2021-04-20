@@ -22,24 +22,20 @@ public class StringEx09_문제 {
 		Random ran = new Random();
 		Scanner scan = new Scanner(System.in);
 		String[] words = {"java", "mysql", "jsp", "spring"};
-		for (int i = 0; i <1000; i++) {
-			int r = ran.nextInt(words.length);
+
+		for (int i = 0; i < 1000; i++) {
+			int ranNum = ran.nextInt(4);
 			String temp = words[0];
-			words[0]=words[r]; 
-			words[0]=temp;
+			words[0] =  words[ranNum];
+			words[ranNum]=temp;
 		}
-		int i= 0;
-		while(i<5) {
-			
-				System.out.println("문제 "+(i+1)+" : "+words[i]);
-				System.out.println("입력 : ");
-				String myanswer = scan.next();
-				if(myanswer.equals(words[i])) {
-					i++;
-				}
-			break;
 		
+		for (int i = 0; i < words.length;) {
+			System.out.println("입력 : "+words[i]);
+			String answer = scan.nextLine();
+			if(answer.equals(words[i])) {i++;}
 		}
+		System.out.println("끝");
 		
 	}
 

@@ -11,22 +11,23 @@ public class StringEx08_문제 {
 		
 		String[] name = {"김철수", "이만수", "이영희"};
 		int[] score = {87, 42, 95};
-		String [] sScore = new 	String[3];
-		String str = "";
-				
-		for (int i = 0; i < sScore.length; i++) {
-			 str +=name[i];
-			 str += "/";
-			 str += score[i]+"";
-			 if(i<name.length-1) {
-				 str+= "," ;
-			 }
-		}
-		System.out.println(str);
+		String[] strScore = new String[3];
+		String[] tot = new String[3];
+		
+		for (int i = 0; i < 3; i++) {
+			strScore[i] =Integer.toString(score[i]); 
 			
-		
-		
-	
+		}
+		for (int i = 0; i < 3; i++) {
+			tot[i] = name[i];
+			tot[i] += "/";
+			tot[i] +=  strScore[i];
+			tot[i] += ",";
+		}
+		for (int i = 0; i < tot.length; i++) {
+			System.out.print(tot[i]);
+		}
+		 
 		
 
 	}

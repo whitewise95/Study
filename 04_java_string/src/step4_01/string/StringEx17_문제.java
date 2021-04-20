@@ -2,6 +2,8 @@ package step4_01.string;
 
 import java.util.Scanner;
 
+import org.w3c.dom.ls.LSOutput;
+
 /*
  * # 단어 교체하기(replace)
  * 
@@ -21,60 +23,50 @@ public class StringEx17_문제 {
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
-
+		int x = 0;
+		int y = 0;
 		String text = "Life is too short.";
 		System.out.println(text);
 		
 		System.out.print("변경하고 싶은 단어를 입력하세요 : ");
 		String word = scan.nextLine();
-		char[] arr = new char[text.length()];
-		for (int i = 0; i < text.length(); i++) {
-			arr[i]=text.charAt(i);
+		char[] cText = new char[text.length()];
+		int size = word.length();
+		boolean that = false;
+		for (int i = 0; i < cText.length; i++) {
+			cText[i] = text.charAt(i);
 		}
-		
-		int wordsize = word.length();
-		boolean is = false;
-		int first = 0;
-		int last = 0;
-		for (int i = 0; i < arr.length-wordsize+1; i++) {
-			int cnt = 0;
-			for (int j = 0; j<word.length(); j++) {
-				if(arr[i+j]==word.charAt(j)) {
+		for (int i = 0; i < cText.length-size+1; i++) {
+			int cnt =0;
+			for (int j = 0; j < size; j++) {
+				if(cText[i+j]==word.charAt(j)) {
+					x=i;
+					y=j;
 					cnt++;
 				}
-				
-				}
-			if(cnt==wordsize) {
-				first = i;
-				is = true;
+			}
+			if(cnt==size) {that=true;}
+		}
+		if(true) {
+			System.out.println("변경할 단어를 입력해주세요");
+			String change =scan.next();
+			char[] cChange = new char[change.length()];
+			for (int i = 0; i < cChange.length; i++) {
+				cChange[i]=change.charAt(i);
+			}
+			int j = 0;
+			for (int i = x; i < change.length(); x++) {
+				cText[i]=cChange[j];
+				j++;
+				System.out.println(j);
+				System.out.print(cText[i]);
+			}
+			System.out.println();
+			for (int i = 0; i < cText.length; i++) {
+				System.out.print(cText[i]);
 			}
 			
 		}
-		if(is) {
-			int firstText = first;
-			int lastText = first+word.length();
-			char[] temp = arr;
-			String front = "";
-			String back = "";
-			System.out.println("바꾸고 싶은 단어를 써주세요 : ");
-			String change = scan.next();
-			
-			for (int i = 0; i < firstText; i++) {
-				front += temp[i];
-			}
-			for (int i = lastText; i <temp.length;  i++) {
-				back += temp[i];
-			}
-			String fullText = front+change+back;
-			System.out.println(fullText);
-		}
-		else {System.out.println(" 그런 단어는 존재 하지않습니다.");}
-		
-		
-		
-		
-		
-		
 	}
 
 }

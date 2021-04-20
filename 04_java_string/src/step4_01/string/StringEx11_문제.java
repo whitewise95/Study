@@ -44,34 +44,43 @@ public class StringEx11_문제 {
 			System.out.println("[1]카테고리 관리");
 			System.out.println("[2]아 이 템  관리");
 			System.out.println("[3]전체품목 출력");
-			
-			System.out.print(": ");
-			int sel = scan.nextInt();
-			
-			if (sel == 1) {
-				System.out.println("등록할 카테고리명을 입력해주세요");
-				String myName = scan.next();
-				items[itemCount][0]=myName+": ";
+			int answer = scan.nextInt();
+			if(answer==1) {
+				System.out.println(" 등록하실 카테고리를 입력해주세요");
+				
+				items[itemCount][0] = scan.next();
+				items[itemCount][0]+=", ";
 				itemCount++;
 			}
-			else if (sel == 2) {
-				for (int i = 0; i < itemCount; i++) {
-					System.out.println("["+i+"]"+items[i][0]);
+			else if(answer==2) {
+				for (int i = 0; i <  itemCount; i++) {
+					System.out.print("["+i+"]"+items[i][0]);
 				}
-				System.out.println("카테고리를 선택해주세요 입력: ");
-				sel = scan.nextInt();
-				System.out.println("아이템 명을 입력해주세요");
-				String myItemName = scan.next();
-				items[sel][1] += myItemName+"/";
+				System.out.println();
+				System.out.println(" 등록하실 카테고리 번호를 입력해주세요 : ");
+				
+				int sel = scan.nextInt();
+				System.out.println(" 등록하실 아이템명을 입력해주세요");
+				items[sel][1] += scan.next();
+				items[sel][1] +="/";
 				
 			}
-			else if (sel == 3) {
+			else if(answer==3) {
 				for (int i = 0; i < itemCount; i++) {
-					for (int j = 0; j <= 1; j++) {
-						System.out.print(items[i][j]);
-					}
+					System.out.print(items[i][0]);
+					System.out.print(items[i][1]);
+					System.out.println();
 				}
+				
 			}
+			
+			
+			
+			
+			
+			
+			
+			
 		}
 	}
 
