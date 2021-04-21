@@ -18,6 +18,7 @@ class MemberManager{
 public class ClassArrayEx06 {
 
 	public static void main(String[] args) {
+		
 
 		MemberManager mg = new MemberManager();	
 		Member m1 = new Member();
