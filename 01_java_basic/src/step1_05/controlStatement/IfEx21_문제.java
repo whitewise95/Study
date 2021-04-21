@@ -19,10 +19,10 @@ import java.util.Random;
 public class IfEx21_문제 {
 
 	public static void main(String[] args) {
-		 Random ran = new Scanner(System.in);
+	
 		 
-		 int randomNumber = ran.next();
-		  if 
+	
+		
 		 
 	
 		

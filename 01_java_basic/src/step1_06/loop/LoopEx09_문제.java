@@ -48,7 +48,7 @@ public class LoopEx09_문제 {
 			if (selectMenu == 1) {
 				System.out.println("입금할 금액을 입력해주세요");
 				int depositMoney = scan.nextInt();
-				myMoney = depositmoney+myMoney;
+			
 				
 			}
 			else if (selectMenu == 2) {
