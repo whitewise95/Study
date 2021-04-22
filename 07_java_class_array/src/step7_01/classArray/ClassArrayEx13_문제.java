@@ -1,5 +1,7 @@
 package step7_01.classArray;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -53,13 +55,14 @@ class Manager{
 			StudentEx[] temp = list;
 			list=new StudentEx[stdCnt-1];
 			for (int i = 0; i < index; i++) {
-				list[i].id = temp[i].id;
-				list[i].pw = temp[i].pw;
+				list[i] = temp[i];
+				
 			}
-			for (int i = index; i < list.length; i++) {
-				list[i].id = temp[i+1].id;
-				list[i].pw = temp[i+1].pw;
+			for (int i = index; i < stdCnt-1; i++) {
+				list[i] = temp[i+1];
+				
 			}
+			temp =null;
 		}
 			stdCnt--;
 			return del_st;
@@ -83,11 +86,40 @@ class Manager{
 		}
 	}	
 	
-	String out_data() {}
+	String out_data() {
+		String data = "";
+		data+= stdCnt;
+		for (int i = 0; i < list.length; i++) {
+			data+=list[i].id;
+			data+=",";
+			data+=list[i].pw;
+			
+			
+		}
+		return data;
+	}
 	
-	void sort_data() {}
+	void sort_data() {
+		for (int i = 0; i < list.length; i++) {
+			for (int j = 0; j < list.length; j++) {
+				if(list[i].id.compareTo(list[j].id)>0) {
+					String temp = list[i].id;
+					list[i].id = list[j].id;
+					list[j].id = temp;
+				}
+			}
+		}
+		
+		
+	}
 	
-	void load_StudentEx (StudentEx [] temp , int count) {}
+	void load_StudentEx (StudentEx [] temp , int count) {
+		
+		
+		
+		
+		
+	}
 	
 }
 
@@ -139,13 +171,35 @@ public class ClassArrayEx13_문제 {
 				manager.print_StudentEx();
 				StudentEx temp = new StudentEx();
 				System.out.println("삭제할 아이디를 입력해주세요");
-				int id= scan.nextInt();
-				id = manager.check_id(temp)
+				temp.id= scan.next();
+				int check = manager.check_id(temp);
+				if(check==-1) {System.out.println("없는 아이디 입니다.");}
+				else {
+					StudentEx del_st = manager.remove_StudentEx(check);
+					System.out.println(del_st.id+"님의 아이디가 삭제되었습니다");
+				}
+			}
+			else if (sel == 3) {
+				manager.sort_data();
+				manager.print_StudentEx();
+			}
+			else if (sel == 4) {
+				manager.print_StudentEx();
+			}
+			else if (sel == 5) {
+				String fileName = "id,pw.txt";
+				try {
+					FileWriter fw =  new FileWriter(fileName);
+					String data = manager.out_data();
+					
+					fw.write(data);
+					
+					fw.close();
+				}
+				catch (IOException e) {e.printStackTrace();}
+				
 				
 			}
-			else if (sel == 3) {}
-			else if (sel == 4) {}
-			else if (sel == 5) {}
 			else if (sel == 6) {}
 			else if (sel == 7) { 
 				break; 
