@@ -210,20 +210,29 @@
 //				
 //                if (manager.stdCnt == 0) continue;
 //				
+//                FileWriter fw = null;
+//                
 //                try {
 //                	
-//					FileWriter fw = new FileWriter("StudentEx_manager.txt");
+//					fw = new FileWriter("StudentEx_manager.txt");
 //					String data = manager.out_data();
 //					if (!data.equals("")) {
 //						fw.write(data);
 //						System.out.println(data);
 //					}
-//					fw.close();	
 //					
-//				} catch (Exception e) {e.printStackTrace();}
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//                finally {
+//                	try {fw.close();} catch (IOException e) {e.printStackTrace();}	
+//                }
 //                
 //			}
 //			else if(sel == 6) {
+//				
+//				FileReader fr = null;
+//				BufferedReader br = null;
 //				
 //				try {
 //					
@@ -231,8 +240,8 @@
 //					
 //					if (file.exists()) {
 //						
-//						FileReader fr = new FileReader(file);
-//						BufferedReader br = new BufferedReader(fr);
+//						fr = new FileReader(file);
+//						br = new BufferedReader(fr);
 //						
 //						String line = br.readLine();
 //						int count = Integer.parseInt(line);
@@ -246,16 +255,19 @@
 //							temp[i].pw = value[1];
 //						}
 //						
-//						fr.close();
-//						br.close();
-//						
 //						manager.load_StudentEx(temp , count);
 //						
 //					}
 //					
 //					manager.print_StudentEx();
 //				}
-//				catch (Exception e) {e.printStackTrace();}
+//				catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//				finally {
+//					try {br.close();} catch (IOException e) {e.printStackTrace();}
+//					try {fr.close();} catch (IOException e) {e.printStackTrace();}
+//				}
 //									
 //			}
 //			else if (sel == 7) {
@@ -269,4 +281,4 @@
 //		
 //	}
 //
-//}
+}

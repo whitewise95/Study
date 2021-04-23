@@ -28,12 +28,19 @@ public class ClassArrayEx08_문제 {
 		
 		Student1 [] stdList = new Student1[3];
 		int stdCnt = 0;	// 학생 수
+
 		
-		while (true) {
+		while(true) {
+			
 			for (int i = 0; i < stdCnt; i++) {
-				System.out.println("["+(i+1)+"]"+stdList[i].name+"학생");
+				System.out.println(stdList[i].name);
+				if(stdList[i].subjects!=null) {
+					for (int j = 0; j < stdList[i].subjects.length; j++) {
+						System.out.println(stdList[i].subjects[j].name +" 과목 : "+stdList[i].subjects[j].score +"점");
+					}
+				}
+				System.out.println("==========================");
 			}
-			System.out.println();
 			
 			
 			
@@ -43,62 +50,78 @@ public class ClassArrayEx08_문제 {
 			System.out.println("[4]종료하기");
 			int choice = scan.nextInt();
 			
-			if		(choice == 1) {
-				System.out.print("이름 입력 : ");
+			if(choice==1) {
+				System.out.println("사용하실 이름을 입력해주세요 : ");
 				String name = scan.next();
-				
-				stdList[stdCnt] = new Student1();
+				stdList[stdCnt] = new Student1(); 
 				stdList[stdCnt].name = name;
 				stdCnt++;
+				System.out.println("추가 되었습니다.");
 			}
-		
-			else if (choice == 2) {
-				for (int i = 0; i < stdCnt; i++) {
-					System.out.print("["+(i+1)+"]"+stdList[i].name+", ");
-				}
-				System.out.println();
-				System.out.println("학생을 선택해주세요 : ");
-				int sel =scan.nextInt();
-				System.out.println("과목을 입력해주세요 : ");
-				String subject  =scan.next();
-				if(stdList[sel-1].subjects==null) {
-					stdList[sel-1].subjects = new Subject1[1];
-					stdList[sel-1].subjects[0] = new Subject1();
-					stdList[sel-1].subjects[0].name = subject;
-				}
-				else if(stdList[sel-1].subjects!=null){
-					int size = stdList[sel-1].subjects.length;
-					String[] temp = new String[size];
-					for (int i = 0; i < temp.length; i++) {
-						temp[i] = stdList[sel-1].subjects[i].name;
+			else if(choice==2){
+				if(stdCnt>0) {
+					for (int i = 0; i < stdCnt; i++) {
+						System.out.print("["+(i+1)+"]"+stdList[i].name +",");
 					}
-					stdList[sel-1].subjects = new Subject1[size+1];
-					for (int i = 0; i < stdList[sel-1].subjects.length; i++) {
-					stdList[sel-1].subjects[i] = new Subject1();
+					System.out.println("학생을 선택해주세요");
+					int idx = scan.nextInt();
+					idx-=1;
+					System.out.println("과목을 입력해주세요 : ");
+					String subjectName = scan.next();
+					if(stdList[idx].subjects==null) {
+						stdList[idx].subjects = new Subject1[1];
+						stdList[idx].subjects[0] = new Subject1();
+						stdList[idx].subjects[0].name = subjectName;
+						System.out.println("추가되었습니다. : ");
 					}
-					for (int i = 0; i < temp.length; i++) {
-						stdList[sel-1].subjects[i].name=temp[i];
+					else {
+						int size = stdList[idx].subjects.length;
+						Subject1[] temp = stdList[idx].subjects;
+						stdList[idx].subjects = new Subject1[size+1];
+						for (int i = 0; i < size+1; i++) {
+							stdList[idx].subjects[i] = new Subject1();	
+						}
+						for (int i = 0; i < size; i++) {
+							stdList[idx].subjects[i] =temp[i];	
+						}
+						stdList[idx].subjects[size].name = subjectName;
+						System.out.println("추가되었습니다. : ");
 					}
-					stdList[sel-1].subjects[size].name = subject;
 				}
+			}
+			else if(choice==3){
+				if(stdCnt>0) {
+					for (int i = 0; i < stdCnt; i++) {
+						System.out.print("["+(i+1)+"]"+stdList[i].name +",");
+					}
+					System.out.println();
+					System.out.println("성함을 선택해주세요 : ");
+					int idx = scan.nextInt();
+					idx -= 1;
+					if(stdList[idx].subjects!=null) {
+						for (int i = 0; i < stdList[idx].subjects.length; i++) {
+							System.out.print("["+(i+1)+"]"+stdList[idx].subjects[i].name +",");
+						}
+						System.out.println();
+						System.out.println("과목을 선택해주세요 : ");
+						int subIdx = scan.nextInt();
+						subIdx -=1; 
+						System.out.println("점수를 입력해주세요 : ");
+						stdList[idx].subjects[subIdx].score = scan.nextInt();
+					}
+					else {System.out.println("점수를 추가할 과목이 없습니다.");}
+				}
+				else {System.out.println("학생을 먼저 추가해주세요");}
+			}
 				
 				
-			}
-			else if (choice == 3) {
-				for (int i = 0; i < stdCnt; i++) {
-					System.out.print("["+(i+1)+"]"+stdList[i].name+", ");
-				}
-				System.out.println("학생을 선택해주세요");
-				for (int i = 0; i < stdList.length; i++) {
-					for (int j = 0; j < stdList[i].subjects[j].name.length(); i++) {
-						System.out.println("["+i+"]"+stdList[i].subjects[j].name);
-						System.out.println("과목을 선택해주세요");
-						
-					}
-				}
-			}
 			
-		}
+			else if(choice==4){}
+			
+			
+			
+		
+	}
 
 
 	}

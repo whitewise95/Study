@@ -28,90 +28,51 @@ class Manager{
 	int stdCnt = 0;
 	
 	void add_StudentEx(StudentEx st) {
+		
+		
 		if(stdCnt==0) {
-			list = new StudentEx[stdCnt+1];
+			StudentEx[] list = new StudentEx[1];
 		}
-		if(stdCnt>0) {
+		else {
 			StudentEx[] temp = list;
-			for (int i = 0; i < stdCnt; i++) {
-				temp[i] = list[i];
+			StudentEx[] list = new StudentEx[stdCnt+1];
+			for (int i = 0; i < list.length; i++) {
+				list[i] = new StudentEx();
 			}
-			list = new StudentEx[stdCnt+1];
 			for (int i = 0; i < temp.length; i++) {
 				list[i] = temp[i];
 			}
+			temp = null;
 		}
 		list[stdCnt] = st;
 		stdCnt++;
-		
 	}
 	
-	StudentEx remove_StudentEx (int index) {
-		StudentEx del_st = list[index];
-		if(stdCnt==1) {
-			list = null;
-		}
-		else if(stdCnt>1) {
-			StudentEx[] temp = list;
-			list=new StudentEx[stdCnt-1];
-			for (int i = 0; i < index; i++) {
-				list[i] = temp[i];
-				
-			}
-			for (int i = index; i < stdCnt-1; i++) {
-				list[i] = temp[i+1];
-				
-			}
-			temp =null;
-		}
-			stdCnt--;
-			return del_st;
-		}
+	StudentEx remove_StudentEx (int index) {}
 	
 	int check_id(StudentEx st) {
-		int check = -1;
-		for (int i = 0; i < stdCnt; i++) {
-			if(list[i].id.equals(st.id)) {
-				check = i;
-				break;
-			}
-		}
-		return check;
 		
+		int check = -1;
+		for (int i = 0; i < list.length; i++) {
+			if(list[i].id.equals(st)) {
+				return check;
+			}
+			else {check = i;}
+			
+		}
+		
+		return check;
 	}
 	
 	void print_StudentEx() {
-		for (int i = 0; i < list.length; i++) {
-			System.out.println("["+(i+1)+"]"+list[i].id);
+		for (int i = 0; i < stdCnt; i++) {
+			System.out.println(list[i].id);
 		}
 	}	
 	
-	String out_data() {
-		String data = "";
-		data+= stdCnt;
-		for (int i = 0; i < list.length; i++) {
-			data+=list[i].id;
-			data+=",";
-			data+=list[i].pw;
-			
-			
-		}
-		return data;
-	}
+	String out_data() {}
 	
-	void sort_data() {
-		for (int i = 0; i < list.length; i++) {
-			for (int j = 0; j < list.length; j++) {
-				if(list[i].id.compareTo(list[j].id)>0) {
-					String temp = list[i].id;
-					list[i].id = list[j].id;
-					list[j].id = temp;
-				}
-			}
-		}
-		
-		
-	}
+	void sort_data() {}
 	
 	void load_StudentEx (StudentEx [] temp , int count) {
 		
@@ -151,62 +112,33 @@ public class ClassArrayEx13_문제 {
 //			 			qwer,1234		// id,pw	
 //			 			abcd,1111		// id, pw
 			
-			
-			if		(sel == 1) {
-				System.out.println("사용 하실 아이디를 입력해주세요");
-				StudentEx temp = new StudentEx();
-				temp.id = scan.next();
-				int check = manager.check_id(temp);
-				if(check==-1) {
-					System.out.println("사용 하실 비밀번호를 입력해주세요");
-					temp.pw = scan.next();
-					manager.add_StudentEx(temp);
-					System.out.println("회원가입을 축하드립니다.");
-				}
-				else {System.out.println("중복된 아이디 입니다.");}
-			}
-			
 		
-			else if (sel == 2) {
-				manager.print_StudentEx();
+			if(sel == 1) {
 				StudentEx temp = new StudentEx();
-				System.out.println("삭제할 아이디를 입력해주세요");
-				temp.id= scan.next();
-				int check = manager.check_id(temp);
-				if(check==-1) {System.out.println("없는 아이디 입니다.");}
+				System.out.println(" 사용하실 아이디를 입력해주세요 : ");
+				temp.id = scan.next();
+				if(manager.stdCnt==0) {
+					manager.add_StudentEx(temp);
+				}
 				else {
-					StudentEx del_st = manager.remove_StudentEx(check);
-					System.out.println(del_st.id+"님의 아이디가 삭제되었습니다");
+					int check = manager.check_id(temp);
+					if(check==-1) {System.out.println("중복된 아이디입니다.");}
+					else {
+						manager.add_StudentEx(temp);
+					}
 				}
-			}
-			else if (sel == 3) {
-				manager.sort_data();
-				manager.print_StudentEx();
-			}
-			else if (sel == 4) {
-				manager.print_StudentEx();
-			}
-			else if (sel == 5) {
-				String fileName = "id,pw.txt";
-				try {
-					FileWriter fw =  new FileWriter(fileName);
-					String data = manager.out_data();
-					
-					fw.write(data);
-					
-					fw.close();
-				}
-				catch (IOException e) {e.printStackTrace();}
 				
 				
 			}
-			else if (sel == 6) {}
-			else if (sel == 7) { 
-				break; 
-			}
+			else if(sel == 2) {}
+			else if(sel == 3) {}
+			else if(sel == 4) {}
+			else if(sel == 5) {}
+			else if(sel == 6) {}
+			else if(sel == 7) {}
+			
 			
 		}
-
 	}
 
 }
