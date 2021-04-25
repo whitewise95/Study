@@ -38,6 +38,10 @@ public class ClassArrayEx16 {
 		Fruit2 f1 = new Fruit2();
 		Fruit2 f2 = new Fruit2("사과");
 		Fruit2 f3 = new Fruit2("포도",50000);	
+		
+		f1.name = "포도";
+		System.out.println(f1.name);
+		System.out.println(f2.name);
 	}
 
 }

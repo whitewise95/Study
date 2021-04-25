@@ -22,7 +22,7 @@ class ModifierTest{
 	// private변수를 클래스 외부에서 수정하는 메서드 setter
 	void setA(int i) {
 	
-		this.a = a;
+		this.a = i;
 	}
 	
 	
