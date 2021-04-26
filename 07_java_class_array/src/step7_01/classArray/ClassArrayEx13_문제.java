@@ -38,6 +38,7 @@ class Manager{
 		else {
 			StudentEx[] temp = list;
 			list = new StudentEx[stdCnt+1];
+			
 			for (int i = 0; i < stdCnt; i++) {
 				list[i] = temp[i];
 			}
