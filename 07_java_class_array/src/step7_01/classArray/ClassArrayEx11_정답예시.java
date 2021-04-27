@@ -3,16 +3,16 @@ package step7_01.classArray;
 
 // 문자열(1단계) [정답]
 
-class StudentList{
-	
-	String name;
-	int score;
-	
-	void print() {
-		System.out.println(this.name + " : " + this.score);
-	}
-	
-}
+//class StudentList{
+//	
+//	String name;
+//	int score;
+//	
+//	void print() {
+//		System.out.println(this.name + " : " + this.score);
+//	}
+//	
+//}
 
 public class ClassArrayEx11_정답예시 {
 
