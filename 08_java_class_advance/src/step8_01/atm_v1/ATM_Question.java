@@ -81,63 +81,73 @@ public class ATM_Question {
 		
 		while (true) {
 			System.out.print("[1.계좌생성] [2.계좌삭제] [3.조회] [0.로그아웃] : ");
+			System.out.println("카운트"+userManager.user[identifier].accCount);
 			int sel = scan.nextInt();
-			String addAcc  =Integer.toString(ran.nextInt(99999)+1);
-			if 		(sel == 1) {
+			String RanAcc =Integer.toString(ran.nextInt(10009)+1); 
+			if 		(sel == 1) { 
 				if(userManager.user[identifier].accCount==0) {
 					userManager.user[identifier].acc = new Account[1];
 					userManager.user[identifier].acc[0] = new Account();
-					userManager.user[identifier].acc[0].number = addAcc;
-					userManager.user[identifier].accCount ++;
+					userManager.user[identifier].acc[0].number = RanAcc;
 				}
 				else {
-					Account[] temp= userManager.user[identifier].acc;
-					userManager.user[identifier].acc = new Account[userManager.user[identifier].accCount+1];
-					for (int i = 0; i < userManager.user[identifier].accCount+1; i++) {
-						userManager.user[identifier].acc[i]=new Account();
+					 Account[] temp = userManager.user[identifier].acc;
+					 userManager.user[identifier].acc= new Account[userManager.user[identifier].accCount+1];
+					 for (int i = 0; i < userManager.user[identifier].accCount+1; i++) {
+						 userManager.user[identifier].acc[i]= new Account();
 					}
-					for (int i = 0; i < temp.length; i++) {
-						userManager.user[identifier].acc[i] = temp[i];
-					}
-					userManager.user[identifier].acc[userManager.user[identifier].accCount].number=addAcc;
-					userManager.user[identifier].accCount ++;
-					}
-			} 
-		
+					 for (int i = 0; i < userManager.user[identifier].accCount; i++) {
+						 userManager.user[identifier].acc[i] = temp[i];
+					 }
+					 userManager.user[identifier].acc[userManager.user[identifier].accCount].number = RanAcc;
+				}
+				System.out.println("[메세지] "+RanAcc+"의 계좌가 생성되었습니다.");
+				userManager.user[identifier].accCount++;
+			}
 			else if (sel == 2) {
-				if(userManager.user[identifier].accCount>0) {
-					System.out.println("삭제하실 계좌번호를 입력해주세요");
-					String removeAcc  =scan.next();
-					Account[] tempAcc = userManager.user[identifier].acc;
-					int check = -1;
-					for (int i = 0; i < tempAcc.length; i++) {
-						if(tempAcc[i].equals(removeAcc)) {
-							check= i;
+				if(userManager.user[identifier].accCount==1) {
+					System.out.println("[메세지] "+userManager.user[identifier].acc[0].number+"계좌가 삭제되었습니다.");
+					userManager.user[identifier].acc = null;
+				}
+				else if(userManager.user[identifier].accCount>1){
+					System.out.println("삭제할 계좌번호를 입력해주세요");
+					String del_Acc =scan.next();
+					int index = -1;
+					for (int i = 0; i < userManager.user[identifier].accCount; i++) {
+						if(del_Acc.equals(userManager.user[identifier].acc[i].number)){
+							index = i;
 						}
 					}
-					if(check>-1) {
-						userManager.user[identifier].acc = new Account[userManager.user[identifier].accCount-1];
-						for (int i = 0; i < userManager.user[identifier].accCount-1; i++) {
-							userManager.user[identifier].acc[i]=new Account();
+					if(index >-1) {
+						Account[] temp = userManager.user[identifier].acc;
+						 userManager.user[identifier].acc= new Account[userManager.user[identifier].accCount-1];
+						 for (int i = 0; i < userManager.user[identifier].accCount-1; i++) {
+							 userManager.user[identifier].acc[i]= new Account();
 						}
-						for (int i = 0; i < check; i++) {
-							userManager.user[identifier].acc[i] = tempAcc[i];
+						 for (int i = 0; i < index; i++) {
+							 userManager.user[identifier].acc[i]=temp[i];
 						}
-						for (int i = check; i <tempAcc.length ; i++) {
-							userManager.user[identifier].acc[i] = tempAcc[i+1];
-						}
-						userManager.user[identifier].accCount--;
+						 for (int i = index; i < temp.length-1; i++) {
+							 userManager.user[identifier].acc[i]=temp[i+1];
+						 } 
+							System.out.println("[메세지] "+"계좌가 삭제되었습니다.");
 					}
-					else {System.out.println("잘못된 계좌번호입니다.");}
-				}	
-				else {System.out.println("있는 계좌가 없습니다.");}
+					else {System.out.println("계좌가 없습니다."); continue;}
+				}
+				else {System.out.println("계좌가 없습니다."); continue;}
+				userManager.user[identifier].accCount--;
 			} 	
-			else if (sel == 3) {
-				userManager.user[identifier].printAccount();
-				
+			else if (sel == 3) {	
+				if(userManager.user[identifier].accCount==0) {
+					System.out.println("계좌를 먼저 생성해주세요");
+				}
+				else {
+					userManager.user[identifier].printAccount();
+				}
 			}  	 
 			else if (sel == 0) {
-				login();
+				 logout();
+				 break;
 			} 	
 		}
 		
