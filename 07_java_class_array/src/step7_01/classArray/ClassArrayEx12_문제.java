@@ -44,7 +44,7 @@ public class ClassArrayEx12_문제 {
 			Test[] t = new Test[size];
 			t[i-1] = new Test();
 			String temp2[] =temp[i].split("/");
-			t[i-1].num = temp2[0]
+			t[i-1].size = temp2[1];
 			t[i-1].num = 
 			t[i-1].num = 
 		}

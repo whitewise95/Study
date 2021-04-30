@@ -33,7 +33,7 @@ class ModifierTest{
 
 
 
-public class ClassArrayEx17 {
+public class ClassArrayEx17_프라이빗 {
 
 	public static void main(String[] args) {
 		
