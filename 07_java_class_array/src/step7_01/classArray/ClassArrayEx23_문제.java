@@ -62,7 +62,7 @@ class StudentManager {
 			for (int k = 0; k < studentList.size(); k++) {
 			if(studentList.get(i).id.compareTo(studentList.get(k).id)>0) {
 				StudentVO temp = studentList.get(i);
-				studentList.get()= studentList.get(k);
+				studentList.get(i) = g
 				
 			}
 			}

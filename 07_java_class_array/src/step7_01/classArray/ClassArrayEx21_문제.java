@@ -83,7 +83,7 @@ public class ClassArrayEx21_문제 {
 		temp = new Tv("스마트TV", "애플", 3000);
 		list.add(temp);
 	
-		for (Tv tv : list) {
+		for (Tv tv : list) { // (질문)  : 이게 무슨 뜻인가
 			System.out.println("name : " + tv.name);
 			System.out.println("brand : " + tv.brand);
 			System.out.println("price : " + tv.price);

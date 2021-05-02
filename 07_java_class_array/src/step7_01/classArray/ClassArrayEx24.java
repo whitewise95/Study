@@ -28,7 +28,10 @@ class MySingleTon {
 	
 }
 
-class NormalClass{}
+class NormalClass{
+	int s = 0;
+	
+}
 
 
 

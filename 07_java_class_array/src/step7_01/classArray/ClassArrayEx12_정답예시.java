@@ -2,20 +2,20 @@ package step7_01.classArray;
 
 // 문자열(2단계)[정답]
 
-class Test{
-	
-	int num;	  // 인덱스
-	int size;	  // 데이터의 개수
-	char[] data;  // 데이터의 저장 배열
-	
-	void print() {
-		for(int i=0; i<size; i++) {
-			System.out.print(data[i] + " ");
-		}
-		System.out.println();
-	}
-	
-}
+//class Test{
+//	
+//	int num;	  // 인덱스
+//	int size;	  // 데이터의 개수
+//	char[] data;  // 데이터의 저장 배열
+//	
+//	void print() {
+//		for(int i=0; i<size; i++) {
+//			System.out.print(data[i] + " ");
+//		}
+//		System.out.println();
+//	}
+//	
+//}
 
 
 public class ClassArrayEx12_정답예시 {

@@ -61,6 +61,5 @@ public class ClassArrayEx20 {
 		System.out.println(hmap);
 		
 		
-		
 	}
 }
