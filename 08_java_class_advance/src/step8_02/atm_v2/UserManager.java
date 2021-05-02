@@ -49,9 +49,9 @@ public class UserManager {
 	int del_Acc(String Acc) {
 		int check = -1;
 		for (int i = 0; i <userCnt; i++) {
-			for (int j = 0; j < userList[i].acc.length; j++) {
+			for (int j = 0; j < userList[i].accCnt; j++) {
 				if(userList[i].acc[j].accNumber.equals(Acc)) {
-					
+					check=j;
 				}
 			}
 		}

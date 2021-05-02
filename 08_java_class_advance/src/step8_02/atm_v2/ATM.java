@@ -2,7 +2,7 @@ package step8_02.atm_v2;
 
 import java.util.Scanner;
 
-public class ATM {
+public class ATM {   // (질문)왜 굳이 UserManager um = UserManager.getInstance(); 하는가?
 	
 	Scanner scan = new Scanner(System.in);
 	int identifier = -1;
