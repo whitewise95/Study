@@ -7,7 +7,11 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 //	여러권의 책 정보(BookVO 클래스)를 기억하는 클래스
-public class BookList {
+public class BookList {  /// 위에 있든 아래있든 작동하는원
+	
+	public void addBook(BookVO vo) {
+		bookList.add(vo);
+	}
 
 	ArrayList<BookVO> bookList = new ArrayList<>();		// 여러권의 책 정보를 기억하는 ArrayList를 선언한다.
 	
@@ -38,9 +42,7 @@ public class BookList {
 	}
 
 //	책 1권의 정보(BookVO 클래스 객체)를 인수로 넘겨받아 bookList ArrayList에 저장하는 메소드
-	public void addBook(BookVO vo) {
-		bookList.add(vo);
-	}
+	
 	
 }
 

@@ -17,7 +17,7 @@ public class BookVO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public BookVO(String title, String author, String publisher, Date date, int price) {
+	public BookVO(String title,    String author,    String publisher,   Date date, int price) {
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
