@@ -22,11 +22,11 @@ class Test2{
 class Test3{
 	// 자동완성 기능 : 이클립스 촤측 상단 Source > Generate Construct using filelds
 	String name;
+	int age;
 	public Test3(String name, int age) {
 		this.name = name;
 		this.age = age;
 	}
-	int age;
 	// 자동완성 기능 : 이클립스 촤측 상단 Source > Generate toString();
 	@Override
 	public String toString() {
