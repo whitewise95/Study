@@ -20,7 +20,7 @@ public class User {
 		this.id = id;
 		this.pw = pw;
 		this.accCnt = accCnt;
-		this.accList = account;
+		this.accList =accList;
 	}
 
 
