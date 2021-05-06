@@ -92,27 +92,27 @@ public class UserManager {
 			System.out.println("[메세지]아이디가 중복됩니다.\n");
 			return;
 		}
-		
-		System.out.print("[가입]패스워드를 입력하세요 : ");
-		String password = ATM.scan.next();
-		
-		if (userCount == 0) {
-			userList = new User[1];
-			userList[0] = new User(id, password);
-		}
-		else if (userCount > 0) {
-			User[] temp = userList;
+		else {
+			System.out.print("[가입]패스워드를 입력하세요 : ");
+			String password = ATM.scan.next();
 			
-			userList = new User[userCount + 1];
-			for (int i=0; i<userCount; i++) {
-				userList[i] = temp[i];
+			if (userCount == 0) {
+				userList = new User[1];
+				userList[0] = new User(id, password);
 			}
-			
-			userList[userCount] = new User(id, password);
-			
-			temp = null;
+			else if (userCount > 0) {
+				User[] temp = userList;
+				
+				userList = new User[userCount + 1];
+				for (int i=0; i<userCount; i++) {
+					userList[i] = temp[i];
+				}
+				
+				userList[userCount] = new User(id, password);
+				
+				temp = null;
+			}
 		}
-		
 		userCount++;
 		System.out.println("[메세지]회원가입을 완료하였습니다.\n");
 		

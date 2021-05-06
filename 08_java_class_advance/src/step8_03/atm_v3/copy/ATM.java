@@ -2,8 +2,21 @@ package step8_03.atm_v3.copy;
 
 import java.util.Scanner;
 
+
+
 public class ATM {
 	Scanner scan = new Scanner(System.in);
+	
+	ATM() {
+		
+		boolean isLoad = FileManager.getInstance().loadData();
+		// 테스트 데이터 생성
+		if (!isLoad) {
+			UserManager.getInstance().
+			FileManager.getInstance().saveData();
+		}
+		
+	}
 	void showMenu() {
 		while(true){
 			System.out.println("[MEGA ATM]");

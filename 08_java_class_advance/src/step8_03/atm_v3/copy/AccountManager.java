@@ -16,7 +16,7 @@ public class AccountManager {
 	Random ran = new Random();
 	Scanner scan = new Scanner(System.in);
 	User userList = userManager.user[userManager.identifier];
-	
+	FileManager fm = FileManager.getInstance();
 	void  userAccAdd() {
 		
 		if(userList.accCnt==3) {System.out.println("계좌 생성제한횟수가 넘었습니다." );return;}
@@ -40,6 +40,7 @@ public class AccountManager {
 			userList.accList[userList.accCnt].money = 0;
 			userList.accCnt++;
 		}
+		fm.saveData();
 	}
 	
 	void money_Transfer() {
@@ -64,6 +65,7 @@ public class AccountManager {
 			else {System.out.println("없는 계좌번호 입니다.");return;}
 		}
 		else {System.out.println("없는 계좌번호 입니다.");return;}
+		fm.saveData();
 	}
 	
 	int acc_Check(String acc) {
@@ -95,6 +97,7 @@ public class AccountManager {
 			userList.accList[check].money =  scan.nextInt();
 		}
 		else {System.out.println("없는 계좌 입니다.");return;}
+		fm.saveData();
 	
 	}
 	
@@ -114,6 +117,7 @@ public class AccountManager {
 			else {System.out.println("금액이 부족합니다.");}
 		}
 		else {System.out.println("없는 계좌 입니다.");return;}
+		fm.saveData();
 
 	}
 	
@@ -143,6 +147,7 @@ public class AccountManager {
 			System.out.println("계좌가 삭제되었습니다.");
 		}
 		else {System.out.println("계좌가 없습니다.");}
+		fm.saveData();
 	}
 	
 	
@@ -166,6 +171,7 @@ public class AccountManager {
 		}
 		userManager.userCnt--;
 		userManager.identifier = -1;
+		fm.saveData();
 		atm.showMenu();
 	}
 

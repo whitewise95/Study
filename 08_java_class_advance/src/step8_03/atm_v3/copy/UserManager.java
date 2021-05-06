@@ -11,7 +11,7 @@ public class UserManager {
 		UserManager.instance = instance;
 	}
 	 ATM atm = new  ATM ();
-	
+	 FileManager fm = FileManager.getInstance();
 	
 	 User  user [];
 	 int userCnt;
@@ -106,6 +106,7 @@ public class UserManager {
 			 return;
 			 
 		 }
+			fm.saveData();
 	 }
 	 
 	 void joinAfter() {

@@ -16,7 +16,7 @@ public class User {
 	
 
 
-	public User(String id, String pw, int accCnt, Account[] accList) {
+	public User(String id, String pw, Account[] accList, int accCnt) {
 		this.id = id;
 		this.pw = pw;
 		this.accCnt = accCnt;
@@ -25,14 +25,16 @@ public class User {
 
 
 	void printOneUserAllAccounts() {
-		for (int i = 0; i < UserManager.getInstance().userCnt; i++) {
+		
 			if(accCnt==0) {
 				System.out.println(id+"\t"+ pw+"\t"+"계좌를 만들어주세요 ");
 			}
 			else {
-				System.out.println(id+"\t"+ pw+"\t"+accList[i].acc +"\t"+"금액 : "+accList[i].money);
+				for (int i = 0; i < UserManager.getInstance().userCnt; i++) {
+					System.out.println(id+"\t"+ pw+"\t"+accList[i].acc +"\t"+"금액 : "+accList[i].money);
+				}
 			}
-		}
+		
 		
 	}
 	
