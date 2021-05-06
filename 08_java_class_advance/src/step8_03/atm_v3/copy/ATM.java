@@ -1,42 +1,64 @@
 package step8_03.atm_v3.copy;
 
+import java.util.Random;
 import java.util.Scanner;
 
-
-
 public class ATM {
-	Scanner scan = new Scanner(System.in);
+	
+	static Scanner scan = new Scanner(System.in);
+	static Random ran = new Random();
 	
 	ATM() {
 		
 		boolean isLoad = FileManager.getInstance().loadData();
 		// 테스트 데이터 생성
 		if (!isLoad) {
-			UserManager.getInstance().
+			UserManager.getInstance().setDummy();
 			FileManager.getInstance().saveData();
 		}
 		
 	}
+	
+	
 	void showMenu() {
-		while(true){
+		
+		while(true) {
+			
+			printAllDataByAllUser();
+			
 			System.out.println("[MEGA ATM]");
 			System.out.println("[1]회원가입\n[2]로그인\n[0]종료");
 			System.out.print("메뉴를 선택하세요 : ");
 			int choice = scan.nextInt();
-			if(choice==1) { join();}
-			else if(choice==2) {login();}
-			else if(choice==0) {break;}
+			
+			if		(choice == 1) 	join(); 
+			else if (choice == 2) 	login(); 
+			else if (choice == 0) 	break;
+			
 		}
-	}
-
-	void login() {
-		UserManager.getInstance().login();
+		
 	}
 	
-	void join() {
-		UserManager.getInstance().join();
+	
+	void printAllDataByAllUser() {
+		
+		UserManager.getInstance().printAllUserInfo();
+		
 	}
 	
+	
+	void login() { 
+		
+		UserManager.getInstance().loginUser();
+		
+	}
+	
+	
+	void join() { 
+		
+		UserManager.getInstance().joinUser(); 
+		
+	}
 	
 	
 	
