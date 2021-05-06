@@ -19,6 +19,7 @@ public class FileManager {
 	
 	
 	boolean loadData() {
+		return false;
 		
 		
 	}

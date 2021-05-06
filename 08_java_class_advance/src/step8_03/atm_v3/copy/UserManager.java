@@ -1,10 +1,26 @@
 package step8_03.atm_v3.copy;
 
 public class UserManager {
+	private UserManager() {};
+	private static UserManager instance = new UserManager();
 
+	public static UserManager getInstance() {
+		return instance;
+	}
+	public static void setInstance(UserManager instance) {
+		UserManager.instance = instance;
+	}
+	int userCount = 0;
+	User userList[];
+	int identifier =-1;
+	
 	
 	void printAllUserInfo() {
-		
+		System.out.println("아이디"+"\t"+"비밀번호"+"\t"+"계좌번호");
+		for (int i=0; i<userCount; i++) {
+			userList[i].printOneUserAllAccounts();
+		}
+		System.out.println("--------------------------");
 		
 	}
 	
@@ -55,6 +71,7 @@ public class UserManager {
 
 	
 	int checkId(String id) {
+		return identifier;
 		
 
 	}
@@ -125,6 +142,8 @@ public class UserManager {
 		}
 		
 	}
+
+
 }
 
 

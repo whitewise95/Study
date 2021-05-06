@@ -56,7 +56,7 @@ public class ATM {
 	
 	void join() { 
 		
-		UserManager.getInstance().joinUser(); 
+		UserManager.getInstance().joinUser();
 		
 	}
 	

@@ -19,6 +19,7 @@ public class AccountManager {
 	
 	
 	int showAccList(String msg) {
+		return 0;
 		
 
 		
@@ -36,12 +37,14 @@ public class AccountManager {
 	
 	
 	int checkAcc(String transAccount) {
+		return 0;
 		
 	
 	}
 	
 	
 	int getAccIndex(int transUserIndex, String transAccount) {
+		return transUserIndex;
 		
 	
 		
