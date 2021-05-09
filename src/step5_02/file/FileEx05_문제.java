@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 //# 파일 로드하기 : 연습문제
 
-
+//23:03~ 23:20
 public class FileEx05_문제 {
 
 	public static void main(String[] args)  {
@@ -20,46 +20,50 @@ public class FileEx05_문제 {
 		String[] names = new String[3];			// momk , megait , github
 		String[] pws   = new String[3];			// 1111 , 2222   , 3333
 		int[] moneys   = new int[3];			// 20000, 30000 , 40000
-		String[][] sprit = new String[3][3];
-		String fileName = "fileTest02.txt";
+		
+		String fileName = "NPM.txt";
 		File file = new File(fileName);
-		
+		FileReader fr =null;
+		BufferedReader br = null;
 	
-		
 		if(file.exists()) {
-			FileReader fr = null;
-			BufferedReader br = null;
+			
+			String[] NPM = new String[3];
 			
 			try {
-				fr= new FileReader(file);
-				br=new BufferedReader(fr);
-				int i =0;
-				while(true) {
+				fr = new FileReader(file);
+				br = new BufferedReader(fr);
 				
-						String line = br.readLine();
-						
-						if(br == null) {break;}
-						
-						String[] info =line.split("/");
-						names[i] = info[0];
-						pws[i] = info[1];
-						moneys[i] =Integer.parseInt(info[2]);
+				NPM[0] =br.readLine();
+				NPM[1] =br.readLine();
+				NPM[2] =br.readLine();
 				
+				for (int i = 0; i < NPM.length; i++) {
+					String[] temp = NPM[i].split("/");
+					names[i] = temp[0]+",";
+					pws[i] = temp[1]+",";
+				    moneys[i]=Integer.parseInt(temp[2]);
 				}
-				for (int j = 0; j <3; j++) {
-					System.out.println(names[i]);
-					System.out.println(pws[i]);
-					System.out.println(moneys[i]);
+				for (int i = 0; i < NPM.length; i++) {
+					System.out.print(names[i]+".");
 				}
-			} 
-			catch (FileNotFoundException e) {e.printStackTrace();
-			}finally {
-				try {br.close();} catch (IOException e) {e.printStackTrace();}
-				try {fr.close();} catch (IOException e) {e.printStackTrace();}
+				System.out.println();
+				for (int i = 0; i < NPM.length; i++) {
+					System.out.print(pws[i]+".");
+				}
+				System.out.println();
+				for (int i = 0; i < NPM.length; i++) {
+					System.out.print(moneys[i]+".");
+				}
 				
+				
+				
+			} catch (IOException e) {	e.printStackTrace();}
+			finally {try {br.close();} catch (IOException e) {e.printStackTrace();}
+				finally {try {	fr.close();} catch (IOException e) {e.printStackTrace();}
+				}
 			}
 		}
-		
 	}
 
 }
