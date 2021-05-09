@@ -44,10 +44,10 @@ public class VarEx03 {
 
 	public static void main(String[] args) {
 
-		// int 10000won = 10000;
-		// int test# = 10000;
-		// int int = 10000;
-		//int test variable = 10000;
+//		 int 10000won = 10000;
+//		 int test# = 10000;
+//		 int int = 10000;
+//		int test variable = 10000;
 		
 	}
 
