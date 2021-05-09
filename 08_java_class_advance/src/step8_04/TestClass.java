@@ -1,5 +1,9 @@
 package step8_04;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.management.openmbean.OpenDataException;
 
 class Member {
 	
@@ -119,6 +123,87 @@ class Money {
 	
 }
 
+class Last {
+	
+	int custno;			
+	String name;		
+	int price;			
+	
+
+	 
+	public Last() {}
+
+
+
+	public Last(int custno, String name, int price) {
+		super();
+		this.custno = custno;
+		this.name = name;
+		this.price = price;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return custno+"\t"+ name+ "\t" + price ;
+	}
+	
+}
+
+class temp {
+	Manager M = new Manager();
+	Last[] L = new Last[6];
+	void temp() {
+		M.init();
+		for (int i = 0; i < L.length; i++) {
+				L[i] = new Last();
+				L[i].custno = M.memberList.get(i).getCustno();
+				L[i].name = M.memberList.get(i).getCustname();
+		}
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < M.moneyList.size(); j++) {
+				if(L[i].custno==M.moneyList.get(j).custno) {
+					L[i].price += M.moneyList.get(j).price;
+				}
+				
+			}
+		}
+	}
+	
+	
+	void temp2() {
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				if(L[i].price>L[j].price) {
+					if(L[i].price!=0&&L[j].price!=0) {
+					Last temp = L[i];
+					 L[i]=L[j];
+					 L[j] = temp;
+					}
+					
+				}
+			}
+		}
+		
+		
+	}
+	void Print(){
+		for (int i = 0; i < 4; i++) {
+			System.out.println(L[i]);
+			System.out.println("---------------------------");
+		}
+	}
+	
+	
+}
+
+
+
+	
+	
+
+
 
 
 class Manager{
@@ -149,55 +234,17 @@ class Manager{
 	}
 	
 }
-class PriceAdd {
-	int[][] prices;
-	
-	void tot_Price() {
-		Manager m = new Manager();
-		m.init();
-		prices = new int[m.memberList.size()][2];
-		int cnt=0;
-		for (int i = 0; i <m.moneyList.size(); i++) {
-			for (int j = i; j < m.moneyList.size()-1; j++) {
-				if(m.moneyList.get(i).custno==m.moneyList.get(j+1).custno) {
-					prices[m.moneyList.get(i).custno-100001][0] = m.moneyList.get(i).custno;
-					prices[m.moneyList.get(i).custno-100001][1] += m.moneyList.get(i).price;
-					for (int j2 = 0; j2 < prices.length-1; j2++) {
-						 if(m.moneyList.get(i).custno!=m.moneyList.get(j+1).custno && m.moneyList.get(i+1).custno!=m.moneyList.get(j+2).custno) {	
-						prices[m.moneyList.get(j2+1).custno-100001][0] = m.moneyList.get(j2+1).custno;
-						prices[m.moneyList.get(j2+1).custno-100001][1] += m.moneyList.get(j2+1).price;
-						}
-					}
-				}
-				
-			}
-		}
-		for (int i = 0; i < prices.length; i++) {
-			for (int j = 0; j < prices[i].length; j++) {
-				System.out.print( prices[i][j]+" ");
-			}
-			System.out.println();
-			
-		}
-	}
-}
-
-
-class reset {
-	Manager m = new Manager();
-	
-}
-
 
 
 
 public class TestClass {
 
 	public static void main(String[] args) {
-		Manager mg = new Manager();
-		PriceAdd p = new PriceAdd();
-		p.tot_Price();
 		
+		temp T = new temp();
+		T.temp();
+		T.temp2();
+		T.Print();
 		/*
 		   [문제] 아 래와 같이 출력  매출(price) 의 합계 + 내림차순 
 		  
@@ -215,3 +262,4 @@ public class TestClass {
 	}
 
 }
+
