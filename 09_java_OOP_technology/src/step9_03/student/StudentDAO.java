@@ -15,5 +15,8 @@ public class StudentDAO {
 	public Map<String , StudentVO> getStudentDB(){
 		return StudentRepository.getStDB();
 	}
-
+	
+	public void del_Id(String id) {
+		StudentRepository.del_Id(id);
+	}
 }

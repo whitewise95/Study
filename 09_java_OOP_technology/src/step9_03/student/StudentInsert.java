@@ -1,4 +1,7 @@
 package step9_03.student;
+
+import java.util.Scanner;
+
 public class StudentInsert {
 	
 	private StudentDAO studentDAO;
@@ -16,6 +19,14 @@ public class StudentInsert {
 			System.out.println("중복아이디 입니다");
 		}
 	}
+	
+	public void change(StudentVO studentVO) {
+		studentDAO.insert(studentVO);
+	}
+	public void del_Id(String id) {
+		studentDAO.del_Id(id);
+	}
+	
 	
 	
 	public boolean checkId(String id) {

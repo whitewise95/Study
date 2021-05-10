@@ -14,4 +14,10 @@ public class StudentRepository {
 		StudentRepository.stDB = stDB;
 	}	
 	
+	public static void del_Id(String id) {
+		stDB.remove(id);
+	}
+
+	
+	
 }
