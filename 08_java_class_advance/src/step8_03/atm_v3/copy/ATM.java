@@ -5,17 +5,20 @@ import java.util.Scanner;
 
 public class ATM {
 	
+	public static ATM instance = new ATM();
+	
+	public static ATM getInstance() {
+		return instance;
+	}
+	public static void setInstance(ATM instance) {
+		ATM.instance = instance;
+	}
+
+
 	static Scanner scan = new Scanner(System.in);
 	static Random ran = new Random();
 	
 	ATM() {
-		
-		boolean isLoad = FileManager.getInstance().loadData();
-		// 테스트 데이터 생성
-		if (!isLoad) {
-			UserManager.getInstance().setDummy();
-			FileManager.getInstance().saveData();
-		}
 		
 	}
 	
@@ -36,28 +39,19 @@ public class ATM {
 			else if (choice == 0) 	break;
 			
 		}
-		
 	}
 	
 	
-	void printAllDataByAllUser() {
-		
-		UserManager.getInstance().printAllUserInfo();
-		
-	}
+	void printAllDataByAllUser() {}
 	
 	
-	void login() { 
-		
+	void login() {
 		UserManager.getInstance().loginUser();
-		
 	}
 	
 	
-	void join() { 
-		
+	void join() {
 		UserManager.getInstance().joinUser();
-		
 	}
 	
 	

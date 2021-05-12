@@ -1,5 +1,7 @@
 package step8_03.atm_v3.copy;
 
+import java.util.Scanner;
+
 public class UserManager {
 	private UserManager() {};
 	private static UserManager instance = new UserManager();
@@ -10,6 +12,7 @@ public class UserManager {
 	public static void setInstance(UserManager instance) {
 		UserManager.instance = instance;
 	}
+	Scanner scan = new Scanner(System.in);
 	int userCount = 0;
 	User userList[];
 	int identifier =-1;
@@ -71,33 +74,101 @@ public class UserManager {
 
 	
 	int checkId(String id) {
-		return identifier;
-		
-
+		int check =-1;
+		for (int i = 0; i < userCount ; i++) {
+			if(userList[i].id.equals(id)) {
+				check =i;
+			}
+		}
+		return check;
 	}
 	
 	
 	void joinUser() {
-		
+		System.out.println("가입할 아이디를 입력주세요");
+		String id = scan.next();
+		int check = checkId(id);
+		if(check==-1) {
+			System.out.println("사용하실 비밀번호를 입력해주세요");
+			String pw = scan.next();
+			if(userCount==0) {
+				userList = new User[1];
+				userList[0]=new User();
+				userList[0].id = id;
+				userList[0].password = pw;
+			}
+			else {
+				User[] temp =  userList;
+				userList = new User[ userCount+1];
+				for (int i = 0; i < userCount+1; i++) {
+					userList[i] = new User();
+				}
+				for (int i = 0; i < temp.length; i++) {
+					UserManager.instance.userList[i] = temp[i];
+				}
+				userList[userCount].id = id;
+				userList[userCount].password = pw;	
+			}
+			System.out.println("가입이 완료되었습니다. 축하드립니다.");
+			userCount++;
+		}
 	
 		
 	}
 	
 	
 	void leaveUser() {
-		
+		 for (int i = 0; i < userCount; i++) {
+			if(userList[identifier].id.equals(userList[i].id)) {
+				if(userCount==1) {
+					 userList =null;
+				}
+				else {
+					User[] temp =  userList;
+					User[] user = new User[userCount-1];
+					for (int j = 0; j < userCount-1; j++) {
+						user[i] = new User();
+					}
+					for (int j = 0; j < i; j++) {
+						userList[i] = temp[i];
+					}
+					for (int j = 0; j < temp.length-1; j++) {
+						userList[i] = temp[i+1];
+					}
+				}
+				identifier=-1;
+				userCount--;
+				System.out.println("탈퇴되었습니다.");
+			}
+		}
 	
 	}
 	
 	
 	void loginUser() {
-		
+		if(userCount>0) {
+			System.out.println("id를 입력해주세요 ");
+			String id= scan.next();
+			System.out.println("pw를 입력해주세요 ");
+			String pw= scan.next();
+			for (int i = 0; i <  userCount; i++) {
+				if(userList[i].id.equals(id)&&userList[i].password.equals(pw)) {
+					identifier = i;
+					System.out.println(userList[identifier].id+"님 환영합니다.");
+					afterloginMenu();
+				}
+				else {System.out.println("잘못된 정보 입니다.");}
+			}
+		}
+		else if(userCount==0){System.out.println("아이디를 생성해주세요");}
 	
 		
 	}
 	
 	
 	void logoutUser() {
+		identifier=-1;
+		System.out.println("로그아웃되었습니다.");
 	
 	}
 	

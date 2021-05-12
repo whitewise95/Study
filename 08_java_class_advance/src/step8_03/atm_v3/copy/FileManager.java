@@ -7,26 +7,31 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileManager {
-
-	private FileManager() {}
-	private static FileManager instance = new FileManager();
-	public static FileManager getInstance() {
-		return instance;
-	}
 	
-	String fileName = "atmData.txt";
-	UserManager userManager = UserManager.getInstance();
+
 	
 	
 	boolean loadData() {
+		
+		
+		
+		
+		
 		return false;
-		
-		
 	}
 	
 	
 	void saveData() {
+		String data = "";
+		if(UserManager.getInstance().userCount==0) {return;}
+		else {
 			
+			
+		}
+		
+		
+		
+		
 		
 	}
 
