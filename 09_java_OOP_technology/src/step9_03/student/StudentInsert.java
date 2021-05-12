@@ -21,7 +21,7 @@ public class StudentInsert {
 	}
 	
 	public void change(StudentVO studentVO) {
-		studentDAO.insert(studentVO);
+		studentDAO.change(studentVO );
 	}
 	public void del_Id(String id) {
 		studentDAO.del_Id(id);

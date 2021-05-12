@@ -18,6 +18,8 @@ public class StudentRepository {
 		stDB.remove(id);
 	}
 
-	
+	public static HashMap<String, StudentVO> putStDB() {
+		return stDB;
+	}
 	
 }

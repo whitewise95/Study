@@ -19,4 +19,8 @@ public class StudentDAO {
 	public void del_Id(String id) {
 		StudentRepository.del_Id(id);
 	}
+	public void change(StudentVO st) {
+		StudentRepository.putStDB().put(st.getId(), st);
+	}
+	
 }
