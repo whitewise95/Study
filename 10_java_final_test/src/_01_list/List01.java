@@ -2,7 +2,7 @@ package _01_list;
 
 class LinkedList{
 	
-	private ListNode head;
+	private ListNode head;   
 	
 	public LinkedList(){
 		head = null;
@@ -23,7 +23,8 @@ class LinkedList{
 		}
 		else{
 			ListNode temp = head;
-			while(temp.link != null) temp = temp.link;
+			while(temp.link != null)
+			temp = temp.link;
 			temp.link = newNode;
 		}
 	}
@@ -90,7 +91,7 @@ class LinkedList{
 class ListNode{
 	
 	private String data;
-	public ListNode link;
+	public ListNode link;  // 왜 퍼블릭
 	
 	public ListNode(){
 		this.data = null;
