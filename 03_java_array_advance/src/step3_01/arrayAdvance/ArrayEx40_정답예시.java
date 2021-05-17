@@ -81,7 +81,7 @@ public class ArrayEx40_정답예시 {
 					score = new int[elementCnt - 1];
 					
 					for (int i=0; i<delIdx; i++) {
-						score[i] = temp[i];  
+						score[i] = temp[i];
 					}
 					for (int i=delIdx; i<elementCnt-1; i++) {
 						score[i] = temp[i + 1];

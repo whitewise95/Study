@@ -8,11 +8,11 @@ package step3_01.arrayAdvance;
  * 
  */
 
-public class ArrayEx46_테스트문제_물어볼것 {
+public class ArrayEx46_테스트문제 {
 
 	public static void main(String[] args) {
 
-	
+		
 		
 	}
 
