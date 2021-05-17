@@ -13,7 +13,7 @@ import java.util.Scanner;
  * 3) me > com  : Down!
  */
 
-public class IfEx02_문제 {
+public class IfEx02_문제 {  // 1:21 ~ 1:23
 
 	public static void main(String[] args) {
 	

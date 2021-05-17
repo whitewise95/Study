@@ -1,6 +1,6 @@
 package step1_03.operator;
 
-  //3월18일 15:39~
+  //1:14~16
 
 public class OpEx04_문제 {
 
@@ -19,12 +19,13 @@ public class OpEx04_문제 {
         //문제2) 100이 짝수이면 true 출력
         //힌트) 숫자를 2로 나눈 나머지가 0이면 짝수
         //      숫자를 2로 나눈 나머지가 1이면 홀수
+                 System.out.println(100%2==0);
                  
 
         
         //문제3)아래돈중 1000원짜리 이상화폐를 제외한 1000원짜리가 3장 이상이면 true 출력
         int money = 178600;
-
+        System.out.println((money-170000)%1000>=3);
 
 	}
 
