@@ -23,9 +23,11 @@ class LinkedList{
 		}
 		else{
 			ListNode temp = head;
-			while(temp.link != null)
+			while(temp.link != null) 
 			temp = temp.link;
+			
 			temp.link = newNode;
+			
 		}
 	}
 	
