@@ -5,7 +5,8 @@
 <title>form 기초</title>
 </head>
 <body>
-	<!-- 
+	
+		<!-- 
 	
 		1) 입력양식은 항상 <form>태그로 시작한다. 
 		
@@ -55,24 +56,22 @@
 		- 명시적 레이블과 암묵적 레이블로 구현 가능하다.
 	
 	 -->
-
-
-   <h2>field set</h2>
-   <form action="#" method = "get">
-   		<fieldset>
-   			<legend>인적사항입력</legend>
-   	
-   			<!-- 명시적 레이블 -->
-	 	 	<p><label for="name">이름 :</label><input type= "text" id="name"></p>
-	 	 	<p><label for="contact">전화번호 :</label> <input type= "text" id="contact"></p>
-	 	 	
-	 	 	<!-- 암묵적 레이블 --> 
-	 	 	<p><label>주소 : <input type= "text"></label></p> 
-	 	 </fieldset>
-   </form>
-
-
-
+	 
+	 <h2>field set</h2>
+	 <form action="#" method="get">
+	 	<fieldset>
+	 		<legend>인적사항입력</legend>
+		 	
+		 	<!-- 명시적 레이블 -->
+		 	<p><label for="name">이름 : </label><input type="text" id="name"></p>
+		 	<p><label for="contact">전화번호 : </label><input type="text" id="contact"></p>
+		 	
+		 	<!-- 암묵적 레이블 -->
+		 	<p><label>주소 : <input type="text"></label></p>
+	 	</fieldset>
+	 </form>
 
 </body>
+
+
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>text 타입</title>
+</head>
+<body>
+
+	<!--  
+	
+		# text 타입
+		
+		- 가장 일반적이며 많이 사용되어지는 입력 요소의 유형이다.
+		- 기본 길이는 20글자이며 size 속성으로 필드의 크기를 변경할 수 있다. 
+	
+		# submit type
+		
+		- 제출버튼은 데이터를 서버로 전송하는데 사용된다.
+		- 데이터는 name1=Value1&name2=value2형태로 action속성에 지정된 스크립트로 보내진다.
+		
+	-->
+	<form>
+		<fieldset>
+		<legend>인적사항</legend>
+		<p><label>인증번호 : <input type = "text" required ></label></p>
+		<p><label>이름 : <input type = "text" required autofocus></label></p>
+		<p><label>나이 : <input type = "text" maxlength="2"></label></p>
+		<p><label>생일 : <input type = "text" placeholder="8자리 입력"></label></p>
+		<p><label>거주지 : <input type = "text" value="서울" readonly></label></p>
+		<p>
+		  <input type= "submit" value="전송">       <!-- submit 버튼이생김  , value = 버튼이름-->   
+		  <input type= "reset" value="초기화">		<!-- reset 초기화버튼  , value = 버튼이름-->   
+		</p>
+		</fieldset>
+	</form>
+	
+
+</body>
+</html>
