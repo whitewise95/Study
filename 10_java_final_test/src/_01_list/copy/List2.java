@@ -6,17 +6,22 @@ public class List2{
 				
 		linkedList list = new linkedList();
 		
-		list.addList("월");
-		list.addList("화");
-		list.addList("수");
-
-		list.addList("목");
 		
-		list.printList();
-
-		System.out.println(list.searchNode("수"));
-		list.middleDataAdd("화","일");
-		list.printList();
+		list.addList("수");
+		list.addList("목");
+		list.getList();
+		System.out.println();
+		System.out.println("======================");
+		list.addFirstList("월");
+		list.getList();
+		list.addMiddleList("월","화");
+		System.out.println();
+		System.out.println("======================");
+		list.getList();
+		System.out.println();
+		System.out.println("======================");
+		list.reverseList();
+		list.getList();
 		
 		
 		

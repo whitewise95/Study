@@ -2,115 +2,110 @@ package _01_list.copy;
 
 class linkedList{
 	
-	private linkList head;
+	private Node head;
 	
-
+	
+	void addFirstList(String data) {
+		Node newNode = new Node(data);
+		newNode.link = head;
+		head = newNode;
+	}
+	
+	void addMiddleList(String index , String data) {
+		Node newNode = searchNode(index);
+		if(newNode!=null) {
+			Node temp= newNode.link;
+			Node pre = new Node(data);
+			newNode.link =pre;
+			pre.link =temp;
+		}
+		else {System.out.println("찾는 데이터가 없습니다.");}
+	}
+	
 	
 	void addList(String data) {
-		linkList newNode = new linkList(data);
-		if(head==null)
+		Node newNode = new Node(data);
+		if(head==null) {
 			head=newNode;
-		
+		}
 		else {
-			linkList temp = head;
-			while(temp.link!=null) {
-				temp= temp.link;
-			}
+			Node temp = head;
+			while(temp.link!=null)
+				temp =temp.link;
 			temp.link = newNode;
 		}
 	}
 	
-	void middleDataAdd(String data , String insert) {
-		linkList newNode = addSearchNode(data);
-		if(newNode==null) {return;}
-		else {
-			linkList addNode = new linkList(insert);
-			linkList temp= newNode.link;
-			newNode.link = addNode;
-			addNode.link=temp;
-			
+	void reverseList() {
+		Node next = head;
+		Node temp = null;
+		Node pre = null;
+		while(next!=null) {
+			pre = temp;
+			temp = next;
+			next = next.link;
+			temp.link = pre;
 		}
+		head= temp;
 	}
 	
-	void addFirst(String data) {
-		linkList newNode = new linkList(data);
-		linkList temp = head;
-		head = newNode;
-		newNode.link = temp;
-	}
-	
-	void del_LastList() {
-		if(head==null) return;
-		if(head.link==null) head=null;
-		else {
-			linkList pre = head;
-			linkList temp = head.link;
-			while(temp.link!=null) {
-				pre = temp;
-				temp =temp.link;
+	Node searchNode(String data) {
+		Node newNode = new Node(data);
+		Node  searchNode = head;
+		while(searchNode!=null) {
+			if(newNode.getList()==searchNode.getList()) {
+				return searchNode;
 			}
-			pre.link=null;
-			
-		}
-	}
-	public linkList addSearchNode(String data) {
-		linkList newNode =head;
-		while(newNode!=null) {
-			if(newNode.getData().equals(data)) {
-				return newNode;
-			}
-			newNode =  newNode.link;
+			searchNode = searchNode.link;
 		}
 		
-		return head;
-	}
-	
-	
-	public String searchNode(String data) {
-		linkList newNode =head;
-		while(newNode!=null) {
-			if(newNode.getData().equals(data)) {
-				return data;
-			}
-			 newNode =  newNode.link;
-		}
 		
-		return "찾는 데이터가 없습니다.";
+		return searchNode;
 	}
 	
 	
 	
-	void printList() {
-		linkList newNode = head;
+	
+	
+	
+	
+	
+	
+	
+	void getList() {
+		Node newNode = head;
 		System.out.print("L= ");
 		while(newNode!=null) {
-			System.out.print(newNode.getData());
+			System.out.print(newNode.getList());
 			if(newNode.link!=null) {
 				System.out.print(",");
 			}
 			newNode = newNode.link;
 		}
-		System.out.println();
 	}
+
+	
 }
 
-class linkList{
-	 
-	 private String data;
-	 linkList link;
-	 
+class Node{
 	
-	public linkList(String data) {
-		 this.data =data;
-		 this.link = null;
-				 
-	 }
-	public String getData() {
-		return this.data;
-		
+	private String data;
+	public Node link;
+	
+	public Node(String data) {
+		this.data = data;
+		this.link = link;
 	}
-	 
- }
-
+	public Node(String data, Node link) {
+		this.data = data;
+		this.link = link;
+	}
+	public String getList() {
+		return this.data;
+	}
 	
+	
+	
+	
+}
 	
