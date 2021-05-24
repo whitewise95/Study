@@ -2,9 +2,9 @@ package _03_list_stack;
 
 interface Stack{
 	
-	boolean isEmpty();
-	void push(char item);
-	char pop();
+	boolean isEmpty();           //블린을 메소드로만들지않고 미리 만들어둔 이유
+	void push(char item);		//메소드를 이렇게 만든 이유?
+	char pop();				
 	void delete();
 	char peek();
 	

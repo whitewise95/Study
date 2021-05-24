@@ -95,5 +95,10 @@ public class Queue01{
 		if(deletedItem != 0)
 			System.out.println("deleted Item : " + deletedItem);
 		Q.printQueue();	
+		
+	
+		
+		
+		
 	}
 }

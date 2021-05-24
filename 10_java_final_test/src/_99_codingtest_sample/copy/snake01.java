@@ -35,25 +35,49 @@ public class snake01 {
 				System.out.println();
 			}
 			System.out.println("상:8   하:2   좌:4   우:6");
+			int nX = 0;
+			int nY = 0;
 			int sel = scan.nextInt();
 			if(sel==8) {
-				for (int i = 0; i < snake.length-5; i++) {
-					if(map[9][i]==1&&map[9][i+1]==1&&map[9][i+2]==1&&map[9][i+3]==1&&map[9][i+4]==1) {continue;}
-					else {
-						for (int j = 0; j < snake.length; j++) {
-							for (int k = 0; k < snake.length; k++) {
-								
-							}
-						}
-					}
-				}
-				
+				nY =y[0]-1;
+				nX =x[0];
+			}
+			else if(sel==2) {
+				nY =y[0]+1;
+				nX =x[0];
+			}
+			else if(sel==4) {
+				nY =y[0];
+				nX =x[0]-1;
+			}
+			else if(sel==6) {
+				nY =y[0];
+				nX =x[0]+1;
 			}
 			
-			else if(sel==2) {}
-			else if(sel==4) {}
-			else if(sel==6) {}
+			if(nY<0 || nX<0) {continue;}
+			else if(nX>=SIZE || nY>=SIZE) {continue;}
+			else if(map[nY][nX]!=0) {continue;}
 			
+			//꼬리 이동
+			int tailY= y[y.length-1];
+			int tailX= x[x.length-1];
+			map[tailY][tailX]=0;
+			//몸통이동
+			for (int i = snake.length-1; i > 0; i--) {
+				y[i] =y[i-1];
+				x[i] =x[i-1];
+			}
+			
+			//머리이동
+			x[0] = nX;
+			y[0] = nY;	
+			
+			
+			//뱀그리기
+			for (int i = 0; i <	snake.length; i++) {
+				map[y[i]][x[i]] = i+1;
+			}
 			
 		}
 		
