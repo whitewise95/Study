@@ -11,7 +11,7 @@ package step6_01.classObject;
 import java.util.Random;
 import java.util.Scanner;
 
-
+// 2:52~
 class Ex13_1{
 	final int SIZE = 9;
 	
@@ -56,8 +56,6 @@ public class ClassEx13_문제 {
 			e.back[0] = temp;
 		}
 		
-		
-		
 		int s = 1;
 		
 		while(true) {
@@ -77,10 +75,6 @@ public class ClassEx13_문제 {
 				break;
 				
 			}
-			
-			
-			
-			
 			System.out.println("idx를 입력해주세요");
 			System.out.println(s);
 			int x = scan.nextInt();
@@ -93,16 +87,7 @@ public class ClassEx13_문제 {
 					e.front[x]=0;
 				}
 				s++;
-				
 			}
-		
-			
-			
-		}
-		
-		
-		
-		
+		}	
 	}
-
 }

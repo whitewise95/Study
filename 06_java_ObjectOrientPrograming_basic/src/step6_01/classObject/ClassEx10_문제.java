@@ -92,21 +92,7 @@ public class ClassEx10_문제 {
 				
 				
 			}
-		
 		}	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
 	}
 
 }

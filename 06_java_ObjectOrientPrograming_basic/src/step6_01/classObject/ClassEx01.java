@@ -64,19 +64,5 @@ public class ClassEx01 {
 		System.out.println(c3.mana);	
 		System.out.println();
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 }

@@ -115,13 +115,6 @@ public class ClassEx12_문제 {
 			}
 			if(e.turn==0) {e.turn=2;}
 			else if(e.turn==2) {e.turn=0;}
-			
-		
-		
 		}
-		
-		
-
 	}
-
 }

@@ -219,12 +219,8 @@ public class ClassEx11_문제 {
 									e.arMoney[i] += myMoney;
 								}
 							}
-							
 						}
-							
-						
 					}
-					
 				}
 			}
 			else if (sel == 7) {
@@ -238,15 +234,10 @@ public class ClassEx11_문제 {
 						}
 				if(e.identifier<0) {System.out.println("로그인 후 사용해주세요");}
 			}
-							
-			
 			else if (sel == 0) {
 				System.out.println("프로그램 종료");
 				break;
 			}
-			
 		}		
-		
 	}
-
 }

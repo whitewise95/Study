@@ -15,7 +15,7 @@ import java.util.Random;
  * 성적        = 40점
  */
 
-
+// 문제풀기시작 1:40~ 2:14
 class Ex06_1{
 	int[] answer = {1, 3, 4, 2, 5};		// 시험답안
 	int[] hgd = new int[5];				// 학생답안
@@ -65,15 +65,6 @@ public class ClassEx06_문제 {
 		System.out.println();
 		System.out.print("성적 : ");
 		System.out.print(e.score);
-			
-			
-		
-			
-		
-		
-		
-		
-		
 		
 	}
 

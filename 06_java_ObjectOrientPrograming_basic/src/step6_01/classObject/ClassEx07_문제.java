@@ -33,8 +33,8 @@ class Ex07_1 {
 	
 }
 
-
-public class ClassEx07_문제_다시풀기 {
+// 2:15~2:21
+public class ClassEx07_문제 {
 
 	public static void main(String[] args) {
 		Ex07_1 e = new Ex07_1();
@@ -57,28 +57,23 @@ public class ClassEx07_문제_다시풀기 {
 			
 			System.out.print("메뉴 선택 : ");
 			int sel = scan.nextInt();
-			
-			if		(sel == 1) {
-				System.out.println("좌석을 0~7중 입력해주세요");
-				int answer = scan.nextInt();
-				
-					if(e.seat[answer]==0) {
-						System.out.println("예매되었습니다.");
-						e.money+=12000;
-						e.seat[answer] = 1;
-				
-				
+			if(sel ==1) {
+				System.out.println("0~6좌석의 번호를 입력해주세요");
+				int choice = scan.nextInt();
+				if(e.seat[choice]==0) {
+					e.seat[choice]=1;
+					e.money+=12000;
 				}
+				else {System.out.println("이미 예매된 좌석입니다.");}
+				
+				
 			}
-			else if (sel == 2) {
-				System.out.println("총매출 : "+e.money);
-				
-				
+			else if(sel ==2){
+				System.out.println("매출액 : "+e.money);
 				break;
 			}
+			
+			
 		}
-
-
 	}
-
 }

@@ -1,7 +1,9 @@
 package step6_01.classObject;
 
-//# 학생성적관리 프로그램[1단계] : 클래스 + 변수
 
+
+//# 학생성적관리 프로그램[1단계] : 클래스 + 변수
+// 풀기시작 1:18~1:30
   class Ex03_1{
 	int[] arr = {87, 100, 11, 72, 92};
 }
@@ -54,8 +56,6 @@ public class ClassEx03_문제 {
 			}
 		}
 		System.out.println(X);
-
-
 	}
 
 }

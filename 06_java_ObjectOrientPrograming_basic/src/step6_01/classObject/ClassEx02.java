@@ -30,14 +30,6 @@ public class ClassEx02 {
 		
 		
 		ClassEx01 obj = new ClassEx01();
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 }

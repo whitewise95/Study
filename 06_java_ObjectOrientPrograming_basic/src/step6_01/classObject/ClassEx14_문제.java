@@ -54,24 +54,5 @@ public class ClassEx14_문제 {
 		
 		System.out.println("몇번을 선택하시겠습니까?");
 		int number = scan.nextInt();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
-
 }
