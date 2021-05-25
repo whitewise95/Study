@@ -1,7 +1,7 @@
 package step6_02.method;
 
 import java.util.Scanner;
-
+//문제풀기시간 2:05~2:10
 class Ex05_1{
 
 	void test1() {

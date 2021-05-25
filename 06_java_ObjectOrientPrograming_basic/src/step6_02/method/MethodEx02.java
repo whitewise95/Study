@@ -51,20 +51,6 @@ public class MethodEx02 {
 		mt.type10(123,345);
 		mt.type10(1234,34);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 }

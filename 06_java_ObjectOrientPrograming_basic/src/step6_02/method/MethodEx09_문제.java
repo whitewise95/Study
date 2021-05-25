@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-
+//15:30~16:10
 class Ex09 {
 
 	Random ran = new Random();

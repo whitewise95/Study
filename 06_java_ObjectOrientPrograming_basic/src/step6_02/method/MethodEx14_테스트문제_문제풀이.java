@@ -40,7 +40,7 @@ class NumberGame{
 					int temp = game[i];
 					game[i]=0;
 					game[0]=temp;
-					break;
+					
 				}
 				else if(game[i+1]==0) {
 					int temp = game[i];
@@ -82,7 +82,7 @@ class NumberGame{
 	
 }
 
-public class MethodEx14_테스트문제_1 {
+public class MethodEx14_테스트문제_문제풀이 {
 
 	public static void main(String[] args) {
 		

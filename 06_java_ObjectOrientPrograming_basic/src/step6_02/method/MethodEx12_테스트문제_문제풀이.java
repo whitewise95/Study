@@ -73,7 +73,7 @@ class	OMR {
 
 }
 
-public class MethodEx12_테스트문제2_1 {
+public class MethodEx12_테스트문제_문제풀이 {
 
 	public static void main(String[] args) {
 		
