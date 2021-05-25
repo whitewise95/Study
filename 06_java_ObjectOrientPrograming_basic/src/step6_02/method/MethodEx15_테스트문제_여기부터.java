@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /*
- * 2:46~
+ * 2:46~3:13
  * # 기억력 게임 : 클래스 + 메서드
  * 1. front 배열 카드 10장을 섞는다.
  * 2. front 배열에서 같은 카드를 골라 카드의 위치를 입력한다.
