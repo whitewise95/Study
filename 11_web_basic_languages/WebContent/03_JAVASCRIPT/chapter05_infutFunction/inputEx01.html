@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+/*
+   NaN > 나노넘버 숫자가 아닌 자료형을 합했을 때
+[형식]
+
+prompt("안내문자열","기본값");
+
+
+- 기본 데이터 타입은 문자열이다.
+
+*/
+	/*
+	var getData1 = prompt("비밀번호를 입력하세요")
+	document.write(typeof getData1, getData1,"<br>");
+	
+	var getData2 = prompt("사용 언어를 입력하세요","javascript")
+	document.write(typeof getData2, getData2,"<br>");
+	*/
+	
+	var getHtmlGrade = prompt("html점수","0");
+	var getCssGrade = prompt("css점수","0");
+	var getJavascriptGrade= prompt("javascript점수","0");
+	
+	var getSumGrade = Number(getHtmlGrade)+ Number(getCssGrade)+Number(getJavascriptGrade);
+	document.write(typeof getSumGrade,getSumGrade );
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

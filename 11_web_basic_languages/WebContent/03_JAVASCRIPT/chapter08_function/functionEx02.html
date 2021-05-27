@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수의 생명주기</title>
+<script>
+
+	var data = "전역변수";       //함수 밖의 전역변수
+	
+	function func1(){
+		var func1Var = "func1의 지역 변수";
+		
+		document.write(data , "<br>");
+		document.write(func1Var, "<br>");
+		//document.write(func2Var, "<br>");
+	}
+	
+	function func2() {
+		var func2Var = "func2의 지역변수";
+		
+		document.write(data , "<br>");
+		document.write(func1Var, "<br>");
+		document.write(func2Var, "<br>");
+	
+	}	
+	
+	
+	func1();
+	func2();
+</script>
+</head>
+<body>
+</body>
+</html>
