@@ -73,7 +73,7 @@ class NewNumberGame{
 	
 }
 
-public class MethodEx14_테스트문제_문제풀이2 {
+public class MethodEx14_테스트문제_noFor문 {
 
 	public static void main(String[] args) {
 	

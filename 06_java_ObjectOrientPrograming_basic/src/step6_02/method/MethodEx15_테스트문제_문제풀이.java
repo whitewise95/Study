@@ -76,7 +76,7 @@ class cardGame{
 	
 	
 
-public class MethodEx15_테스트문제_여기부터 {
+public class MethodEx15_테스트문제_문제풀이 {
 
 	public static void main(String[] args) {
 
