@@ -26,29 +26,30 @@
 		</p>
 	</fieldset>
 	<script>
-		var isM = false; 
-		
+		var isEtc = false;
 		function isMs(){
-			if(isM){
-				var node = document.getElementById("target")
-				node.removeChild(node.lastChild); // 마지막 노드를 삭제
-				isM = false;
-				
+			
+			if(isEtc){
+				var node = document.getElementById("target");
+				node.removeChild(node.lastChild);
+				isEtc = false;
 			}
 		}
+		
+		
+		
 		
 		function makeReasonBuy(){
-		
-			if(!isM){
+			
+			if(!isEtc){
 				var text = document.createElement("input");
-				text.type = "text";
-				text.size ="100";
-				text.placeholder = "이유를 적어주세요"
+				text.type="text";
+				text.size="100";
+				text.placeholder="이유를 적어주세요";
 				document.getElementById("target").appendChild(text);
+				isEtc = true;
 			}
-			isM= true;
 		}
-		
 	
 	</script>
 </body>

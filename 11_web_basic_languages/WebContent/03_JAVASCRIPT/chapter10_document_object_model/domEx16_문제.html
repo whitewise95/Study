@@ -32,12 +32,31 @@
 		</form>
 	</fieldset>	
 	<script>
+	
+		var isRed = false;
 		function checkPwdLength(){
+			var p = document.createElement("p");
+			var span= document.createElement("span");
+			//var text =  document.createTextNode("8자리 이상 입력해주세요");
+			span.innerHTML="8자리 이상 입력해주세요";
+			p.appendChild(span);
+			span.style ="color:red";
+			
+			span.innerHTML = "8자리 이상 입력해주세요";
+			console.log(p);
 			var target = document.f1.pwd;
-			console.log(target);
-			alert("ㄴ");
-		
+			
+			  if(target.value.length<8 && !isRed){
+				    document.getElementById("target").appendChild(p);
+				    isRed = true;
+			  }
+			   else if(target.value.length>=8 && isRed){
+				  var node = document.getElementById("target");
+				  node.removeChild(node.lastChild);
+				  isRed = false;
+			  }
 		}
+		
 	
 	</script>
 	
