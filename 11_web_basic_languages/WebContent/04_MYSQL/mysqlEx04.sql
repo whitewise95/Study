@@ -131,19 +131,16 @@ WHERE
 # 예시 1) 이름의 첫글자가 A로 시작하는 사원의 사원번호 , 이름을 조회하기.
 SELECT
 		EMP_NO,
-		FIRST_NAME
+        FIRST_NAME
 FROM
 		EMPLOYEES
 WHERE
 		FIRST_NAME LIKE "A%";
-		
-
-
 
 # 예시 2) 이름의 마지막 글자가 s로 끝나는 사원의 사원번호 , 이름을 조회하기.
 SELECT
 		EMP_NO,
-		FIRST_NAME
+        FIRST_NAME
 FROM
 		EMPLOYEES
 WHERE
@@ -153,7 +150,7 @@ WHERE
 # 예시 3) 이름에 'o' 가 포함되 있는 사원의 사원번호 , 이름을 조회하기.
 SELECT
 		EMP_NO,
-		FIRST_NAME
+        FIRST_NAME
 FROM
 		EMPLOYEES
 WHERE
@@ -162,7 +159,7 @@ WHERE
 # 예시 4) 이름의 두번째 글자가 i 인 사원의 사원번호 , 이름을 조회하기.
 SELECT
 		EMP_NO,
-		FIRST_NAME
+        FIRST_NAME
 FROM
 		EMPLOYEES
 WHERE
@@ -173,7 +170,7 @@ WHERE
 # 예시 5) 이름이 5글자인 사원들의 사원번호 , 이름을 조회하기.
 SELECT
 		EMP_NO,
-		FIRST_NAME
+        FIRST_NAME
 FROM
 		EMPLOYEES
 WHERE
