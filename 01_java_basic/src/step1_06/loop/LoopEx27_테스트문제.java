@@ -36,8 +36,27 @@ public class LoopEx27_테스트문제 {
         
 		System.out.print("key값 입력 : ");
 		int key = scan.nextInt();
- 
-
+		boolean istrue = false;
+		int first = 0;
+		int cnt = 1;
+		
+		while(true) {
+			System.out.println("입력 : ");
+			int anwser = scan.nextInt();
+			if(!istrue) {
+				if(anwser==key) {
+					first = cnt;
+					istrue = true;
+				}
+							
+			}
+			else if(anwser == -1) {
+				System.out.println("결과 :" +"key값은 "+ first+"번째 처음 나타났습니다.");
+				break;
+			}
+			cnt++;
+			
+		}
 		scan.close();
 	}
 

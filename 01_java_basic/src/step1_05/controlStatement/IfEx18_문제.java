@@ -34,5 +34,5 @@ public class IfEx18_문제 {
 			  System.out.println("이겼습니다.");
 		}
          scan.close();
-}
+	}
 }

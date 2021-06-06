@@ -50,17 +50,6 @@ public class IfEx19_문제 {
 			System.out.println("계좌번호가 잘못되었습니다.");
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 }

@@ -38,15 +38,6 @@ public class LoopEx19 {
 			num = scan.nextInt();
 			
 		}while (num>0 && num < 4); 
-			
-				
-		
-		
-		
-		
-		
-
-		
 		
 		scan.close();
 	

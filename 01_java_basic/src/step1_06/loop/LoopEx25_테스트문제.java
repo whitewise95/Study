@@ -83,10 +83,6 @@ public class LoopEx25_테스트문제 {
 					System.out.println(x*i);
 				}
 		
-		
-		
-		
-		
 	}
 
 }

@@ -15,37 +15,32 @@ import java.util.Scanner;
  *    
  */
 
+/*
+
+ * 
+ * 
+ * */
 
 public class LoopEx26_테스트문제 {
 
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		int cnt = 0;
-		int i = 0;
+		System.out.println("정수 하나를 입력해주세요 :");
+		int num = scan.nextInt();
 		
-		System.out.print("Enter Number ? ");
-		int getNumber = scan.nextInt();
-		
-		for( i = getNumber; i< getNumber+1; i++  )
-			cnt = 0;
-			for(int j = getNumber-2; j<=i; j++) {
-				if(i%j==0) {
+		for (int i = 1; i < num; i++) {
+			int cnt = 0;
+			for (int j = 1; j < num+i+i; j++) {
+				if((num+i)%j==0) {
 					cnt++;
 				}
-				
 			}
-		
-				
-				
-			
-		
-		
-		
-		
-		
-		
-		scan.close();
+			if(cnt==2) {
+				System.out.println(num+i);
+				break;
+				}
+		}
 		
 	}
 

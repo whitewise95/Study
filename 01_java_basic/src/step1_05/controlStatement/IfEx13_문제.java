@@ -11,7 +11,7 @@ package step1_05.controlStatement;
 
 import java.util.Random;
 
-public class IfEx13 {
+public class IfEx13_문제 {
 
 	public static void main(String[] args) {
 		

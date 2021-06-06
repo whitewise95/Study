@@ -79,14 +79,7 @@ public class IfEx17 {
 		   System.out.println("B점수"); 
 	   } else if(finalScore > 70) {
 		   System.out.println("C점수");
-	   }
-		   
-	   
-	   
-	   
-	   
-	   
-	   
+	   } 
 	   
    }
       }

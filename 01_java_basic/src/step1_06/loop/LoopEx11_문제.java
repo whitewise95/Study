@@ -54,6 +54,6 @@ public class LoopEx11_문제 {
 		
       	
 		System.out.println("승자는 P"+turn+"입니다.");
-}
+	}
 }
 

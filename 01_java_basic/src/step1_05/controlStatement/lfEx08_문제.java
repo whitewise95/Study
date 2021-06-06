@@ -2,7 +2,7 @@ package step1_05.controlStatement;
 
 import java.util.Scanner;
 
-public class lfEx08 {
+public class lfEx08_문제 {
 
 	public static void main(String[] args) {
 

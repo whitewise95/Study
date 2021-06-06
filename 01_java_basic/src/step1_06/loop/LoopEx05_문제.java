@@ -3,7 +3,7 @@ package step1_06.loop;
 import java.util.Scanner;
 
 /*
- *  17시~
+ *  17시~17:40
  * 
  * # 영수증 출력[2단계]
  * 1. 5번 주문을 받는다.

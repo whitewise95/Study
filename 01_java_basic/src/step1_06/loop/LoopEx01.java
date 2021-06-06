@@ -37,11 +37,6 @@ public class LoopEx01 {
 		   i = i +1; // 증감식
 		}
 		
-		
-		
-		
-		
-		
 	}
 
 }

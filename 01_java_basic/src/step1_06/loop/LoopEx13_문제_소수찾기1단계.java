@@ -48,15 +48,8 @@ public class LoopEx13_문제_소수찾기1단계 {
         
         scan.close();
         
-        }
-        
-    
-			
-		
-		
-		
-		
+    }	
 
-	}
+}
 
 

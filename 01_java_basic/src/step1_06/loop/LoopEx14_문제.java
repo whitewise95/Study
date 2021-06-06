@@ -53,11 +53,9 @@ public class LoopEx14_문제 {
 		
 		if(answer1<=answer3) {
 			answer1 =answer3;
+		}
 		
-		
-	
-	}
 		System.out.println("최대값:"+answer1);
-}
+	}
 
 }

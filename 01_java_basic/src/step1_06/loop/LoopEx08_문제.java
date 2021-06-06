@@ -102,6 +102,6 @@ public class LoopEx08_문제 {
 
 		scan.close();
 	}
-	}
+}
 
 

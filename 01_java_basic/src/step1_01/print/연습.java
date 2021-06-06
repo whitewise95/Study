@@ -1,12 +1,24 @@
 package step1_01.print;
 
-
-class Test {
+ class Test {
+	private int s ;
+	private int q ;
+	String[] w = new String[2];
 	
-	void test() {
-		
-		System.out.println("안녕하세요");
+	public void Test() {
+		s= 1;
+		q= 1;
 	}
+	
+	void s() {
+		w[s]="s";
+		
+	}
+	void q() {
+		System.out.println(w[q]);
+	}
+	
+	
 	
 }
 public class 연습 {
@@ -15,8 +27,8 @@ public class 연습 {
 	    	
 	    	Test e = new Test();
 	    	
-	    	e.test();
-	        
+	    	e.s();
+	    	e.q();
 	    }
 	}
 

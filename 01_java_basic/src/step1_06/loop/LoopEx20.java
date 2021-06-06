@@ -68,7 +68,6 @@ public class LoopEx20 {
 					int getMoney = scan.nextInt();
 		
          
+				}
 	}
-
-}
 }
