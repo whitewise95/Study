@@ -1,7 +1,7 @@
 package _01_list;
 
 class LinkedList{
-	
+
 	private ListNode head;   
 	
 	public LinkedList(){
@@ -17,6 +17,7 @@ class LinkedList{
 	
 	
 	public void insertLastNode(String data){
+		
 		ListNode newNode = new ListNode(data);
 		if(head == null){
 			this.head = newNode;
@@ -27,11 +28,9 @@ class LinkedList{
 			temp = temp.link;
 			
 			temp.link = newNode;
-			
 		}
 	}
-	
-	
+
 	public void deleteLastNode(){
 		ListNode pre, temp;
 		if(head == null)  return;
@@ -43,7 +42,7 @@ class LinkedList{
 			temp = head.link;
 			while(temp.link != null){
 				pre = temp;
-				temp = temp.link;
+				temp = temp.link;	
 			}
 			pre.link = null;
 		}
@@ -93,7 +92,7 @@ class LinkedList{
 class ListNode{
 	
 	private String data;
-	public ListNode link;  // 왜 퍼블릭
+	public ListNode link;  
 	
 	public ListNode(){
 		this.data = null;
