@@ -16,7 +16,7 @@ FROM
 		SALARIES
 ORDER BY 
 		SALARY ASC;
-    
+    member
     
     
 # 예시 2) 사원의 번호와 급여를 조회하기. (급여가 낮은순서부터)
