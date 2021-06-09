@@ -7,17 +7,7 @@
 </head>
 <body>
 	<h2> 장바구니</h2>
-	<% 
-		request.setCharacterEncoding("utf-8");
-		
-		String id 		= (String)session.setAttribute("id");
-		String passwd	 = (String)session.setAttribute("passwd");
 
-	%>
-	
-	아이디 : <%=id %> <br>
-	패스워드 : <%=passwd %> <br>
-	
 		<h2>장바구니</h2>
 	<% 
 		request.setCharacterEncoding("utf-8");
