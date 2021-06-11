@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import stem2_01.DTO;
+
 // DAO(Date Access Object) :  데이터 접근 객체 
 public class MemberDAO {
 	
@@ -107,6 +109,66 @@ public class MemberDAO {
 		return isValidMember;
 	}
 	
+	public boolean leaveMember(String id , String pwd) {
+		
+		boolean isLeaveMember = false;
+		
+		try {
+			conn =  getConnection();
+			pstmt = conn.prepareStatement("select * from member where id=? and passwd=?");
+			pstmt.setString(1,id);
+			pstmt.setString(2,pwd);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pstmt = conn.prepareStatement("delete from member where id=?");
+				pstmt.setString(1,id);
+				pstmt.executeUpdate();
+				isLeaveMember = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs    != null) try {rs.close();}    catch (SQLException e) {e.printStackTrace();}
+			if(pstmt != null) try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(conn  != null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+		}
+		return isLeaveMember;
+	}
+	
+	public boolean updateMember(MemberDTO update){
+		
+		boolean isUpdateMember = false;
+		
+		try {
+			conn =  getConnection(); 
+			pstmt = conn.prepareStatement("select * from member where id=? and passwd=?");
+			pstmt.setString(1, update.getId());
+			pstmt.setString(2,update.getPassword());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pstmt = conn.prepareStatement("update member set name=? where id=?");
+				pstmt.setString(1, update.getName());
+				pstmt.setString(2,update.getId());
+				pstmt.executeUpdate();
+				isUpdateMember = true;
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if(rs    != null) try {rs.close();}    catch (SQLException e) {e.printStackTrace();}
+			if(pstmt != null) try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(conn  != null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+		}
+		
+		
+		
+		return isUpdateMember;
+	}
 
 	
 	
