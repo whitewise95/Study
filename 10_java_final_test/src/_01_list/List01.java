@@ -119,7 +119,9 @@ public class List01{
 		
 		System.out.println("(1) 공백 리스트에 노드 3개 삽입하기");
 		L.insertLastNode("월");
+		System.out.println("=====");
 		L.insertLastNode("수");
+		System.out.println("=====");
 		L.insertLastNode("일");
 		L.printList();
 

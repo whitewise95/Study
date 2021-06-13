@@ -12,13 +12,14 @@ class QNode{
 	QNode link;
 }
 
-class LinkedQueue implements Queue{
+class LinkedQueue implements Queue{ // 왜 주소가 같은가?
 	QNode front;
 	QNode rear;
 		
-	public LinkedQueue(){
+	
+	public LinkedQueue(){ 
 		front = null;
-		rear = null;		
+		rear = 	null;
 	}
 	
 	public boolean isEmpty(){
@@ -34,13 +35,13 @@ class LinkedQueue implements Queue{
 			rear = newNode;
 		}
 		else {
-			rear.link = newNode;
+			rear.link = newNode;			
 			rear = newNode;			
 		}
 		System.out.println("Inserted Item : " + item);
 	}
 	
-	public char deQueue(){
+	public char deQueue(){ //왜 여기선 주소가 다른가?
 		if(isEmpty()) {
 			System.out.println("Deleting fail! Linked Queue is empty!!");
 			return 0;
@@ -100,13 +101,15 @@ public class ListQueue{
 		LQ.enQueue('B');
 		LQ.printQueue();
 		
+		LQ.enQueue('C');
+		LQ.printQueue();
+		
 		deletedItem = LQ.deQueue();
 		if(deletedItem != 0)
 			System.out.println("deleted Item : " + deletedItem);
 		LQ.printQueue();
 		
-		LQ.enQueue('C');
-		LQ.printQueue();
+	
 		
 		deletedItem = LQ.deQueue();
 		if(deletedItem != 0)
