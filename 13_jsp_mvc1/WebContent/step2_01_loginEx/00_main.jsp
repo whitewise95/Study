@@ -5,11 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href= "../css/bootstrap.min.css" rel="stylesheet" > 
+<link href= "../css/new-age.min.css" rel="stylesheet" > 
 </head>
 <body>
-	<% 
-			String id = (String)session.getAttribute("id");
-			
+	<%
+		String id = (String)session.getAttribute("id");	
+
 		if(id==null){
 	%>
 			<h2>JUST DO IT</h2>
@@ -28,6 +30,7 @@
 	<%	
 		}
 	%>
-	
+
+  </header>				
 </body>
 </html>
