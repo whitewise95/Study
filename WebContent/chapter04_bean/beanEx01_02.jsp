@@ -47,7 +47,7 @@
 	
 	bean2 : <%=bean2.getPdNm() %> , <jsp:getProperty property="pdNm" name="bean2"/> <br>
 	
-	bean3 : <%=bean3.getPdNm() %> , <jsp:getProperty property="pdNm" name="bean2"/> <br>
+	bean3 : <%=bean3.getPdNm() %> , <jsp:getProperty property="pdNm" name="bean3"/> <br>
 	
 		
 	
