@@ -1,20 +1,19 @@
-package step3_00boardEx;
+package stem2_01;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class BoardDAO {
 
+
+public class boardDAO2 {
 	
-	private BoardDAO() {}
-	public static BoardDAO instance = new BoardDAO();
-	
-	public static BoardDAO getInstance() {
+	private boardDAO2() {}
+	public static boardDAO2 instance = new boardDAO2();
+	public static boardDAO2 getInstance() {
 		return instance;
 	}
 	
@@ -43,65 +42,77 @@ public class BoardDAO {
 		
 	}
 	
-	//게시글을 추가하는 DAO
-	public void insertBoard(BoardDTO bdto) {
+	public void boardListAdd(boardDTO2 bd ) {
+		
 		conn = getConnection();
-		String sql = "INSERT INTO BOARD (WRITER,EMAIL,SUBJECT,PASSWORD,REG_DATE,READ_COUNT,CONTENT)";
-		   sql += "VALUES(?,?,?,?,now(),0,?)";
+		String sql = "insert into board (WRITER,EMAIL,SUBJECT,PASSWORD,REG_DATE,READ_COUNT,CONTENT) values(?,?,?,?,now(),?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, bdto.getWriter());
-			pstmt.setString(2, bdto.getEmail());
-			pstmt.setString(3, bdto.getSubject());
-			pstmt.setString(4, bdto.getPassword());
-			pstmt.setString(5, bdto.getContent());
+			pstmt.setString(1, bd.getWriter());
+			pstmt.setString(2, bd.getEmail());
+			pstmt.setString(3, bd.getPassword());
+			pstmt.setString(4, bd.getSubject());
+			pstmt.setDate(5, bd.getRegdate());
+			pstmt.setInt(6, bd.getReadconut());
+			pstmt.setString(7, bd.getContent());
 			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
+			
+		} catch (SQLException e) {e.printStackTrace();
+		} finally {
 			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
-			if(conn!=null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+			if(conn!=null)try {conn.close();} catch (SQLException e) {e.printStackTrace();}
+			
 		}
+		
 	}
 	
-	// 전체 게시글을 조회하는 DAO
-	public ArrayList<BoardDTO> getAllBoard(){
+	
+	public ArrayList<boardDTO2> allshow(){
 		
-		ArrayList<BoardDTO> boardList = new ArrayList<BoardDTO>();
+		ArrayList<boardDTO2> boardList = new ArrayList<boardDTO2>();
 		
+		conn = getConnection();
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement("select * from board");
-			rs =pstmt.executeQuery();
+			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
-				BoardDTO bdto = new BoardDTO();
+				boardDTO2 bdto = new boardDTO2();
 				bdto.setNum(rs.getInt("num"));
 				bdto.setWriter(rs.getString("writer"));
 				bdto.setEmail(rs.getString("email"));
 				bdto.setSubject(rs.getString("subject"));
 				bdto.setPassword(rs.getString("password"));
-				bdto.setReg_date(rs.getDate("reg_date"));
-				bdto.setRead_count(rs.getInt("read_count"));
+				bdto.setRegdate(rs.getDate("regdate"));
+				bdto.setReadconut(rs.getInt("readcount"));
 				bdto.setContent(rs.getString("content"));
 				
 				boardList.add(bdto);
 			}
+			
+			
+			
+			
+			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(rs!=null)try {rs.close();} catch (SQLException e2) {e2.printStackTrace();}
 			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
-			if(conn!=null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
-		}
-		return boardList;
+			if(conn!=null)try {conn.close();} catch (SQLException e) {e.printStackTrace();}
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return null;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
