@@ -1,18 +1,17 @@
-package step3_00boardEx;
+package step3_00_boardEx;
 
 import java.util.Date;
 
 public class BoardDTO {
-
-
-	private	int num;
-	private	String writer;
-	private	String email;
-	private	String subject;
-	private	String password;
-	private	Date regdate;
-	private	int readcount;
-	private	String content;
+	
+	private int num;
+	private String writer;
+	private String email;
+	private String subject;
+	private String password;
+	private Date regDate;
+	private int readCount;
+	private String content;
 	
 	public int getNum() {
 		return num;
@@ -44,17 +43,17 @@ public class BoardDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Date getReg_date() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
-	public void setReg_date(Date reg_date) {
-		this.regdate = reg_date;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
-	public int getReadcount() {
-		return readcount;
+	public int getReadCount() {
+		return readCount;
 	}
-	public void setRead_count(int readcount) {
-		this.readcount = readcount;
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
 	}
 	public String getContent() {
 		return content;
@@ -62,6 +61,7 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
 	
 	
 }

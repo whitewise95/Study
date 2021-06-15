@@ -1,5 +1,5 @@
-<%@page import="step3_00boardEx.BoardDAO"%>
-<%@page import="step3_00boardEx.BoardDTO"%>
+<%@page import="step3_00_boardEx.BoardDTO"%>
+<%@page import="step3_00_boardEx.BoardDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,29 +17,35 @@
 			<td>작성자</td>
 			<td>작성일</td>
 			<td>조회수</td>
-		</tr>
-		<%
+		</tr>	
+		<% 
 			ArrayList<BoardDTO> boardList = BoardDAO.getInstance().getAllBoard();
-		
-			for (int i = 0; i<boardList.size(); i++){
+			for (int i=0; i<boardList.size(); i++) {
 		%>
-			<tr>
-				<td><%=boardList.get(i).getNum()%></td>
-				<td><%=boardList.get(i).getSubject()%></td>
-				<td><%=boardList.get(i).getWriter()%></td>
-				<td><%=boardList.get(i).getReg_date()%></td>
-				<td><%=boardList.get(i).getReadcount()%></td>
-			</tr>	
-		<%
-			}
+				<tr>
+					<td><%=boardList.get(i).getNum()%></td>
+					<td>
+						<a href="05_bInfo.jsp?num=<%=boardList.get(i).getNum() %>">
+							<%=boardList.get(i).getSubject()%>
+						</a>
+					</td>
+					<td><%=boardList.get(i).getWriter()%></td>
+					<td><%=boardList.get(i).getRegDate()%></td>
+					<td><%=boardList.get(i).getReadCount()%></td>
+				</tr>				
+		<%		
+			}			
 		%>
-			<tr align="right">
+		<tr align="right">
 			<td colspan="5">
 				<input type="button" value="글쓰기" onclick="location.href='02_bWrite.jsp'">
 			</td>
 		</tr>
-		
 	</table>
 	
 </body>
 </html>
+
+
+
+
