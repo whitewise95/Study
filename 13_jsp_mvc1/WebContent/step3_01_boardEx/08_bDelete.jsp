@@ -1,5 +1,6 @@
-<%@page import="step3_00_boardEx.BoardDTO"%>
+
 <%@page import="step3_00_boardEx.BoardDAO"%>
+<%@page import="step3_00_boardEx.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
