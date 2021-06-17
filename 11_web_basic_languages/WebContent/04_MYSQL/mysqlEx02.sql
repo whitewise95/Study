@@ -74,7 +74,7 @@ SELECT
 FROM
 		EMPLOYEES
 LIMIT
-		100 , 3;  		# 10번째 ROW부터 3개의 ROW만 조회된다.
+		100 , 3;  		# 100번째 ROW부터 3개의 ROW만 조회된다.
         
                
 
