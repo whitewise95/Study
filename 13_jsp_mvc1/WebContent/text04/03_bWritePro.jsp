@@ -12,12 +12,12 @@
 			request.setCharacterEncoding("utf-8");
 		%>
 		
-		<jsp:useBean id="BoardDTO" class="step4_00_boardEx.BoardDTO2">
-			<jsp:setProperty property="*" name="BoardDTO"/>
+		<jsp:useBean id="boardDTO" class="step4_00_boardEx.BoardDTO2">
+			<jsp:setProperty property="*" name="boardDTO"/>
 		</jsp:useBean>
 		
 		<%
-			BoardDAO2.getInstance().insertBoard(BoardDTO);
+			BoardDAO2.getInstance().insertBoard(boardDTO);
 		 %>
 		 
 		 <script>

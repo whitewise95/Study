@@ -1,5 +1,7 @@
 package step4_00_boardEx;
 
+import java.sql.Date;
+
 public class BoardDTO2 {
 	
 	private int num;

@@ -73,7 +73,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" value="글쓰기" onclick="">
+						<input type="submit" value="글쓰기" >
 						<input type="reset" value="다시작성">
 						<input type="button" value="전체게시글 보기">
 					</td>

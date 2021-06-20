@@ -224,7 +224,7 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				totalBoardCount = rs.getInt(1);
+				totalBoardCount = rs.getInt(1); 
 			} 
 			
 		} catch (Exception e) {
