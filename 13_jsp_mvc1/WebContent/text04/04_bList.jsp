@@ -24,7 +24,8 @@
 </style>
 <script>
 	function c(){
-		var onePageViewCount = document.getElementById("onePageViewCount").value;
+		var onePageViewCount = document.getElementById
+		("onePageViewCount").value;
 		var searchKeyword = document.getElementById("searchKeyword").value;
 		var searchWord = document.getElementById("searchWord").value;
 		location.href="04_bList.jsp?onePageViewCount="+onePageViewCount+"&searchKeyword="+searchKeyword+"&searchWord="+searchWord;
