@@ -36,10 +36,46 @@
 	<C:forEach var="i" begin="1" end="10" >
 		${i}	
 	</C:forEach>
+	
 	<hr>
+	
 	<C:forEach var="i" begin="1" end="10" step="${i+2}">
 		${i}	
 	</C:forEach>
+	
+	<hr>
+	
+	<C:forEach var="data" items="${datas }">
+		${data}
+	</C:forEach>
+	
+	<hr>
+	
+	<table border="1">
+	<tr>
+		<td>상품코드</td>
+		<td>상품명</td>
+		<td>부서코드</td>
+		<td>부서이름</td>
+		<td>관리자이름</td>
+	</tr>
+	
+	<C:forEach var="product" items="${productList }"> 
+		<tr>
+			<td>${product.pdCd }</td>
+			<td>${product.pdNm }</td>
+			<td>${product.deptCd }</td>
+			<td>${product.deptNm }</td>
+			<td>${product.mgrNm }</td>
+		</tr>
+	</C:forEach>
+	
+	
+
+
+		
+	</table>
+	
 	
 </body>
 </html>
