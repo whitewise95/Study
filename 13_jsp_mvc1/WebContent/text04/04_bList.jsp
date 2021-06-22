@@ -121,7 +121,23 @@
 	%>
 		<tr>
 			<td><%=bdList.get(i).getNum()%></td>
-			<td><%=bdList.get(i).getSubject() %></td>
+			<td>
+	<%
+				if(bdList.get(i).getReStep()>1){
+					for(int j = 0; j<(bdList.get(i).getReLevel()-1)*5; j++){
+	%>
+							&ensp;
+	
+	<% 		
+					}
+	%>
+					>>>&ensp;
+	<%
+				
+				}
+	%>
+			<a href="05_bInfo.jsp?num=<%=bdList.get(i).getNum()%>"><%=bdList.get(i).getSubject() %></a>
+			</td>
 			<td><%=bdList.get(i).getWriter() %></td>
 			<td><%=bdList.get(i).getRegDate() %></td>
 			<td><%=bdList.get(i).getReadCount() %></td>

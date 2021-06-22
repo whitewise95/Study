@@ -210,7 +210,7 @@
 			int startPage = 1;
 			
 			if (currentPageNumber % 10 == 0) {  
-				startPage = (currentPageNumber / 10 - 1) * 10 + 1;
+				startPage = (currentPageNumber / 10 - 1) * 10 + 1;  // 무조건 currentPageNumber 12여도 11~20이 startPage 고 endPage 로 만들기위한 코드
 					/*
 						currentPage 10 : 1  
 						currentPage 20 : 11  
@@ -259,7 +259,7 @@
 	<% 				
 			}
 					
-			if (endPage <= totalBoardCount && endPage >= 10){
+			if (endPage <= totalBoardCount && endPage >= 10){ // totalBoardCount보다 작거나 같아야하는이유 ?
 	%>
 				<li>
 					<a href="04_bList.jsp?currentPageNumber=<%= startPage + 10 %>&onePageViewCount=<%=onePageViewCount%>&searchKeyword=<%=searchKeyword%>&searchWord=<%=searchWord%>"> 다음 </a>

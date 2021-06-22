@@ -166,6 +166,44 @@ public class BoardDAO2 {
 		
 	}
 	
+	public BoardDTO2 oneBoardList(int num) {
+		BoardDTO2 bd = new BoardDTO2();
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("update board set read_count=read_count+1 where num=?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			pstmt = conn.prepareStatement("select * from board where num=?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				bd.setNum(rs.getInt(1));
+				bd.setWriter(rs.getString(2));
+				bd.setEmail(rs.getString(3));
+				bd.setSubject(rs.getString(4));
+				bd.setPassword(rs.getString(5));
+				bd.setRegDate(rs.getString(6));
+				bd.setRef(rs.getInt(7));
+				bd.setReStep(rs.getInt(8));
+				bd.setReLevel(rs.getInt(9));
+				bd.setReadCount(rs.getInt(10));
+				bd.setContent(rs.getString(11));
+			}
+			
+		} catch (Exception e) {e.printStackTrace();
+		} finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(conn!=null)try {conn.close();} catch (SQLException e) {e.printStackTrace();}
+			
+		}
+		
+		
+		return null;
+	}  
+	
+	
+	
 
 	
 }
