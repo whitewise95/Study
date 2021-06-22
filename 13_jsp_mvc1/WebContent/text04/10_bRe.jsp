@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="step4_00_boardEx.BoardDAO2"%>
+<%@page import="step4_00_boardEx.BoardDTO2"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,8 +44,16 @@
 </script>
 </head>
 <body>
+		<%
+		
+			int num = Integer.parseInt(request.getParameter("num"));
+			BoardDTO2 boardList = BoardDAO2.getInstance().oneBoardList(num);
+			
+			
+		%>
+
 	
-		<form action="03_bWritePro.jsp" method="post" onsubmit="return formValidationCheck()" name="f"  style=" padding-top: 100px">
+		<form action="11_bRePro.jsp" method="post" onsubmit="return formValidationCheck()" name="f"  style=" padding-top: 100px">
 			<h2 align="center">게시글 쓰기</h2>
 			<table border="1" style="width: 700px" >
 				<colgroup>
@@ -73,12 +82,16 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" value="글쓰기" >
+						<input type="hidden" name="ref" value="<%=boardList.getRef() %>">
+						<input type="hidden" name="reStep" value="<%=boardList.getReStep() %>">
+						<input type="hidden" name="reLevel" value="<%=boardList.getReLevel() %>">
+						<input type="submit" value="답글쓰기" >
 						<input type="reset" value="다시작성">
 						<input type="button" value="전체게시글 보기" onclick="location.href='04_bList.jsp'">
 					</td>
 				</tr>
 			</table>
 		</form>
+
 </body>
 </html>

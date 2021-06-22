@@ -199,8 +199,114 @@ public class BoardDAO2 {
 		}
 		
 		
-		return null;
+		return bd;
 	}  
+	
+	public boolean passwordChecked(BoardDTO2 bd) {
+		boolean isPassword = false;
+		try {
+			conn = getConnection();
+			pstmt= conn.prepareStatement("select * from board where num=? and password=?");
+			pstmt.setInt(1, bd.getNum());
+			pstmt.setString(2,bd.getPassword());
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				isPassword = true;
+			}
+			
+		} catch (Exception e) {e.printStackTrace();
+		} finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(conn!=null)try {conn.close();} catch (SQLException e) {e.printStackTrace();}
+			
+		}
+		return isPassword;
+	}
+	
+	
+	public boolean updateBoard(BoardDTO2 bd) {
+		boolean isUpdate = false;
+		try {
+			if(passwordChecked(bd)) {
+				conn = getConnection();
+				pstmt= conn.prepareStatement("update board set subject=?, content=? where num=?");
+				pstmt.setString(1, bd.getSubject());
+				pstmt.setString(2, bd.getContent());
+				pstmt.setInt(3, bd.getNum());
+				pstmt.executeUpdate();
+				System.out.println("board테이블이 업데이트 되었습니다.");
+				System.out.println(bd.getNum() + "/" + bd.getWriter() + "/" + bd.getSubject());
+				isUpdate = true;
+			}
+		} catch (Exception e) {e.printStackTrace();
+		} finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(conn!=null)try {conn.close();} catch (SQLException e) {e.printStackTrace();}
+			
+		}
+		
+		
+		return isUpdate;
+	}
+	
+	public boolean deleteBoard(BoardDTO2 bd) {
+		boolean isDelete = false;
+		try {
+			if(passwordChecked(bd)) {
+				conn = getConnection();
+				pstmt= conn.prepareStatement("delete from board where num=?");
+				pstmt.setInt(1, bd.getNum());
+				pstmt.executeUpdate();
+				isDelete = true;
+			}
+		} catch (Exception e) {e.printStackTrace();
+		} finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(conn!=null)try {conn.close();} catch (SQLException e) {e.printStackTrace();}
+			
+		}
+		return isDelete;
+	}
+	
+	public void reWriteBoard(BoardDTO2 bd) {
+		int num = 0;
+		int ref     = bd.getRef();
+		int restep  = bd.getReStep();
+		int relevel = bd.getReLevel();
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select max(num) from board");
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+			num = rs.getInt(1)+1;
+			}
+			pstmt = conn.prepareStatement("UPDATE BOARD SET RE_STEP=RE_STEP+1 WHERE REF=? and RE_STEP > ?");
+			pstmt.setInt(1, ref);
+			pstmt.setInt(2, restep);
+			pstmt.executeUpdate();
+			pstmt = conn.prepareStatement("insert into board  values (?, ?, ?, ?, ?,now()"+",?, ?, ?, 0, ?)");
+			pstmt.setInt(1,num);
+			pstmt.setString(2, bd.getWriter());
+			pstmt.setString(3, bd.getEmail());
+			pstmt.setString(4, bd.getSubject());
+			pstmt.setString(5, bd.getPassword());
+			pstmt.setInt(6, ref);
+			pstmt.setInt(7, restep+1);
+			pstmt.setInt(8, relevel+1);
+			pstmt.setString(9, bd.getContent());
+			pstmt.executeUpdate();
+	
+		} catch (Exception e) {e.printStackTrace();
+		} finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(conn!=null)try {conn.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+	}
+	
 	
 	
 	

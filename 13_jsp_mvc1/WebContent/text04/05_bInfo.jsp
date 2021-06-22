@@ -8,41 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<script>
-	function formValidationCheck(){
-		
-		var writer = document.f.writer;
-		if(writer.value.length==0){
-			alert("작성자를 입력해주세요");
-			writer.focus();
-			return  false;
-		}
-		var subject = document.f.subject;
-		if(subject.value.length==0){
-			alert("제목을 입력해주세요");
-			subject.focus();
-			return  false;
-		}
-		
-		var email = document.f.email;
-		if(email.value.length==0){
-			alert("이메일를 입력해주세요");
-			email.focus();
-			return  false;
-		}
-		
-		var password = document.f.password;
-		if(password.value.length==0){
-			alert("이메일를 입력해주세요");
-			password.focus();
-			return  false;
-		}
-		
-		
-		
-		return true;
-	}
-</script>
 </head>
 <body>
 			<%
@@ -52,49 +17,52 @@
 			
 			
 			%>
-
-
-
-
-	
-		<form action="06_bInfoPro.jsp" method="post" onsubmit="return formValidationCheck()" name="f"  style=" padding-top: 100px">
-			<h2 align="center">게시글 쓰기</h2>
-			<table border="1" style="width: 700px" >
-				<colgroup>
-					 <col width="20%" align="right">
-					 <col width="80%">
+		
+		<div align="center" style="padding-top: 100px">
+		<h1>게시글 보기</h1>
+		<br>
+		<table style="width: 700px; text-align: center" border="1">
+			<colgroup>
+				<col width="20%">
+				<col width="80%">
 				</colgroup>
 				<tr>
-					<td align="center"><span style="color: red">*</span>작성자</td>
-					<td><input type="text" name="writer" ></td>
+					<td>글번호</td>
+					<td><%=boardList.getNum() %></td>
 				</tr>
 				<tr>
-					<td align="center"><span style="color: red">*</span>제목</td>
-					<td><input type="text" name="subject"></td>
+					<td>조회수</td>
+					<td><%=boardList.getReadCount()%></td>
 				</tr>
 				<tr>
-					<td align="center"><span style="color: red">*</span>이메일</td>
-					<td><input type="email" name="email"></td>
+					<td>작성자</td>
+					<td><%=boardList.getWriter()%></td>
 				</tr>
 				<tr>
-					<td align="center"><span style="color: red">*</span>패스워드</td>
-					<td><input type="password" name="password"></td>
+					<td>작성일</td>
+					<td><%=boardList.getRegDate()%></td>
 				</tr>
 				<tr>
-					<td>글내용</td>
-					<td><textarea rows="10" cols="50" name="content"></textarea></td>
+					<td>이메일</td>
+					<td><%=boardList.getEmail()%></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center">
-						
-						<input type="submit" value="댓글쓰기" >
-						<input type="reset" value="다시작성">
-						<input type="button" value="전체게시글 보기">
+					<td>제목</td>
+					<td><%=boardList.getSubject()%></td>
+				</tr>
+				<tr>
+					<td>글 내용</td>
+					<td><%=boardList.getContent()%></td>
+				</tr>
+				<tr align="center">
+					<td colspan="2">
+						<input type="button" value="답글쓰기" onclick="location.href='10_bRe.jsp?num=<%=boardList.getNum()%>'">
+						<input type="button" value="수정하기" onclick="location.href='06_bUpdate.jsp?num=<%=boardList.getNum()%>'">
+						<input type="button" value="삭제하기" onclick="location.href='08_bDelete.jsp?num=<%=boardList.getNum()%>'">
+						<input type="button" value="목록보기" onclick="location.href='04_bList.jsp'">
 					</td>
 				</tr>
 			</table>
-		</form>
-</body>
-</html>
+			</div>
 </body>
 </html>

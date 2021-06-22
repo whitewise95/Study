@@ -50,8 +50,7 @@
 		}
 		
 		String searchKeyword = request.getParameter("searchKeyword");
-		if(searchKeyword==null){
-			searchKeyword="total";
+		if(searchKeyword==null){			searchKeyword="total";
 		}
 		
 		String tempPage = request.getParameter("currentPageNumber");
@@ -94,6 +93,7 @@
 						selected
 				<%
 					}
+					
 				%>
 					value="7">7</option>
 					<option 
