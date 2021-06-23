@@ -50,8 +50,9 @@
 	${name1 } , <c:out value="${name1 }" /> <br>
 	${name2 } , <c:out value="${name2 }" /> <br>
 
-
+	
 	<c:remove var="name1" />
+	 
 	${name1 } , <c:out value="${name1 }" /> <br>
 	${name2 } , <c:out value="${name2 }" /> <br>
 	<hr>
