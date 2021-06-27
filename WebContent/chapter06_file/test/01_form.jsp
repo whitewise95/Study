@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-   <form  method="post" enctype="multipart/form-data"  action="02_upload.jsp.jsp">
+   <form  method="post" enctype="multipart/form-data"  action="02_upload.jsp">
 		<fieldset>
 			<p><label>작성자: <input type="text" name="userName"></label></p>
 			<p><label>제  목: <input type="text" name="title"></label></p>

@@ -13,14 +13,14 @@
 </head>
 <body>
 	<%
-		request.setCharacterEncoding("utf");
+		request.setCharacterEncoding("utf-8");
 		
 	
-		String saveFile = "C:\\Users\\user\\git\\12_jsp_basic\\WebContent\\chapter06_file\\file_repo";
+		String saveFolder = "C:\\Users\\coffe\\git\\12_jsp_basic\\WebContent\\chapter06_file\\file_repo";
 		String encType = "utf-8";
 		int maxSize = 1024*1024*15;
 		
-		MultipartRequest multi = new MultipartRequest(request,saveFile,maxSize,encType,new DefaultFileRenamePolicy());
+		MultipartRequest multi = new MultipartRequest(request,saveFolder, maxSize,encType , new DefaultFileRenamePolicy());
 		
 		String userName      = multi.getParameter("userName"); 
 		String title         = multi.getParameter("title");
