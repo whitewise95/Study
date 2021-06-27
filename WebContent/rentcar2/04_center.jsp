@@ -6,7 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body>	
 
+<table>
+<tr>
+	<td height="500">
+		<img alt="자동차" src="../rentcar/imgCar/main1.PNG" align="middle" width="1000"  >
+	</td>
+</tr>
+</table>
 </body>
 </html>
