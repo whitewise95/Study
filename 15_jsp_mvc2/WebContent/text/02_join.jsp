@@ -48,15 +48,15 @@
 		<div align="center">
 			<h1>회원 가입</h1>
 			<p>메가 아카데미를 찾아주셔서 감사합니다.</p>
-			<hr>
-			<form action="joinAction" method="post" onsubmit="" name="f">
+			<hr>											<!-- return을 안적음 -->
+			<form action="joinAction" method="post" onsubmit="return checked()" name="f">
 				<h6>로그인 정보</h6>
-				<p>아이디 <input type="text" name="id"></p>
-				<p>패스워드 <input type="password" name="pw"></p>
-				<h6>로그인 정보</h6>
-				<p>이름 <input type="text" name="name" placeholder="공백없이 입력하세요"></p>
-				<p>연락처 <input type="tel" name="tel" placeholder="000-0000-0000"></p>
-				<p>이메일 <input type="email" name="email"></p>
+				<p><label>아이디 <input type="text" name="id" id="id"></label></p>
+				<p><label>패스워드 <input type="password" name="pw" id="pw"></label></p>
+				<h6><label>개인 정보</label></h6>
+				<p><label>이름 <input type="text" name="name" id="name" placeholder="공백없이 입력하세요"></label></p>
+				<p><label>연락처 <input type="tel" name="tel" id="tel" placeholder="000-0000-0000"></label></p>
+				<p><label>이메일 <input type="email" id="email" name="email"></label></p>
 				<p></p>
 				<input type="submit" value="회원가입">
 				<input type="reset" value="다시쓰기">

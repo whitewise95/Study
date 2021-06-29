@@ -8,44 +8,60 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.mysql.cj.Session;
 
 import _02_login.dao.loginDAO;
 import _02_login.dto.loginDTO;
 
-
-@WebServlet("/joinAction")
-public class _03_joinAction extends HttpServlet {
+/**
+ * Servlet implementation class _08_applyAction
+ */
+@WebServlet("/applyAction")
+public class _08_applyAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		reqPro(request, response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		reqPro(request, response);
 	}
-	
+
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String name = request.getParameter("name");
-		String tel = request.getParameter("tel");
-		String email = request.getParameter("email");
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		HttpSession session = request.getSession();
+		String id =(String)session.getAttribute("mid");
+		String field = request.getParameter("field");
+						//values를 안씀.... 기억
+		String[] temp = request.getParameterValues("skill");
+		String major = request.getParameter("major");
+		
+		
+		String skill ="";
+		for (int i = 0; i < temp.length; i++) {
+			skill+=temp[i];
+			if(i!=temp.length-1) {
+				skill+=",";
+			}
+		}
+							
 		
 		loginDTO ld = new loginDTO();
 		ld.setId(id);
-		ld.setPw(pw);
-		ld.setName(name);
-		ld.setTel(tel);
-		ld.setEmail(email);
-		boolean isJoin = loginDAO.getInstance().joinMember(ld);
+		ld.setField(field);
+		ld.setSkill(skill);
+		ld.setMajor(major);
 		
-		request.setAttribute("isJoin", isJoin);
+		loginDAO.getInstance().apply(ld);
 		
-		RequestDispatcher dis =request.getRequestDispatcher("text/03_joinAction.jsp");
+		
+		RequestDispatcher dis = request.getRequestDispatcher("text/08_applyAction.jsp");
 		dis.forward(request, response);
 	}
-
 }

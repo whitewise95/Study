@@ -8,14 +8,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import _02_login.dao.loginDAO;
 import _02_login.dto.loginDTO;
 
-
-@WebServlet("/joinAction")
-public class _03_joinAction extends HttpServlet {
+/**
+ * Servlet implementation class _06_apply
+ */
+@WebServlet("/apply")
+public class _07_apply extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		reqPro(request, response);
@@ -24,28 +28,21 @@ public class _03_joinAction extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		reqPro(request, response);
+
 	}
 	
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String name = request.getParameter("name");
-		String tel = request.getParameter("tel");
-		String email = request.getParameter("email");
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("mid");
+		if(id !=null){
+			loginDTO dtdb = loginDAO.getInstance().oenIdView(id);
+			request.setAttribute("dtdb", dtdb);
+		}
 		
-		loginDTO ld = new loginDTO();
-		ld.setId(id);
-		ld.setPw(pw);
-		ld.setName(name);
-		ld.setTel(tel);
-		ld.setEmail(email);
-		boolean isJoin = loginDAO.getInstance().joinMember(ld);
 		
-		request.setAttribute("isJoin", isJoin);
-		
-		RequestDispatcher dis =request.getRequestDispatcher("text/03_joinAction.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("text/07_apply.jsp");
 		dis.forward(request, response);
+		
 	}
 
 }

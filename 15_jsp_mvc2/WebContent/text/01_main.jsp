@@ -12,11 +12,11 @@
 		<c:if test="${null ne id }">
 			${id }님, 환영합니다.
 		
-			<p><a href= >입사지원정보 수정</a></p>
+			<p><a href="update">입사지원정보 수정</a></p>
 			<p></p>
-			<p><a href= >로그아웃</a></p>
+			<p><a href="logout" >로그아웃</a></p>
 			<p></p>
-			<p><a href= >탈퇴</a><a></a>
+			<p><a href=delete >탈퇴</a><a></a>
 		</c:if>	
 		<c:if test="${null eq id }">	
 			<p><a href="join" >회원가입</a></p>
@@ -28,7 +28,7 @@
 		<p></p>
 		<p></p>
 		<p></p>
-		<img alt="" src="img/applyonline.png" onclick="location.href=''">
+		<a href="apply"><img alt="" src="img/applyonline.png"></a>
 		</div>
 		
 </body>

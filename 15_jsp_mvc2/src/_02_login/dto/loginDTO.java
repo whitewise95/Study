@@ -11,31 +11,8 @@ public class loginDTO {
 	private String skill;
 	private String major;
 	
-	public loginDTO(String id, String pw, String name, String tel, String email, String field, String skill,
-			String major) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.tel = tel;
-		this.email = email;
-		this.field = field;
-		this.skill = skill;
-		this.major = major;
-	}
 	
 	
-
-	public loginDTO(String id, String pw, String name, String tel, String email) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.tel = tel;
-		this.email = email;
-	}
-
-
 
 	public String getId() {
 		return id;

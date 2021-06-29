@@ -90,6 +90,71 @@ public class loginDAO {
 			return isLogin;
 	    }
 	    
+	    public loginDTO oenIdView(String id) {
+	    	loginDTO ld = null;
+	    	try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("select * from member where id=?");
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					ld = new loginDTO();
+					ld.setId(rs.getString(1));
+					ld.setPw(rs.getString(2));
+					ld.setName(rs.getString(3));
+					ld.setTel(rs.getString(4));
+					ld.setEmail(rs.getString(5));
+					ld.setField(rs.getString(6));
+					ld.setSkill(rs.getString(7));
+					ld.setMajor(rs.getString(8));
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+	        	if(rs != null) 	  {try {rs.close();}   catch (SQLException e) {}}
+	        	if(pstmt != null) {try {pstmt.close();} catch (SQLException e) {}}
+	            if(conn != null)  {try {conn.close();}  catch (SQLException e) {}}
+	        }
+	    	
+	    
+			return ld;
+	    }
+	    
+	    public void apply(loginDTO ld){
+	    	try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("update member set FIELD=?, SKILL=?, MAJOR=? where id=?");
+				pstmt.setString(1, ld.getField());
+				pstmt.setString(2, ld.getSkill());
+				pstmt.setString(3, ld.getMajor());
+				pstmt.setString(4, ld.getId());
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+	        	if(rs != null) 	  {try {rs.close();}   catch (SQLException e) {}}
+	        	if(pstmt != null) {try {pstmt.close();} catch (SQLException e) {}}
+	            if(conn != null)  {try {conn.close();}  catch (SQLException e) {}}
+	        }
+	    	
+	    }
+	    
+	    public void delete(String id) {
+	    	try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("delete from member where id=?");
+				pstmt.setString(1, id);
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+	        	if(rs != null) 	  {try {rs.close();}   catch (SQLException e) {}}
+	        	if(pstmt != null) {try {pstmt.close();} catch (SQLException e) {}}
+	            if(conn != null)  {try {conn.close();}  catch (SQLException e) {}}
+	        }
+	    }
+	    
 	    
 	    
 	    
