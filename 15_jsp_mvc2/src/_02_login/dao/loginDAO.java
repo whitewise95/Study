@@ -99,14 +99,14 @@ public class loginDAO {
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					ld = new loginDTO();
-					ld.setId(rs.getString(1));
-					ld.setPw(rs.getString(2));
-					ld.setName(rs.getString(3));
-					ld.setTel(rs.getString(4));
-					ld.setEmail(rs.getString(5));
-					ld.setField(rs.getString(6));
-					ld.setSkill(rs.getString(7));
-					ld.setMajor(rs.getString(8));
+					ld.setId(rs.getString("id"));
+					ld.setPw(rs.getString("pw"));
+					ld.setName(rs.getString("name"));
+					ld.setTel(rs.getString("tel"));
+					ld.setEmail(rs.getString("email"));
+					ld.setField(rs.getString("field"));
+					ld.setSkill(rs.getString("skill"));
+					ld.setMajor(rs.getString("major"));
 
 				}
 			} catch (Exception e) {
@@ -146,6 +146,29 @@ public class loginDAO {
 				pstmt = conn.prepareStatement("delete from member where id=?");
 				pstmt.setString(1, id);
 				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+	        	if(rs != null) 	  {try {rs.close();}   catch (SQLException e) {}}
+	        	if(pstmt != null) {try {pstmt.close();} catch (SQLException e) {}}
+	            if(conn != null)  {try {conn.close();}  catch (SQLException e) {}}
+	        }
+	    }
+	    
+	    public void update(loginDTO ldto) {
+	    	try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("update member set pw=?,name=?,tel=?,email=?, FIELD=?, SKILL=?, MAJOR=? where id=?");
+				pstmt.setString(1, ldto.getPw());
+				pstmt.setString(2, ldto.getName());
+				pstmt.setString(3, ldto.getTel());
+				pstmt.setString(4, ldto.getEmail());
+				pstmt.setString(5, ldto.getField());
+				pstmt.setString(6, ldto.getSkill());
+				pstmt.setString(7,ldto.getMajor() );
+				pstmt.setString(8,ldto.getId());
+				pstmt.executeUpdate();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {

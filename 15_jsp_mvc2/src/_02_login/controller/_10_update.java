@@ -13,9 +13,7 @@ import javax.servlet.http.HttpSession;
 import _02_login.dao.loginDAO;
 import _02_login.dto.loginDTO;
 
-/**
- * Servlet implementation class _10_update
- */
+
 @WebServlet("/update")
 public class _10_update extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,28 +28,30 @@ public class _10_update extends HttpServlet {
 	}
 	
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
-		
 		String id =(String)session.getAttribute("mid");
-		loginDTO dtdb = new loginDTO();
-		dtdb = loginDAO.getInstance().oenIdView(id);
-		;
+
+		loginDTO dtdb = loginDAO.getInstance().oenIdView(id);
 		
-		if(dtdb.getField()!= null) {
+		
+		if(dtdb.getField() != null) {
 			String[] skills = dtdb.getSkill().split(",");
 			for(String skill : skills) {
-				if (skill.equals("html")) 		request.setAttribute("html", true);
-				if (skill.equals("css")) 		request.setAttribute("css", true);
-				if (skill.equals("javascript")) request.setAttribute("javascript", true);
-				if (skill.equals("java")) 		request.setAttribute("java", true);
-				if (skill.equals("jsp")) 		request.setAttribute("jsp", true);
-				if (skill.equals("spring")) 	request.setAttribute("spring", true);
+				if (skill.equals("HTML")) 		request.setAttribute("HTML", true);
+				if (skill.equals("CSS")) 		request.setAttribute("CSS", true);
+				if (skill.equals("JavaScript")) request.setAttribute("JavaScript", true);
+				if (skill.equals("Java")) 		request.setAttribute("Java", true);
+				if (skill.equals("JSP")) 		request.setAttribute("JSP", true);
+				if (skill.equals("Spring")) 	request.setAttribute("Spring", true);
 			}
 			request.setAttribute("dtdb", dtdb);
-			request.setAttribute("isUpdate", true);
+			request.setAttribute("isFirstApply", false);
 		}
-		request.setAttribute("isUpdate", false);
-		
+		//else 를 안써가지고 ....
+		else {
+			request.setAttribute("isFirstApply", true);
+		}
 		
 		
 		RequestDispatcher dis = request.getRequestDispatcher("text/10_update.jsp");

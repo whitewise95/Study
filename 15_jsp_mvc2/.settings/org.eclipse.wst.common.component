@@ -2,6 +2,7 @@
     <wb-module deploy-name="15_jsp_mvc2">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/_02_login/controller"/>
         <property name="context-root" value="15_jsp_mvc2"/>
         <property name="java-output-path" value="/15_jsp_mvc2/build/classes"/>
     </wb-module>
