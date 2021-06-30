@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>04_bList</title>
+
 </head>
 <style>
 	ul {
