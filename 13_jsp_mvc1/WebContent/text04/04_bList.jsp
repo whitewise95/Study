@@ -8,6 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function c(){
+		var PageViewCount = document.getElementById("PageViewCount").value;
+		var searchKeyword = document.getElementById("searchKeyword").value;
+		var searchWord = document.getElementById("searchWord").value;
+		location.href="04_bList.jsp?PageViewCount="+PageViewCount+"&searchKeyword="+searchKeyword+"&searchWord="+searchWord;
+	}
+</script>
+</head>
 <style>
 	ul {
 	    list-style:none;
@@ -22,228 +31,212 @@
 	    float: left;
 	}
 </style>
-</head>
 <body>
-<script >
-	function c(){									//""사용안함
-		var onePageView = document.getElementById("onePageView").value;
-		var searchPage = document.getElementById("searchPage").value;
-		var search = document.getElementById("search").value;
-		location.href="04_bList.jsp?onePageView="+onePageView+"&searchPage="+searchPage+"&search="+search;
-	}
-	
-</script>
 <%
-		//게시글 갯수를 알아야하며 / limit 때문에 스타트넘도 알아야함!
-
 	request.setCharacterEncoding("utf-8");
+	String tempCnt = request.getParameter("PageViewCount");
+	if(tempCnt==null){
+		tempCnt="10";
+	}
+	int PageViewCount = Integer.parseInt(tempCnt);
 	
-	String search = request.getParameter("search");
-	if(search==null){
-		search="";
+	String searchKeyword = request.getParameter("searchKeyword");
+	if(searchKeyword==null){
+		searchKeyword="total";
 	}
 	
-	String searchPage = request.getParameter("searchPage");
-	if(searchPage==null){
-		searchPage="total";
+	String searchWord = request.getParameter("searchWord");
+	if(searchWord==null){
+		searchWord="";
 	}
 	
-	String tempNumber = request.getParameter("currentPageNumber");
-	if(tempNumber==null){
-		tempNumber="1";
+	String temp = request.getParameter("nowPage");
+	if(temp==null){
+		temp = "1";
 	}
-	int currentPageNumber = Integer.parseInt(tempNumber);
+	int nowPage = Integer.parseInt(temp);
 	
 	
-	String tempPage = request.getParameter("onePageView");
-	if(tempPage==null){
-		tempPage="10";
-	}
-	int onePageView = Integer.parseInt(tempPage);
+	int allBoardCount = BoardDAO2.getInstance().getAllCount(searchKeyword, searchWord);
 	
-	int totBoardList = BoardDAO2.getInstance().getAllCount(searchPage, search);
+	int StartIndex = (nowPage-1)*PageViewCount;
 	
-	int startPageNum = (currentPageNumber-1)*onePageView;
-	
-	ArrayList<BoardDTO2> bd =BoardDAO2.getInstance().getAllBoardList(search, searchPage, onePageView, startPageNum);
+	ArrayList<BoardDTO2> bdto = BoardDAO2.getInstance().getAllBoardList(searchWord, searchKeyword, PageViewCount, StartIndex);
 	
 	
 	
-
-
+	
+	
 %>
-	
-	
-	<div align="center" style="padding-top: 100px" >
-		<h6>전체게시글보기</h6>
-		<table border="1">
+	<div align="center" style="padding-top: 100px">
+	<table border="1">
 		<col width="10%">
-		<col width="30%">
+		<col width="40%">
 		<col width="20%">
 		<col width="20%">
 		<col width="10%">
-		<col width="10%">
-			<tr>
-				<td>조회<a style="color: red;"><%=totBoardList %></a>개</td>
-				<td colspan="4" align="right">
-					<select name="onePageView" id="onePageView" onchange="c()">
-						<option
+		<tr>
+			<td>조회<a style="color: red;"><%=allBoardCount %></a>개</td>
+			<td colspan="4" align="right">
+				<select name="PageViewCount" id="PageViewCount" onchange="c()">
+					<option 
+					<%
+						if(PageViewCount==5){
+					%>
+						selected
+					<% 
+						}
+					%>
+					value="5">5</option>
+					<option 
+					<%
+						if(PageViewCount==7){
+					%>
+							selected
+					<% 
+						}
+					%>
+					value="7">7</option>
+					<option 
+					<%
+						if(PageViewCount==10){
+					%>
+							selected
+					<% 
+						}
+					%>
+					value="10">10</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>번호</td>
+			<td>제목</td>
+			<td>작성자</td>
+			<td>작성일</td>
+			<td>조회수</td>
+		</tr>
 		<%
-							if(onePageView == 5){
+			for(int i=0; i<bdto.size(); i++){
 		%>
-								selected	
+		<tr>
+			<td><%=bdto.get(i).getNum() %></td>
+			<td><%=bdto.get(i).getSubject() %></td>
+			<td><%=bdto.get(i).getWriter() %></td>
+			<td><%=bdto.get(i).getRegDate() %></td>
+			<td><%=bdto.get(i).getReadCount() %></td>
+		</tr>
 		<%
-							}
-		%>					
-						value="5">5</option>
-						<option
-		<%
-							if(onePageView == 7){
+			}
 		%>
-								selected	
-		<%
-							}
-		%>			
-						value="7">7</option>
-						<option
-		<%
-							if(onePageView == 10){
-		%>
-								selected	
-		<%
-							}
-		%>			
-						value="10">10</option>
-					</select>
-				</td>
-			</tr>
-			<tr align="center">
-				<td>번호</td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>조회수</td>
-			</tr>
-	<%
-				for(int i =0; i<bd.size(); i++){
-	%>
-			<tr>
-				<td><%=bd.get(i).getNum()%></td>
-				<td><%=bd.get(i).getSubject()%></td>
-				<td><%=bd.get(i).getWriter()%></td>
-				<td><%=bd.get(i).getRegDate()%></td>
-				<td><%=bd.get(i).getReadCount()%></td>
-			</tr>
-	<%
-				}
-	%>
-			<tr>
-				<td colspan="5" align="right">
-					<input type="button" value="글쓰기" onclick="location.href='02_bWrite.jsp'" >
-				</td>
-			</tr>
-			<tr>
-				<td colspan="5" align="center">
-					<select name="searchPage" id="searchPage">
-						<option
-		<%
-							if(searchPage=="total"){
-		%>
-								selected	
-		<%
-							}
-		%>			
-						value="total">전체검색</option>
-						<option
-		<%
-							if(searchPage=="writer"){
-		%>
-								selected	
-		<%
-							}
-		%>			
-						value="">작성자</option>
-						<option
-		<%
-							if(searchPage=="subject"){
-		%>
-								selected	
-		<%
-							}
-		%>			
-						value="subject">제목</option>
-					</select>
-					<input type="text" name="search" id="search">
-					<input type="button" value="검색" onclick="c()">
-				</td>
-			</tr>
-		</table>
+		<tr>
+			<td colspan="5">
+				<select name="searchKeyword" id="searchKeyword">
+					<option
+					<%
+						if(searchKeyword=="total"){
+					%>
+						selected
+					<% 
+						}
+					%>
+					value="total">전체검색</option>
+					<option
+					<%
+						if(searchKeyword=="writer"){
+					%>
+						selected
+					<% 
+						}
+					%>
+					value="writer"></option>
+					<option
+					<%
+						if(searchKeyword=="writer"){
+					%>
+						selected
+					<% 
+						}
+					%>
+					value="subject"></option>
+				</select>
+				<input type="text" name="searchWord" id="searchWord">
+				<input type="button" value="검색" onclick="c()">
+			</td>
+		</tr>
+	</table>	
 	</div>
+	<div style="display: table; margin-left: auto; margin-right: auto">
 	<%
-	
-	
-	if(totBoardList>0){
-		
-			int addPage = totBoardList%onePageView==0 ? 0:1;
-			int totPageCount = totBoardList / onePageView + addPage;
+		if( allBoardCount > 0){
+			int addPage = allBoardCount % PageViewCount==0?0:1;
+			int totalPage = allBoardCount/PageViewCount+addPage;
 			
-			int startPage = 1;
 			
-			if(currentPageNumber%10==0){
-				startPage = (currentPageNumber/5-1)*5+1;
+			int startPage=1;
+			
+			if(nowPage%10==0){
+				startPage = (nowPage/10-1)*10+1;
 			}
 			else{
-				startPage = (currentPageNumber/5)*5+1;
+				startPage = (nowPage/10)*10+1;
 			}
 			
-			int endPage = startPage+4;
+			int endPage=startPage+9;
 			
-			if(endPage>totPageCount){
-				endPage = totPageCount;
+			if(allBoardCount < PageViewCount){
+				endPage =0;
+				startPage = 1;
 			}
-			if(onePageView > totBoardList){
-				startPage=1;
-				endPage=0;
+			if(endPage > totalPage){
+				endPage = totalPage;
 			}
+			
+		
 	%>
-			<ul>
-	<% 
-			
-			if(startPage>5){
-	%>
-			<li>
-				<a href="04_bList.jsp?currentPageNumber=<%=startPage-5 %>&onePageView=<%=onePageView%>&searchPage=<%=searchPage %>&search=<%=search %> ">이전</a>
-			</li>
+		
+				<ul>
 	<%
+			if(startPage>10){
+	%>
+					<li>		
+						<a href="04_bList.jsp?nowPage=<%=startPage-10%>&PageViewCount=<%=PageViewCount%>&searchKeyword=<%=searchKeyword%>&searchWord=<%=searchWord%>">이전</a>	
+					</li>
+					
+	<% 
 			}
+	
 			for(int i=startPage; i<=endPage; i++){
 	%>
-			<li>	
-				<a href="04_bList.jsp?currentPageNumber=<%=i%>&onePageView=<%=onePageView%>&searchPage=<%=searchPage %>&search=<%=search %> "><%=i %></a>
-			</li>
-	<%
-			}
-			if(endPage<=totBoardList&&endPage>=5){
-	%>
-			<li>	
-				<a href="04_bList.jsp?currentPageNumber=<%=startPage+5 %>&onePageView=<%=onePageView%>&searchPage=<%=searchPage %>&search=<%=search %> ">다음</a>
-			</li>
-		
-	<% 		
-	
-				
-				
-			}
-	%>			
-		
-		
 			
-		 </ul>	
+					<li>		
+						<a href="04_bList.jsp?nowPage=<%=i%>&PageViewCount=<%=PageViewCount%>&searchKeyword=<%=searchKeyword%>&searchWord=<%=searchWord%>"><%=i %> </a>	
+					</li>
+					
+	<% 
+			}
 	
-	<%
-		}
-	 %>	
+			
+			if(endPage<totalPage&&endPage>=10){
+				
+	%>
+			
+					<li>		
+						<a href="04_bList.jsp?nowPage=<%=startPage+10%>&PageViewCount=<%=PageViewCount%>&searchKeyword=<%=searchKeyword%>&searchWord=<%=searchWord%>">다음</a>	
+					</li>
+					
+	<% 
+			}
 
+	
+			
+			
+			
+		}
+	%>
+			</ul>
+	
+	</div>
 
 	
 </body>
