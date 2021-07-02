@@ -6,9 +6,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		session.invalidate();
-		response.sendRedirect("01_carMain.jsp");
-	%>
+	<table>
+		<tr align="center" style="width: 330px">
+			<td width="220px" >
+				<img alt="" src="imgCar/rent_logo.jpg" height="300px">
+			</td>
+		</tr>
+	</table>
 </body>
 </html>

@@ -7,7 +7,6 @@
 </head>
 
 <!-- 
-
 	/* 1. 데이터 베이스 생성 */
 	CREATE DATABASE RENTCAR;
 	USE RENTCAR;
@@ -23,7 +22,6 @@
 		IMG VARCHAR(50),
 		INFO VARCHAR(500)
 	);
-
 	/* 3. RENTCAR 테이블에 데이터 삽입 */
 	INSERT INTO RENTCAR VALUES (1, '아반떼', 2,  20000, 4, '현대', 'avante.PNG' , '아반떼 자동차 입니다.');
 	INSERT INTO RENTCAR VALUES (2, '아이오닉', 2,  23000, 4,'현대', 'ioniq.PNG' , '아이오닉 자동차 입니다.');
@@ -45,9 +43,6 @@
 	INSERT INTO RENTCAR VALUES (18, '렉스턴', 3,  42000, 4, '쌍용', 'rexton.PNG' , '렉스턴 자동차 입니다.');
 	INSERT INTO RENTCAR VALUES (19, '티볼리', 1,  24000, 4, '쌍용', 'tivoli.PNG' , '티볼리 자동차 입니다.');
 	INSERT INTO RENTCAR VALUES (20, '코란도', 2,  28000, 4, '쌍용', 'korando.PNG' , '코란도 자동차 입니다.');
-
-
-
 	/* 4. MEMBER 테이블 생성 */
 	CREATE TABLE MEMBER(
 		ID VARCHAR(20),
@@ -59,13 +54,9 @@
 		AGE VARCHAR(10),
 		INFO VARCHAR(500)
 	);
-
-
 	/* 5. 관리자 회원정보 삽입 */
 	INSERT INTO member VALUES('admin', '1234', 'admin@rent.com', '02-1111-9999', '', '', 0, '관리자 아이디');
 	SELECT * FROM MEMBER;
-
-
 	/* 6. 예약정보 테이블 생성*/
 	CREATE TABLE CARRESERVE(
 		RESERVE_SEQ INT,	/*예약된 차량 순서*/
@@ -79,7 +70,6 @@
 		USENAVI INT,
 		USESEAT INT
 	);
-
  -->
 
 <body>
@@ -93,7 +83,7 @@
 				center = "04_center.jsp";	//default center값
 			}
 		%>
-		
+			<a style="color: b"></a>
 		<table>
 			<%-- top(상단_고정) --%>
 			<tr height="120" align="center">
