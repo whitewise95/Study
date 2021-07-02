@@ -42,9 +42,9 @@
 	 			<td>${list.content }</td>
 	 		</tr>
 	 		<tr>
-	 			<td>
+	 			<td colspan="2" align="center">
 	 				<input type="button" value="수정하기" onclick="location.href='_06bUpdate?num=${list.num }'">
-	 				<input type="reset" value="다시쓰지">
+	 				<input type="button" value="삭제하기" onclick="location.href='_08bDelete?num=${list.num }'">
 	 				<input type="button" value="목록보기" onclick="location.href='_04_bList'">
 	 			</td>
 	 		</tr>

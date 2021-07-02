@@ -128,9 +128,69 @@ public class boardDAO {
     	
 		return bd;
     }
+    //패스워드 체크 DAO
+    public boolean  passwordChecked(boardDTO list) {
+    	 boolean isChecked = false;
+     		try {
+ 			conn = getConnection();
+ 			pstmt=conn.prepareStatement("select * from board where num=? and password=?");
+ 			pstmt.setInt(1, list.getNum());
+ 			pstmt.setString(2, list.getPassword());
+ 			rs = pstmt.executeQuery();
+ 			if(rs.next()) {
+ 				 isChecked = true;
+ 			}
+ 			
+ 		} catch (Exception e) {e.printStackTrace();
+ 		}finally {
+ 			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+ 			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+ 			if(conn!=null)try {	conn.close();} catch (SQLException e) {e.printStackTrace();}
+ 		}
+		return isChecked;
+    }
     
     
-	
-	
-	
+    
+    //게시물 업데이트 DAO
+   public boolean  updateBoard(boardDTO list) {
+	   boolean isUpdate = false;
+	   try {
+			if(passwordChecked(list)) { 
+				conn = getConnection();  //conn 주의하자! 패스워드체크DAO에서 conn.close했기에  if문안에 넣어줘야함
+				pstmt=conn.prepareStatement("update board set subject=?, content=? where num=?");
+				pstmt.setString(1, list.getSubject());
+				pstmt.setString(2, list.getContent());
+				pstmt.setInt(3, list.getNum());
+				pstmt.executeUpdate();
+				isUpdate = true;
+			}
+				
+			} catch (Exception e) {e.printStackTrace();
+			}finally {
+				if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+				if(conn!=null)try {	conn.close();} catch (SQLException e) {e.printStackTrace();}
+	  }
+	   return isUpdate;
+   }
+   
+   //게시글을 삭제하는 DAO
+   public boolean  deleteBoard(boardDTO list) {
+	   boolean isDelete = false;
+	   try {
+			if(passwordChecked(list)) { 
+				conn = getConnection();  
+				pstmt=conn.prepareStatement("delete from board where num=?");
+				pstmt.setInt(1, list.getNum());
+				pstmt.executeUpdate();
+				isDelete = true;
+			}
+				
+			} catch (Exception e) {e.printStackTrace();
+			}finally {
+				if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+				if(conn!=null)try {	conn.close();} catch (SQLException e) {e.printStackTrace();}
+	  }
+	   return isDelete;
+   }
 }
