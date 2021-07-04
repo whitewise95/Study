@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<img alt="" src="rentcar02/imgCar/main1.PNG" width="950px" height="650px">
 </body>
 </html>

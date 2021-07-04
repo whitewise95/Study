@@ -11,17 +11,17 @@
 	<table>
 		<tr align="center" >
 			<td align="center">
-				<jsp:include page="02_top.jsp"></jsp:include>
+				<jsp:include page="${pb.top }"></jsp:include>
 			</td>
 		</tr>
 		<tr align="center">
 			<td align="center">
-				<jsp:include page="${center }"></jsp:include>
+				<jsp:include page="${pb.center }"></jsp:include>
 			</td>
 		</tr>
 		<tr align="center">
 			<td align="center">
-				<jsp:include page="04_bottom.jsp"></jsp:include>
+				<jsp:include page="${pb.bottom }"></jsp:include>
 			</td>
 		</tr>
 

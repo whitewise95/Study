@@ -8,16 +8,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import RentcarEx.memberBean;
 import RentcarEx.pageBean;
+import RentcarEx.rentcarDAO;
 
-
-@WebServlet("/main")
-public class _01_main extends HttpServlet {
+/**
+ * Servlet implementation class join
+ */
+@WebServlet("/joinAction")
+public class _03_joinAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
+	 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		reqPro(request, response);
@@ -29,28 +31,25 @@ public class _01_main extends HttpServlet {
 	}
 
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	//${}를 사용하면 incloud가 안되어 헤메었다
-		
-		request.setCharacterEncoding("utf-8");
-		pageBean pb = new pageBean();
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
-		
-		pb.setCenter(request.getParameter("center"));
-		if(pb.getCenter() == null) {
-			pb.setCenter("03_center.jsp");
-		}
-	
-		pb.setTop("02_top.jsp");
-		pb.setBottom("04_bottom.jsp");
-		
-		request.setAttribute("pb", pb);
-		session.setAttribute("id", id);
 
-
+		memberBean mb = new memberBean();
+		mb.setId(request.getParameter("id"));
+		mb.setPw(request.getParameter("pw"));
+		mb.setEmail(request.getParameter("email"));
+		mb.setTel(request.getParameter("tel"));
+		mb.setHobby(request.getParameter("hobby"));
+		mb.setJob(request.getParameter("job"));
+		mb.setAge(request.getParameter("age"));
+		mb.setInfo(request.getParameter("info"));
 		
-		RequestDispatcher dis = request.getRequestDispatcher("rentcar02/01_main.jsp");
+		boolean isJoin = rentcarDAO.getInstance().JoinMember(mb);
+		
+		request.setAttribute("isJoin", isJoin);
+		
+		
+		
+		
+		RequestDispatcher dis = request.getRequestDispatcher("rentcar02/07_memberJoinPro.jsp");
 		dis.forward(request, response);
 	}
 	
