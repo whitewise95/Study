@@ -1,5 +1,4 @@
 package rentCar_;
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -13,9 +12,6 @@ import javax.servlet.http.HttpSession;
 import RentcarEx.memberBean;
 import RentcarEx.rentcarDAO;
 
-/**
- * Servlet implementation class _04_logout
- */
 @WebServlet("/logout")
 public class _04_logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
