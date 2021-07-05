@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import RentcarEx.CarViewBean;
 import RentcarEx.carreserveBean;
 import RentcarEx.pageBean;
 import RentcarEx.rentcarBean;
@@ -42,8 +43,10 @@ public class _11_carReserveView extends HttpServlet {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 	
-		ArrayList<carreserveBean> cbList = rentcarDAO.getInstance().carReserceView(id);
+		ArrayList<CarViewBean> cbList = rentcarDAO.getInstance().carReserceView(id);
 		request.setAttribute("pb", pb);
+		request.setAttribute("cbList", cbList);
+		
 
 		
 		RequestDispatcher dis = request.getRequestDispatcher("rentcar02/14_carReserveView.jsp");

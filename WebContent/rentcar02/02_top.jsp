@@ -50,7 +50,7 @@
 						<a>예약확인</a>
 					</c:when>
 					<c:otherwise>
-						<a href="location.href='carReserveView'">예약확인</a>
+						<a href="carReserveView">예약확인</a>
 					</c:otherwise>
 				</c:choose>
 			</font></td>

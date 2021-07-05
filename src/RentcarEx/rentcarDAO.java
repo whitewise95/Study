@@ -202,14 +202,16 @@ public class rentcarDAO {
 	}
 	
 	//렌트가 대여 리스트 업데이트
-	public int rcaRreserve(carreserveBean cb , int total) {
-		conn = getConnection();
-		int max = 0;
+	public int rcaRreserve(carreserveBean cb ) {
+		int max = 1;
 		try {
+			conn = getConnection();
 			pstmt=conn.prepareStatement("SELECT MAX(RESERVE_SEQ) FROM CARRESERVE ");
 			rs = pstmt.executeQuery();
-			max=rs.getInt(1);
-			pstmt=conn.prepareStatement("insert into carreserve values (?,?,?,?,?,?,?,?,?,?,?)");
+			if(rs.next()) {
+				max=rs.getInt(1)+1;
+			}
+			pstmt=conn.prepareStatement("insert into carreserve values (?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1, max);
 			pstmt.setInt(2, cb.getNo());
 			pstmt.setString(3, cb.getId());
@@ -220,7 +222,6 @@ public class rentcarDAO {
 			pstmt.setInt(8, cb.getUseWifi());
 			pstmt.setInt(9, cb.getUseNavi());
 			pstmt.setInt(10, cb.getUseSeat());
-			pstmt.setInt(11, total);
 			pstmt.executeUpdate();
 		
 		} catch (SQLException e) {e.printStackTrace();
@@ -233,17 +234,29 @@ public class rentcarDAO {
 		return max;
 	}
 	//대여한 리스트 출력 DAO
-	public ArrayList<carreserveBean> carReserceView(String id){
+	public ArrayList<CarViewBean> carReserceView(String id){
 		conn = getConnection();
-		ArrayList<carreserveBean> cbList = new ArrayList<carreserveBean>();
+		ArrayList<CarViewBean> cbList = new ArrayList<CarViewBean>();
+		CarViewBean cb =null;
 		try {
-			pstmt=conn.prepareStatement("SELECT * from CARRESERVE where id=? ");
+			pstmt=conn.prepareStatement("select	* from rentcar R join carreserve C	on C.id=? and R.no = C.no;");
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				carreserveBean cb = new carreserveBean();
-				cb.setId(rs.getNString(columnIndex));
+				cb = new CarViewBean();
+				cb.setId(rs.getString("id"));
+				cb.setDday(rs.getInt("dday"));
+				cb.setName(rs.getString("name"));
+				cb.setImg(rs.getString("img"));
+				cb.setPrice(rs.getInt("price"));
+				cb.setQty(rs.getInt("qty"));
+				cb.setRday(rs.getString("rday"));
+				cb.setUseIn(rs.getInt("usein"));
+				cb.setUseNavi(rs.getInt("usenavi"));
+				cb.setUseSeat(rs.getInt("useseat"));
+				cb.setUseWifi(rs.getInt("usewifi"));
 				
+				cbList.add(cb);
 			}
 		
 
@@ -255,7 +268,27 @@ public class rentcarDAO {
 			
 		}
 		
-		return null;
+		return cbList;
+	}
+	
+	// 대여리스트 삭제 DAO
+	
+	public void carReserceDel(String id, String rday) {
+		try {
+			conn = getConnection();
+			pstmt=conn.prepareStatement("delete from carreserve where id=? and rday=?");
+			pstmt.setString(1, id);
+			pstmt.setString(2, rday);
+			pstmt.executeUpdate();
+	
+		} catch (SQLException e) {e.printStackTrace();
+		} finally {
+			if(rs!=null)try {rs.close();} catch (SQLException e) {e.printStackTrace();}
+			if(pstmt!=null)try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if(conn!=null)try {conn.close();} catch (SQLException e) {e.printStackTrace();}
+			
+		}
+		
 	}
 
 }

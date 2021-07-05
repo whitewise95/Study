@@ -58,11 +58,14 @@ public class _10_carOptionAction extends HttpServlet {
 			cb.setUseNavi(Integer.parseInt(request.getParameter("useNavi")));
 			cb.setId(id);
 			
+			
+			int seq = rentcarDAO.getInstance().rcaRreserve(cb);
+			
 			int carPrice = rb.getPrice() * cb.getQty();
 			int optionPrice = (cb.getUseWifi()*cb.getDday()*10000)+(cb.getUseIn()*cb.getDday()*10000)+(cb.getUseSeat()*cb.getDday()*10000);
 			int total = carPrice+optionPrice;
 			
-			int seq = rentcarDAO.getInstance().rcaRreserve(cb,total);
+			
 			
 			
 		

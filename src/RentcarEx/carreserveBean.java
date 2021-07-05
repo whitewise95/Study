@@ -12,7 +12,6 @@ public class carreserveBean {
 	private int useWifi;
 	private int useNavi;
 	private int useSeat;
-	private int total;
 	
 
 	public int getReserve_seq() {
@@ -75,14 +74,7 @@ public class carreserveBean {
 	public void setUseSeat(int useSeat) {
 		this.useSeat = useSeat;
 	}
-	public int getTotal() {
-		return total;
-	}
-	public void setTotal(int total) {
-		this.total = total;
-	}
 
-	
 
 	
 	

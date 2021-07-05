@@ -57,7 +57,7 @@
 	/* 5. 관리자 회원정보 삽입 */
 	INSERT INTO member VALUES('admin', '1234', 'admin@rent.com', '02-1111-9999', '', '', 0, '관리자 아이디');
 	SELECT * FROM MEMBER;
-	/* 6. 예약정보 테이블 생성*/
+	/* 6. 예약정보 테이블 생성*/]
 	CREATE TABLE CARRESERVE(
 		RESERVE_SEQ INT,	/*예약된 차량 순서*/
 		NO INT,				/*예약된 차량 고유 넘버*/
