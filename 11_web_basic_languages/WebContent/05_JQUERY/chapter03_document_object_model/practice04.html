@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시4</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script >
+	$(document).ready(function(){
+		
+		$("#regBtn").click(function(){
+			if (invalidation()){
+			   clearInputValue();
+			}
+		});
+		
+		function clearInputValue(){
+			$("#userId").val("");
+			$("#username").val("");
+			$("#pwd").val("");
+			$("#repwd").val("");
+			$("#idValid").html("");
+			$("#nameValid").html("");
+		}
+		
+		function invalidation(){
+			
+			if ($("#userId").val() == "") {
+				if ($("#idValid").text() == "") {
+					$("#idValid").html("아이디를 입력하세요");
+				}
+				return false;
+			}
+			
+			if ($("#username:text").val() == ""){
+				if ($("#nameValid").text() == ""){
+					$("#nameValid").html("이름을 입력하세요");
+				}
+				return false;
+			}
+			
+			if($("#pwd").val() !=	$("#repwd").val()) {
+				alert("암호가 일치하지 않습니다.")
+				return false;
+			}
+			
+			alert("회원가입을 축하합니다");
+			return true;
+			
+		}
+	});
+</script>
+</head>
+<body>
+	<div>
+		<span>아이디</span> <input type="text" id="userId" name="userId" />
+		<span id="idValid" ></span>
+	</div>
+	<div>
+		<span>이름</span> <input type="text" id="username" />
+		<span id="nameValid"></span>
+	</div>
+	<div>
+		<span>암호</span> <input type="password" id="pwd" />
+	</div>
+	<div>
+		<span>암호 확인</span> <input type="password" id="repwd" />
+	</div>
+	<input type="button" id="regBtn" value="회원가입" />
+</body>
+</html>
