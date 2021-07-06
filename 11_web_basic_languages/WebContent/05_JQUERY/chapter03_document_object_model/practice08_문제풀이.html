@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시8</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+
+ function changeSearchMethod(k){
+
+	$().ready(function(){
+		
+		if(k=="detail"){
+		
+		$("#category").prop("disabled",false);
+		$("input[id='keyword']").prop("disabled",false);
+		$("input[id='today']").prop("disabled",false);
+		$("input[id='1week']").prop("disabled",false);
+		$("input[id='1month']").prop("disabled",false);
+
+		}
+		if(k=="base"){
+			
+			$("#category").prop("disabled",true);
+			$("input[id='keyword']").prop("disabled",true);
+			$("input[id='today']").prop("disabled",true);
+			$("input[id='1week']").prop("disabled",true);
+			$("input[id='1month']").prop("disabled",true);
+
+		}
+	})
+ }
+
+ 
+
+	</script>
+</head>
+<body>
+
+	<!-- 
+	
+		1) 상세조회의 라디오가 선택되었을때 셀렉트박스 및 버튼 사용가능
+		2) 다시 기본 조회를 보였을때 셀렉트 박스 및 버튼 사용 불가
+		3) 1~2번이 모두 반복적으로 가능하도록
+		
+		스크립트를 작성해보시오.
+	
+	 -->
+	
+	
+	<p>
+		<input type="radio" name="search" value="base" checked onclick="changeSearchMethod('base')"> 기본 조회		<!-- 이 상황에서는 onchange도 같은 동작 -->
+		<input type="radio" name="search" value="detail" onclick="changeSearchMethod('detail')" > 상세 조회
+	</p>
+	<div>
+	<p>
+		<select id="category" disabled>
+			<option>사용자 이름</option>
+			<option>사용자 ID</option>
+			<option>제품명</option>
+		</select>
+		<input type="text" id="keyword"  disabled>&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="button" id="today" value="당일" disabled>
+		<input type="button" id="1week" value="1주" disabled>
+		<input type="button" id="1month" value="1달" disabled>
+	</p>
+	</div>
+	<hr>
+	<p>
+		<input type="button" id="searchButton" value="검색">
+	</p>
+</body>
+</html>

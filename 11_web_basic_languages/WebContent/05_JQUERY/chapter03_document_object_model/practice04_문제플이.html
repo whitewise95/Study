@@ -6,6 +6,7 @@
 <script src="../js/jquery-3.6.0.min.js"></script>
 <script >
 	$().ready(function(){
+		
 		$("#regBtn").click(function(){
 			if(invalidation()){
 				clearInputValue();
@@ -26,18 +27,18 @@
 		function invalidation(){
 			
 			if ($("#userId").val() == ""){
-				if($("#idValid").text == ""){
+				if($("#idValid").text() == ""){
 					$("#idValid").html("아이디를 입력해주세요");
 				}
 				return false;
 			}
 			if ($("#username").val() == ""){
-				if($("#nameValid").text == ""){
+				if($("#nameValid").text() == ""){
 					$("#nameValid").html("이름 입력해주세요");
 				}
 				return false;
 			}
-			if ($("#pwd").val() != $("#repwd").val){
+			if ($("#pwd").val() != $("#repwd").val()){
 				alert("비밀번호를 확인해주세요");
 				return false;	
 			}
@@ -45,8 +46,6 @@
 			alert("회원가입을 축하드립니다.");
 			return true;
 		}
-		
-
 	})
 </script>
 </head>
