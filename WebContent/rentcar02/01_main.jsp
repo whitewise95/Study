@@ -16,7 +16,7 @@
 		</tr>
 		<tr align="center">
 			<td align="center">
-				<jsp:include page="${pb.center }"></jsp:include>
+				<jsp:include page="${pb.center }" ></jsp:include>
 			</td>
 		</tr>
 		<tr align="center">
