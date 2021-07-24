@@ -26,10 +26,15 @@ public class ArrayEx40_문제 {
 		
 		Scanner scan = new Scanner(System.in);
 		
-		int[] scores = null;
+		int[] score = null;
 		int elementCnt = 0;
 		
-		while(true) {
+		while (true) {
+			
+			for (int i=0; i<elementCnt; i++) {
+				System.out.print(score[i] + " ");
+			}
+			System.out.println();
 			
 			System.out.println("[벡터 컨트롤러]");
 			System.out.println("[1]추가");
@@ -41,17 +46,128 @@ public class ArrayEx40_문제 {
 			System.out.print("메뉴 선택 : ");
 			int sel = scan.nextInt();
 			
-			if		(sel == 1) {}
-			else if (sel == 2) {}
-			else if (sel == 3) {}
-			else if (sel == 4) {}
+			if (sel == 1) {
+				if (elementCnt == 0) {
+					score = new int[elementCnt + 1];
+				}
+				else if (elementCnt > 0){
+					int[] temp = score;
+					score = new int[elementCnt + 1];
+					
+					for (int i=0; i<elementCnt; i++) {
+						score[i] = temp[i];
+					}
+					
+					temp = null;
+				}
+				System.out.print("[추가]성적 입력 : ");
+				int data = scan.nextInt();
+				
+				score[elementCnt] = data;
+				elementCnt++;
+			}
+			else if (sel == 2) {
+				System.out.print("[삭제]인덱스 입력 : ");
+				int delIdx = scan.nextInt();
+				
+				if (elementCnt-1 < delIdx || delIdx < 0) {
+					System.out.println("[메세지]해당 위치는 삭제할 수 없습니다.");
+					continue;
+				}
+				
+				if (elementCnt == 1) {
+					score = null;
+				}
+				else if (elementCnt > 1) {
+					int[] temp = score;
+					score = new int[elementCnt - 1];
+					
+					for (int i=0; i<delIdx; i++) {
+						score[i] = temp[i];
+					}
+					for (int i=delIdx; i<elementCnt-1; i++) {
+						score[i] = temp[i + 1];
+					}
+					temp = null;
+				}
+				
+				elementCnt--;
+			}
+			else if (sel == 3) {
+				System.out.print("[삭제]값 입력 : ");
+				int delData = scan.nextInt();
+				
+				int delIdx = -1;
+				for (int i=0; i<elementCnt; i++) {
+					if (score[i] == delData) {
+						delIdx = i;
+					}
+				}
+				
+				if (delIdx == -1) {
+					System.out.println("[메세지]입력하신 값은 존재하지 않습니다.");
+					continue;
+				}
+				
+				if (elementCnt == 1) {
+					score = null;
+				}
+				else if (elementCnt > 1) {
+					int[] temp = score;
+					score = new int[elementCnt - 1];
+					
+					int j = 0;
+					for (int i=0; i<elementCnt; i++) {
+						if (i != delIdx) {
+							score[j++] = temp[i];
+						}
+					}
+					
+					temp = null;
+				}
+				
+				elementCnt--;				
+			}
+			else if (sel == 4) {
+				System.out.print("[삽입]인덱스 입력 : ");
+				int insertIdx = scan.nextInt();
+				
+				if (elementCnt < insertIdx || insertIdx < 0) {
+					System.out.println("[메세지]해당 위치는 삽입할 수 없습니다.");
+					continue;
+				}
+				
+				System.out.print("[삽입]값 입력 : ");
+				int insertData = scan.nextInt();
+				
+				if (elementCnt == 0) {
+					score = new int[elementCnt + 1];
+				}
+				else if (elementCnt > 0) {
+					int[] temp = score;
+					score = new int[elementCnt + 1];
+					
+					int j = 0;
+					
+					for (int i=0; i<elementCnt + 1; i++) {
+						if (i != insertIdx) {
+							score[i] = temp[j++];
+						}
+					}
+					temp = null;
+				}
+				
+				score[insertIdx] = insertData;
+				elementCnt++;
+			}
 			else if (sel == 0) {
 				break;
 			}
 		}
 
-
+		scan.close();
 
 	}
+
 
 }

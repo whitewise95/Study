@@ -1,5 +1,7 @@
 package step3_01.arrayAdvance;
 
+import java.util.Random;
+import java.util.Scanner;
 
 /*
  * # 숫자 야구 게임
@@ -24,10 +26,59 @@ public class ArrayEx29_문제 {
 
 	public static void main(String[] args) {
 		
+		Scanner scan = new Scanner(System.in);
+
 		int[] com = {1,7,3};
-		int[] me  = new int[3];
+		int[] me = new int[3];
 		
+		int getNum = 0;
+		int check = 0;
+		
+		while ( true ) {
+			
+			int strike = 0;
+			int ball = 0;
+			
+			for (int i=0; i<3; i++) {
+				
+				System.out.print("[" + (i+1)+"] 1~9 입력 : ");
+				getNum = scan.nextInt();
+				
+				check = 1;
+				for (int j=0; j<i; j++) {
+					if (getNum == me[j]) 
+						check = -1;
+				}
+				
+				if (check == -1) 	i--;
+				else 				me[i] = getNum;
+			
+			}
+			
+			System.out.print("me = [ ");
+			for (int i=0; i<3; i++) {
+				System.out.print(me[i] + " ");
+			}
+			System.out.print("] ");
+			
+			for (int i=0;i<3;i++) {
+				for (int j=0; j<3; j++) {
+					if (com[i] == me[j]) {
+						if     (i == j) 	strike++;
+						else if(i != j) 	ball++;
+					}
+				}
+			}
+				
+			System.out.println(strike + "," + ball);
+			if (strike == 3) 
+				break;
+			
+		}
+		
+		scan.close();
 		
 	}
+	
 	
 }

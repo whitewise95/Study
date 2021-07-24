@@ -18,8 +18,40 @@ public class ArrayEx31_문제 {
 
 	public static void main(String[] args) {
 		
-		int[] scores = {10, 50, 30, 40, 80, 7};
-
+	
+		int[] temp = new int[5];
+		int cnt =0;
+		
+		while(cnt<3) {
+			int[] scores = {10, 50, 30, 40, 80, 7};
+			int i =0;
+			int index =0;
+			while(i<5){
+				int max =0;
+				for (int j = 0; j < 5; j++) {
+					if(max < scores[j]) {
+						max = scores[j];
+						
+					}
+				}
+				temp[index] = max;
+				index++;
+				i++;
+				for (int j = 0; j < scores.length; j++) {
+					if(max==scores[j]) {
+						scores[j] = 0;
+					}
+				}
+			}
+			cnt++;
+		
+		}
+		for (int i = 0; i < temp.length; i++) {
+			System.out.println(temp[i]+",");
+		}
+		
+		
+		
 	}
 
 }

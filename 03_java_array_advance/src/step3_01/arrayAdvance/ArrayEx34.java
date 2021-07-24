@@ -38,6 +38,7 @@ public class ArrayEx34 {
 		int[] temp2   = arr[0];		// 2차원 배열의 1행의 주소
 		int temp3 	  = arr[0][0];  // 2차원 배열의 값
 		
+		
 		for (int i=0; i<temp2.length; i++) {
 			System.out.print(temp2[i] + " ");
 		}
