@@ -24,10 +24,6 @@ public class ArrayEx05_문제 {
 		if(number == 3) System.out.println(arr[3]);
 		if(number == 4) System.out.println(arr[4]);
 		
-		
-	
-		
-		
 		// 문제2) 성적을 입력받아 인덱스 출력
 		// 정답2) 성적 입력 : 11		인덱스 : 1
 		
@@ -38,11 +34,6 @@ public class ArrayEx05_문제 {
 				System.out.println("인덱스"+i);
 			}
 		}
-		
-		
-		
-		
-		
 		
 		
 		
@@ -60,18 +51,6 @@ public class ArrayEx05_문제 {
 	    		
 	    	}
 	    }
-		
-		
-		
-		
-		
-	    
-		
-		
-		
-		
-		
-		
 		
 
 	}

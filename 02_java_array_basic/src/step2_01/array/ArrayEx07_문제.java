@@ -27,15 +27,6 @@ public class ArrayEx07_문제 {
 		}
 		System.out.println(iHak+"번"+"("+temp+"점)" );
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 	
 }

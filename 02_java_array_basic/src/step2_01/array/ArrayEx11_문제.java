@@ -33,39 +33,20 @@ public class ArrayEx11_문제 {
 			int idx          = 0;
 			int cnt =0;
 		
+		while(idx<5) {
+			getRandomInt = ran.nextInt(5);
 			
-			
-			
-			while(true) {
-					int num = ran.nextInt(5);
-					if(check[num]==false ) {
-						 ++idx;
-						check[num]=true;
-						arr[idx-1]=num;
-						cnt++;
-					}
-					else if(cnt==5) {
-						System.out.println(arr[0]);
-						System.out.println(arr[1]);
-						System.out.println(arr[2]);
-						System.out.println(arr[3]);
-						System.out.println(arr[4]);
-						System.out.println("======================");
-						break;
-					}	
-						
-					
-						
-		
+			if(check[getRandomInt] == false) {
+				check[getRandomInt] = true;
+				arr[idx] = getRandomInt;
+				idx++;
 			}
+		}
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i]+",");
 			
-			
-			
-			
-			
-			
-	
-			
+		}	
+		System.out.println();
 			
 				
 	}
