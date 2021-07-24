@@ -35,6 +35,8 @@ class LinkedQueue implements Queue{ // 왜 주소가 같은가?
 			rear = newNode;
 		}
 		else {
+			System.out.println("front.link : "+front.link);
+			System.out.println("rear.link : "+rear.link);
 			rear.link = newNode;			
 			rear = newNode;			
 		}
