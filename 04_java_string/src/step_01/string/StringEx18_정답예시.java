@@ -1,4 +1,4 @@
-package step4_01.string;
+package step_01.string;
 
 import java.util.Random;
 import java.util.Scanner;

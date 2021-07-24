@@ -1,4 +1,4 @@
-package step4_01.string;
+package step_01.string;
 
 import java.util.Scanner;
 
@@ -51,7 +51,7 @@ public class StringEx17_문제 {
 			System.out.println("변경할 단어를 입력해주세요");
 			String change =scan.next();
 			char[] cChange = new char[change.length()];
-			char[] temp = new char[Text.sub]
+			char[] temp = new char[Text.sub];
 			for (int i = 0; i < cChange.length; i++) {
 				cChange[i]=change.charAt(i);
 				

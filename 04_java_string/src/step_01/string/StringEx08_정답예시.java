@@ -1,4 +1,4 @@
-package step4_01.string;
+package step_01.string;
 
 public class StringEx08_정답예시 {
 

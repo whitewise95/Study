@@ -1,4 +1,4 @@
-package step4_01.string;
+package step_01.string;
 
 
 //문제) moneyData 와 nameData 를 조합해서 userData를 아래와같이 만들어보세요
