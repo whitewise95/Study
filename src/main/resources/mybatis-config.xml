@@ -25,7 +25,11 @@
 	 -->
 	<typeAliases>
 		<typeAlias type="com.spring.mvc2.data_transfer.domain.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.spring.mvc2.data_transfer.domain.OrderDTO" alias="OrderDTO"/>
 	</typeAliases>
+	
+	
+	
 
 
 </configuration>

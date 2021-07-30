@@ -1,9 +1,16 @@
 package com.spring.mvc2.data_transfer.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.mvc2.data_transfer.dao.MemberDAO;
@@ -59,7 +66,13 @@ public class ControllerToView {
 	
 	
 	// 예시 3) httpServeletRequest 인터페이스 이용
-	
+	@RequestMapping(value = "/list3")
+	public String list3(HttpServletRequest request) {
+		request.setAttribute("form", "list3");
+		request.setAttribute("memberList", memberDAO.selectAllMember());
+		
+		return "member/memberList";
+	}
 	/*
 	  
 	 	# 예시 4) ResponseEntity 이용 
@@ -76,8 +89,31 @@ public class ControllerToView {
 		3. status code
 		- 클라이언트의 요청이 성공적으로 처리되었는지 상태를 알려주는 것
 		- 상태 코드는 필수적으로 리턴해주어야 한다.
-
 	 */
+	
+	@RequestMapping(value="/test1")
+	public ResponseEntity<Object> test1(){
+		//1) 상태코드 전송
+		//return new ResponseEntity<Object>(HttpStatus.OK);
+		
+		//2) html 본문과 함께 전송
+//		return new ResponseEntity<Object>("<h1>html page </h1>", HttpStatus.OK);
+		
+		
+		//3) html 본문과 헤더와 함께 전송
+//		return new ResponseEntity<Object>("<h1>html page </h1>",new HttpHeaders(), HttpStatus.OK);
+		
+		//3) html 본문과 헤더와 함께 전송
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
+		String data = "<h1>html페이지를 반환합니다.</h1>";
+		
+		return new ResponseEntity<Object>(data,responseHeaders, HttpStatus.OK);
+		
+	}
+	
 	
 	/*
 	  
@@ -86,6 +122,47 @@ public class ControllerToView {
 	 	- ResponseBody와 기능이 같으며 헤더와 상태 코드를 제외한 html 본문만 전송한다.
 	 	- 한글 데이터가 전송이 되지 않으며 한글 전송시 ResponseEntity의 객체의 
 	 	  객체명.add("Content-Type", "text/html; charset=utf-8") 메서드를 이용하여 헤더 정보를 추가하여 사용한다.
- 
+
 	 */	
+	@RequestMapping(value = "/test2")
+	public @ResponseBody String test2(HttpServletRequest request) {
+		
+		String message = "<script>";
+		message +=           "alert('message');";
+		message += 		     "location.href='"+ request.getContextPath() +"/cTOv/list1'";
+		message +=        "</script>";
+		
+		return message;
+		
+	}
+		
+}	
+	/*
+
+	# 예시 6) RestController 이용 
+	
+	- ResponseBody와 기능이 같으며 헤더와 상태 코드를 제외한 html 본문만 전송한다.
+	- 클래스에 @RestController어노테이션을 작성하여 구현한다. 
+
+*/
+@RestController
+class RequestControllerEx{
+	
+	@RequestMapping(value = "/test3")
+	public String test3(HttpServletRequest request) {
+		
+		String message = "<script>";
+		message +=           "alert('message');";
+		message += 		     "location.href='"+ request.getContextPath() +"/cTOv/list1'";
+		message +=        "</script>";
+		
+		return message;
+		
+	}
+	
+	
 }
+
+
+
+

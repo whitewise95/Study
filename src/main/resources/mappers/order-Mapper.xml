@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order">
+
+	<select id="selectAll" resultType="OrderDTO">
+	
+		SELECT
+				*
+		FROM
+				T_ORDER_LIST
+	
+	
+	</select>
+	
+	<!-- 단일 데이터 전송 시 -->
+	
+	<select id="select1" resultType="int">
+		SELECT
+				COUNT(*)
+		FROM
+				T_ORDER_LIST
+	</select>
+	
+	<!--  
+	
+		  <![CDATA[]]> 는 SQL 내부에 연산자가 있을 경우 사용한다. ( '>' '<' 연산자가 태그와 혼동되기 때문 )
+		
+		 	- 쿼리 내부에 연산자가 없어도 코드의 통일성을 주기 위해 <![CDATA[]]>를 사용하기도 한다. 
+			
+		-->
+	
+	<select id="select2" resultType="OrderDTO">
+		SELECT
+				*
+		FROM
+				T_ORDER_LIST
+		WHERE
+				TOTAL_PRICE > 50000
+	</select>
+	
+	<resultMap type="map" id="orderInfo">
+		<result column="Member_ID" property="memberId"/>
+		<result column="ORDER_ID" property="orderId"/>
+		<result column="PRODUCT_NAME" property="productName"/>
+		<result column="TOTAL_PRICE" property="totalPrice"/>
+		<result column="TAX" property="tax"/>
+		<result column="AFTER_TAX" property="afterTax"/>
+		<result column="NAME" property="name"/>
+		<result column="EMAIL" property="email"/>
+		<result column="HP" property="hp"/>
+	</resultMap>
+	
+	
+<!-- resultMap 전송 예시 -->
+	<select id="select3" resultMap="orderInfo">
+		SELECT
+				O.MEMBER_ID												as MEMBER_ID,  
+				O.ORDER_ID                                              as ORDER_ID,
+				O.PRODUCT_NAME                                          as PRODUCT_NAME,
+				O.TOTAL_PRICE                                           as TOTAL_PRICE,
+				O.TOTAL_PRICE * 0.1										as TAX,
+				O.TOTAL_PRICE + (O.TOTAL_PRICE * 0.1)					as AFTER_TAX,
+				M.NAME													as NAME,
+				M.EMAIL													as EMAIL,
+				CONCAT(M.HP1 , "-" , M.HP2 , "-" , M.HP3)				as HP
+		FROM
+				T_ORDER_LIST O,
+				T_MEMBER M
+		WHERE
+				O.MEMBER_ID = M.ID AND M.ID = "user1"
+	</select>
+	
+	
+<!-- resultMap 전송 예시 -->
+	<select id="select4" resultType="map">
+		SELECT
+				O.MEMBER_ID												as memberId,  
+				O.ORDER_ID                                              as orderId,
+				O.PRODUCT_NAME                                          as productName,
+				O.TOTAL_PRICE                                           as totalPrice,
+				O.TOTAL_PRICE * 0.1										as tax,
+				O.TOTAL_PRICE + (O.TOTAL_PRICE * 0.1)					as afterTax,
+				M.NAME													as name,
+				M.EMAIL													as email,
+				CONCAT(M.HP1 , "-" , M.HP2 , "-" , M.HP3)				as hp
+		FROM
+				T_ORDER_LIST O,
+				T_MEMBER M
+		WHERE
+				O.MEMBER_ID = M.ID AND M.ID = "user1"
+	</select>
+<!-- 		
+		
+		  	${값}  , #{값}
+		
+			- 전달 받은 데이터를 쿼리문에서 ${값}  , #{값}과 같은 형태로 사용된다.
+			- 주로 #{값} 형태(preparedStatement)를 사용하며 이 형태를 권장한다.
+			- 대소문자를 구분한다.
+		-->
+<!--  
+			
+				 동적 쿼리문
+			
+			
+				- JSTL과 같이 <if> <when> <otherwise>를 사용하여 쿼리를 동적으로 사용할 수 있다. 
+				
+				- '' , "" 모두 사용 가능하다.  	
+					예시) 
+						<when test = '조건식'>
+						<when test = "조건식" > 
+				
+				- (자주 실수하는 부분1) 조건식에서 연산자 사용시 && || 대신에 and , or 를 사용해야 한다.
+				- (자주 실수하는 부분2) JSTL과 구문이 굉장히 비슷하여 JSTL형태로 Mybatis에서 작성하는 경우
+					
+					예시)
+						       			 JSTL				    MyBatis 
+					표기법 		:    	${}				/	     #{}
+					if    		:  		<c:if>			/		 <if>
+					choose		:  		<c:choose>  	/	   <choose>
+					when		: 		<c:when>	 	/ 		 <when>
+					otherwise 	: 		<c:otherwise> 	/ 	   <otherwise>		
+					foreach		:		<c:forEach>		/	 	<foreach>
+			-->
+
+	<insert id="insertOneData" parameterType="String">
+		INSERT INTO	T_ORDER_LIST (
+					PRODUCT_CODE,
+					PRODUCT_NAME)
+		VALUES	 (
+					<choose>
+						<when test="productName.equals('기계식키보드')">
+							"0x001"
+						</when>
+						<when test="productName.equals('무소음마우스')">
+							"0x002"
+						</when>
+						<when test="productName.equals('장패드')">
+							"0x003"
+						</when>
+						<otherwise>
+							"없음"											
+						</otherwise>
+					</choose>
+					,
+					#{productName} )
+		
+	
+	</insert>
+	 	<insert id="insertDTO" parameterType="OrderDTO">
+ 		INSERT INTO T_ORDER_LIST (
+ 						MEMBER_ID,
+ 						PRODUCT_CODE,
+ 						PRODUCT_NAME
+ 						)
+ 		VALUES (
+ 				#{memberId},
+ 				#{productCode},
+ 				#{productName})
+ 	</insert>
+ 	<insert id="insertMap" parameterType="map">
+ 		INSERT INTO T_ORDER_LIST (
+ 						MEMBER_ID,
+ 						PRODUCT_CODE,
+ 						PRODUCT_NAME
+ 						)
+ 		VALUES (
+ 				#{memberId},
+ 				#{productCode},
+ 				#{productName})
+ 	</insert>
+	
+	
+</mapper>
