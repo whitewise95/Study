@@ -39,7 +39,7 @@ public class BoardDAO {
 		return conn;
 		
 	}
-	
+
 	// [페이징 테스트용] 데이터 생성 DAO
 	public void setDummy() {
 		
