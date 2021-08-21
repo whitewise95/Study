@@ -29,10 +29,24 @@
 				</td>
 				<td><h2><a href="${contextPath}/goods/goodsDetail.do?goodsId=${item.goodsId }">${item.goodsTitle }</a></h2></td>
 				<td><h2>${item.orderGoodsQty }개</h2></td>
-				<td><h2>${item.orderGoodsQty *item.goodsSalesPrice}원 (10% 할인)</h2></td>
+				<c:choose>
+					<c:when test="${item.bagOrder eq 'mybag'}">
+						<td><h2>${item.goodsSalesPrice}원</h2></td>
+					</c:when>
+					<c:otherwise>
+					<td><h2>${item.orderGoodsQty *item.goodsSalesPrice}원</h2></td>
+					</c:otherwise>
+				</c:choose>
 				<td><h2>0원</h2></td>
-				<td><h2>${1500 *item.orderGoodsQty }원</h2></td>
-				<td><h2>${item.orderGoodsQty *item.goodsSalesPrice}원</h2></td>
+				<td><h2>${0 *item.orderGoodsQty }원</h2></td>
+				<c:choose>
+					<c:when test="${item.bagOrder eq 'mybag'}">
+						<td><h2>${item.goodsSalesPrice}원</h2>
+					</c:when>
+					<c:otherwise>
+					<td><h2>${item.orderGoodsQty *item.goodsSalesPrice}원</h2></td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
 			</c:forEach>
 		</tbody>
@@ -125,5 +139,5 @@
 	<a href="${contextPath}/main/main.do"> 
 	   <img width="75" alt="" src="${contextPath}/resources/image/btn_shoping_continue.jpg">
 	</a>
-<div class="clear"></div>		
+<div class="clear"></div>
 			

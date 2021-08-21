@@ -37,6 +37,7 @@ public class OrderDTO {
 	private int goodsQty;
 	private String goodsFileName;
 	private String ordererHp;
+	private String bagOrder;
 	
 	public int getOrderSeqNum() {
 		return orderSeqNum;
@@ -219,6 +220,13 @@ public class OrderDTO {
 	public void setOrdererHp(String ordererHp) {
 		this.ordererHp = ordererHp;
 	}
+	public String getBagOrder() {
+		return bagOrder;
+	}
+	public void setBagOrder(String bagOrder) {
+		this.bagOrder = bagOrder;
+	}
+	
 	
 	
 

@@ -69,6 +69,8 @@ public class OrderController {
 		
 	}
 	
+
+	
 	
 	@RequestMapping(value="/payToOrderGoods.do")
 	public ModelAndView payToOrderGoods(@RequestParam Map<String, String> receiverMap , HttpServletRequest request) throws Exception{
@@ -111,9 +113,10 @@ public class OrderController {
 			orderDTO.setPayOrdererHpNum(receiverMap.get("payOrdererHpNum"));	
 			orderDTO.setOrdererHp(ordererHp);	
 			myOrderList.set(i, orderDTO); 
+		    orderService.addNewOrder(myOrderList);
 		}
 		
-	    orderService.addNewOrder(myOrderList);
+
 		mv.addObject("myOrderInfo",receiverMap);
 		mv.addObject("myOrderList", myOrderList);
 		

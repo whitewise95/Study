@@ -21,21 +21,33 @@
 			<tr>
 			    <td> ${item.orderId}</td>
 			    <td> <fmt:formatDate value="${item.payOrderTime}" pattern="yyyy-MM-dd"/></td>
-				<td class="goods_image">
-				  <a href="${contextPath}/goods/goodsDetail.do?goodsId=${item.goodsId }">
-				    <img width="50px" alt="img"  src="${contextPath}/thumbnails.do?goodsId=${item.goodsId}&fileName=${item.goodsFileName}">
-				  </a>
 				</td>
-				<td>
+				<td colspan=2 class="fixed">
 				  <h2>
 				     <a href="${contextPath}/goods/goodsDetail.do?goodsId=${item.goodsId }">${item.goodsTitle }</a>
 				  </h2>
 				</td>
-				<td><h2>${item.orderGoodsQty }개</h2></td>
-				<td><h2>${item.orderGoodsQty *item.goodsSalesPrice}원 (10% 할인)</h2></td>
+				<td>
+					<h2>${item.orderGoodsQty}</h2>
+				</td>
+				<c:choose>
+					<c:when test="${item.bagOrder eq 'mybag'}">
+						<td><h2>${item.goodsSalesPrice}원</h2>
+					</c:when>
+				<c:otherwise>
+					<td><h2>${item.orderGoodsQty *item.goodsSalesPrice}원</h2></td>
+					</c:otherwise>
+				</c:choose>
 				<td><h2>0원</h2></td>
-				<td><h2>${1500 * item.orderGoodsQty }원</h2></td>
-				<td><h2>${item.orderGoodsQty *item.goodsSalesPrice}원</h2></td>
+				<td><h2>${0 * item.orderGoodsQty }원</h2></td>
+				<c:choose>
+					<c:when test="${item.bagOrder eq 'mybag'}">
+						<td><h2>${item.goodsSalesPrice}원</h2>
+					</c:when>
+					<c:otherwise>
+					<td><h2>${item.orderGoodsQty *item.goodsSalesPrice}원</h2></td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
 			</c:forEach>
 		</tbody>

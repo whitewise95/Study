@@ -60,7 +60,7 @@ public class AdminGoodsController {
 	@Autowired
 	private CommonUtil commonUtil;
 	
-	@RequestMapping(value="/adminGoodsMain.do")
+	@RequestMapping(value="/adminGoodsMain.do") // 상품조회 컨트롤러
 	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap , HttpServletRequest request)  throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
@@ -109,7 +109,7 @@ public class AdminGoodsController {
 	}
 
 	
-	@RequestMapping(value="/addNewGoodsForm.do")
+	@RequestMapping(value="/addNewGoodsForm.do") // 
 	public String addNewGoodsForm() {
 		return "/admin/goods/addNewGoodsForm";
 	}
@@ -181,7 +181,7 @@ public class AdminGoodsController {
 	}
 	
 	
-	@RequestMapping(value="/modifyGoodsForm.do")
+	@RequestMapping(value="/modifyGoodsForm.do")   //상품정보수정
 	public ModelAndView modifyGoodsForm(@RequestParam("goodsId") int goodsId)  throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
@@ -193,7 +193,7 @@ public class AdminGoodsController {
 	}
 	
 	
-	@RequestMapping(value="/modifyGoodsInfo.do" , method=RequestMethod.POST)
+	@RequestMapping(value="/modifyGoodsInfo.do" , method=RequestMethod.POST)  // 
 	public ResponseEntity<String> modifyGoodsInfo(@RequestParam("goodsId") String goodsId,
 			                     		     @RequestParam("attribute") String attribute,
 			                     		     @RequestParam("value") String value)  throws Exception {

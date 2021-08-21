@@ -78,6 +78,31 @@
 	    formObj.submit();
 	    
 	}	
+	function submit(goodsId) {
+		
+		var orderGoodsQty = document.getElementById("orderGoodsQty");
+
+		var formObj	            = document.createElement("form");
+		var i_goods_id          = document.createElement("input"); 
+
+	    var i_order_goods_qty   = document.createElement("input");
+	    
+	    i_goods_id.name          = "goodsId";
+	    i_order_goods_qty.name   = "orderGoodsQty";
+	    
+	    i_goods_id.value          = goodsId;
+	    i_order_goods_qty.value   = orderGoodsQty.value;
+
+	    
+	    formObj.appendChild(i_goods_id);
+	    formObj.appendChild(i_order_goods_qty);
+	
+	    document.body.appendChild(formObj); 
+	    formObj.method="post";
+	    formObj.action="${contextPath}/mybag/myBagPage.do";
+	    formObj.submit();
+     }
+
 </script>
 </head>
 <body>
@@ -150,12 +175,12 @@
 				<tr>
 					<td class="fixed">수량</td>
 					<td class="fixed">
-				      <select style="width: 60px;" id="orderGoodsQty">
-					  	<option>1</option>
-					  	<option>2</option>
-					  	<option>3</option>
-					  	<option>4</option>
-					  	<option>5</option>
+				      <select style="width: 60px;" id="orderGoodsQty" name="orderGoodsQty">
+					  	<option value="1">1</option>
+					  	<option value="2">2</option>
+					  	<option value="3">3</option>
+					  	<option value="4">4</option>
+					  	<option value="5">5</option>
 				     </select>
 					 </td>
 				</tr>
@@ -163,6 +188,7 @@
 		</table>
 		<ul>
 			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goodsId}','${goods.goodsTitle}','${goods.goodsSalesPrice}','${goods.goodsFileName}');">구매하기 </a></li>
+			<li><a id="mybag" class="buy" href="javascript:submit('${goods.goodsId }')">장바구니 </a></li>
 		</ul>
 	</div>
 	<div class="clear"></div>
@@ -174,7 +200,7 @@
 			<li><a href="#tab4">출판사서평</a></li>
 			<li><a href="#tab5">추천사</a></li>
 		</ul>
-		<div class="tab_container">
+		<div class="tab_container">s
 			<div class="tab_content" id="tab1">
 				<h4>책소개</h4>
 				<p>${goods.goodsIntro}</p>

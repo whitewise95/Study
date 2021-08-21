@@ -31,6 +31,8 @@ public class MemberDTO {
 	private String namujiAddress;
 	private Date joinDate;
 	private String delYn;
+	private String mybagCount;
+	
 	public String getMemberId() {
 		return memberId;
 	}
@@ -175,6 +177,13 @@ public class MemberDTO {
 	public void setDelYn(String delYn) {
 		this.delYn = delYn;
 	}
+	public String getMybagCount() {
+		return mybagCount;
+	}
+	public void setMybagCount(String mybagCount) {
+		this.mybagCount = mybagCount;
+	}
+	
 	
 	
 }

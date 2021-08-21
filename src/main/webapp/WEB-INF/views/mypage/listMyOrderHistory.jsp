@@ -182,7 +182,14 @@
 				   <strong>
 				      <c:forEach var="item2" items="${myOrderHistList}" varStatus="j">
 				          <c:if  test="${item.orderId ==item2.orderId}" >
-				             ${item.goodsSalesPrice * item.orderGoodsQty }원 &emsp;/ &emsp; ${item.orderGoodsQty }(개)<br>
+				  <c:choose>
+					<c:when test="${item2.bagOrder eq 'mybag'}">
+						<td><h2>${item2.goodsSalesPrice}원</h2> &emsp;/ &emsp; ${item2.orderGoodsQty }(개)<br>
+					</c:when>
+					<c:otherwise>
+					<td><h2>${item2.orderGoodsQty *item2.goodsSalesPrice}원</h2> &emsp;/ &emsp; ${item2.orderGoodsQty }(개)<br></td>
+					</c:otherwise>
+				</c:choose>
 				         </c:if>   
 					 </c:forEach>
 				   </strong>

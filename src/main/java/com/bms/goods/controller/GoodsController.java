@@ -23,7 +23,6 @@ public class GoodsController {
 	public ModelAndView goodsDetail(@RequestParam("goodsId") String goodsId) throws Exception {
 		
 		Map<String,Object> goodsMap = goodsService.goodsDetail(goodsId);
-		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/goods/goodsDetail");
 		mv.addObject("goodsMap", goodsMap);

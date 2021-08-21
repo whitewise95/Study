@@ -62,6 +62,8 @@ public class MemberController {
 		return mv;
 		
 	}
+
+	
 	
 	
 	@RequestMapping(value="/logout.do" , method = RequestMethod.GET)

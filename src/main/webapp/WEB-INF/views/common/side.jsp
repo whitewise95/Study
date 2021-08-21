@@ -30,11 +30,21 @@
 	</c:when>
 	<c:otherwise>
 		<li>
-			<h3>목록 보기</h3>
+			<h3>추천 도서</h3>
 			<ul>
 				<li><a href="${contextPath}/main/main.do">베스트셀러</a></li>
 				<li><a href="${contextPath}/main/main.do">스테디셀러</a></li>
 				<li><a href="${contextPath}/main/main.do">신간</a></li>
+			</ul>
+			<h3>분야 보기</h3>
+			<ul>
+				<li><a href="${contextPath}/main/main.do">소설</a></li>
+				<li><a href="${contextPath}/main/main.do">자기계발서</a></li>
+				<li><a href="${contextPath}/main/main.do">컴퓨터와 인터넷</a></li>
+				<li><a href="${contextPath}/main/main.do">디지털기기</a></li>
+				<li><a href="${contextPath}/main/main.do">만화</a></li>
+				<li><a href="${contextPath}/main/main.do">잡지</a></li>
+				<li><a href="${contextPath}/main/main.do">외국어</a></li>
 			</ul>
 		</li>
 		<br><br><br>
