@@ -8,7 +8,7 @@ class LinkedList{
 		head = null;
 	}
 	
-	
+	//중간에 데이터를 끼어넣는 메소드 
 	public void insertMiddleNode(ListNode pre, String data){       
 		ListNode newNode = new ListNode(data);
 		newNode.link = pre.link;
@@ -16,6 +16,7 @@ class LinkedList{
 	}
 	
 	
+	//마지막에 데이터를 끼어넣는 메소드 
 	public void insertLastNode(String data){
 		
 		ListNode newNode = new ListNode(data);
@@ -30,7 +31,7 @@ class LinkedList{
 			temp.link = newNode;
 		}
 	}
-
+// 데이터를 삭제하는 메소드
 	public void deleteLastNode(){
 		ListNode pre, temp;
 		if(head == null)  return;
@@ -48,7 +49,7 @@ class LinkedList{
 		}
 	}
 	
-	
+ 
 	public ListNode searchNode(String data){
 		ListNode temp = this.head;
 		while(temp != null){
