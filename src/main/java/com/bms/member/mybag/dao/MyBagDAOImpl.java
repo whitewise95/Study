@@ -56,11 +56,11 @@ public class MyBagDAOImpl implements MyBagDAO {
 		
 	}
 
-	@Override
-	public void insertOrder(Map<Object, Object> orderInfo) throws Exception {
-		sqlSession.insert("mapper.mybag.InsertOrder",orderInfo);
-		
-	}
+//	@Override
+//	public void insertOrder(Map<Object, Object> orderInfo) throws Exception {
+//		sqlSession.insert("mapper.mybag.InsertOrder",orderInfo);
+//		
+//	}
 
 	@Override
 	public GoodsDTO selectGoodsPro(int goodsId) throws Exception {

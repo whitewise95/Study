@@ -16,7 +16,7 @@ public interface MyBagService {
 	public int totalQTY(String memberId)throws Exception; 
 	public void deleteMyBag(Map<Object, Object> deleteInfo)throws Exception;
 	public void chageBagGoodsQty(Map<Object, Object> chageInfo)throws Exception;
-	public void finallyOrder(Map<Object, Object> orderInfo)throws Exception;
+//	public void finallyOrder(Map<Object, Object> orderInfo)throws Exception;
 	public GoodsDTO selectGoodsPro(int goodsId)throws Exception;
 	public void addNewOrder(List<OrderDTO> myOrderList)throws Exception;
 	public int selectCount(String memberId)throws Exception; 

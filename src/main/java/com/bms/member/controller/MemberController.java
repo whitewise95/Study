@@ -1,5 +1,8 @@
 package com.bms.member.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -130,6 +133,67 @@ public class MemberController {
 	@RequestMapping(value="/memberForm.do" , method = RequestMethod.GET)
 	public ModelAndView memberForm() throws Exception {
 		return new ModelAndView("/member/memberForm");
+	}
+	
+	
+	@RequestMapping(value="/findIdAndPw.do", method = RequestMethod.GET)
+	public ModelAndView findIdAndPw(@RequestParam("whatFind")String whatFind) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/findIdAndPw");
+		mv.addObject("whatFind",whatFind);
+		
+		return mv;
+	}
+	@RequestMapping(value="/findIdAndPw.do", method = RequestMethod.POST)
+	public ModelAndView findIdAndPwPro(@RequestParam("whatFind")String whatFind,
+									   @ModelAttribute("memberDTO") MemberDTO memberDTO) throws Exception {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/knowIdAndPw");
+		List<MemberDTO> memberId;
+		String memberId2;
+		if(whatFind.equals("id")) {
+			 memberId= memberService.FindId(memberDTO);
+			 int size = memberId.size();
+			 if(size >= 1) {
+				 memberId2 = memberId.get(0).getMemberId();
+					if(memberId != null) {
+						mv.addObject("memberId",memberId );
+						whatFind = "knowId";
+						mv.addObject("whatFind",whatFind);
+					}
+			 }
+		}
+		else if(whatFind.equals("pw")){
+			System.out.println(memberDTO.getMemberId());
+			if(memberService.FindPw(memberDTO)) {
+				memberId2 = memberDTO.getMemberId();
+				whatFind = "knowPw";
+				mv.addObject("whatFind",whatFind);
+				mv.addObject("memberId",memberId2);
+		
+			}
+		}
+		else {
+			mv.addObject("whatFind",whatFind);
+		}
+		System.out.println(whatFind);
+		
+		
+		return mv;
+	}
+	@RequestMapping(value="/passwordChage.do" ,method = RequestMethod.POST)
+	public String passWordChage(@RequestParam("memberPw")String memberPw ,
+								@RequestParam("memberId")String memberId)throws Exception {
+		
+		Map<Object, Object> ListInfo = new HashMap<Object, Object>();
+		ListInfo.put("memberPw", passwordEncoder.encode(memberPw));
+		ListInfo.put("memberId", memberId);
+		
+		memberService.passwordChage(ListInfo);
+		
+		return "/member/login";
+		
 	}
 	
 

@@ -177,7 +177,7 @@ public class MyBagController {
 
 			String goodsTitle = receiverMap.get("goodsTitle");
 			if(cnt >1) {
-			goodsTitle +=( "외"+" "+ (cnt-1)+"개");
+				goodsTitle +=( "외"+" "+ (cnt-1)+"개");
 			}
 			OrderDTO orderDTO = (OrderDTO)myOrderList.get(0);
 			orderDTO.setMemberId(memberId);

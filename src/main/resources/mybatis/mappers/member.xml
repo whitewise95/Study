@@ -54,4 +54,45 @@
 	        )
 	   ]]>      
   </insert>
+  
+  <select id="selectId" resultType="memberDTO" parameterType="memberDTO">
+  	  SELECT 
+	   			MEMBER_ID
+	   FROM 
+	   			T_SHOPPING_MEMBER
+	   WHERE 
+	   			MEMBER_NAME = #{memberName} AND
+	   			MEMBER_BIRTH_Y = #{memberBirthY} AND
+				MEMBER_BIRTH_M = #{memberBirthM} AND
+				MEMBER_BIRTH_D = #{memberBirthD} AND
+				DEL_YN = 'N' AND
+				MEMBER_BIRTH_GN = #{memberBirthGn}
+  </select>
+  
+  <select id="selectPw" resultType="String" parameterType="memberDTO">
+  	  SELECT 
+	   			MEMBER_ID
+	   FROM 
+	   			T_SHOPPING_MEMBER
+	   WHERE 
+	   			MEMBER_ID = #{memberId} And
+	   			MEMBER_BIRTH_Y = #{memberBirthY} AND
+				MEMBER_BIRTH_M = #{memberBirthM} AND
+				MEMBER_BIRTH_D = #{memberBirthD} AND
+				DEL_YN = 'N' AND
+				MEMBER_BIRTH_GN = #{memberBirthGn}
+  </select>
+  
+  <update id="updatePassword" parameterType="map">
+  	UPDATE 
+  			T_SHOPPING_MEMBER 
+  	SET
+  		MEMBER_PW = #{memberPw}
+  		
+  	WHERE
+  			MEMBER_ID = #{memberId}
+  		
+  	
+  </update>
+  
 </mapper>

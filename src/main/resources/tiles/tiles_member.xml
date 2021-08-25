@@ -21,6 +21,14 @@
          <put-attribute name="title" value="회원 가입 페이지" />
          <put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
       </definition>
+	  <definition name="/member/findIdAndPw" extends="baseLayout">
+         <put-attribute name="title" value="아이디 찾기 및 비밀번호 찾기" />
+         <put-attribute name="body" value="/WEB-INF/views/member/findIdAndPw.jsp" />
+      </definition>  
+	  <definition name="/member/knowIdAndPw" extends="baseLayout">
+         <put-attribute name="title" value="아이디 찾기 및 비밀번호 찾기" />
+         <put-attribute name="body" value="/WEB-INF/views/member/knowIdAndPw.jsp" />
+      </definition>  
   
 </tiles-definitions>
 

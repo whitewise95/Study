@@ -1,5 +1,6 @@
 package com.bms.member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,6 +28,24 @@ public class MemberDAOImpl  implements MemberDAO{
 	@Override
 	public String selectOverlappedID(String id) throws DataAccessException {
 		return sqlSession.selectOne("mapper.member.selectOverlappedID",id);
+	}
+
+	@Override
+	public List<MemberDTO> selectId(MemberDTO memberDTO) throws DataAccessException {
+		return sqlSession.selectList("mapper.member.selectId",memberDTO);
+		
+	}
+
+	@Override
+	public String selectPw(MemberDTO memberDTO) throws DataAccessException {
+		
+		return sqlSession.selectOne("mapper.member.selectPw",memberDTO);
+	}
+
+	@Override
+	public void updatePassword(Map<Object, Object> listInfo) throws DataAccessException {
+		sqlSession.update("mapper.member.updatePassword", listInfo);
+		
 	}
 	
 	

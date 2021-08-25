@@ -32,19 +32,19 @@
 		<li>
 			<h3>추천 도서</h3>
 			<ul>
-				<li><a href="${contextPath}/main/main.do">베스트셀러</a></li>
-				<li><a href="${contextPath}/main/main.do">스테디셀러</a></li>
-				<li><a href="${contextPath}/main/main.do">신간</a></li>
+				<li><a href="${contextPath}/main/detailGoodsStatus.do?goodsStatus=bestseller">베스트셀러</a></li>
+				<li><a href="${contextPath}/main/detailGoodsStatus.do?goodsStatus=steadyseller">스테디셀러</a></li>
+				<li><a href="${contextPath}/main/detailGoodsStatus.do?goodsStatus=newbook">신간</a></li>
 			</ul>
 			<h3>분야 보기</h3>
 			<ul>
-				<li><a href="${contextPath}/main/main.do">소설</a></li>
-				<li><a href="${contextPath}/main/main.do">자기계발서</a></li>
-				<li><a href="${contextPath}/main/main.do">컴퓨터와 인터넷</a></li>
-				<li><a href="${contextPath}/main/main.do">디지털기기</a></li>
-				<li><a href="${contextPath}/main/main.do">만화</a></li>
-				<li><a href="${contextPath}/main/main.do">잡지</a></li>
-				<li><a href="${contextPath}/main/main.do">외국어</a></li>
+				<li><a href="${contextPath}/main/detailGoodsSort.do?goodsSort=소설">소설</a></li>
+				<li><a href="${contextPath}/main/detailGoodsSort.do?goodsSort=자기계발서">자기계발서</a></li>
+				<li><a href="${contextPath}/main/detailGoodsSort.do?goodsSort=컴퓨터와 인터넷">컴퓨터와 인터넷</a></li>
+				<li><a href="${contextPath}/main/detailGoodsSort.do?goodsSort=디지털 기기">디지털기기</a></li>
+				<li><a href="${contextPath}/main/detailGoodsSort.do?goodsSort=만화">만화</a></li>
+				<li><a href="${contextPath}/main/detailGoodsSort.do?goodsSort=잡지">잡지</a></li>
+				<li><a href="${contextPath}/main/detailGoodsSort.do?goodsSort=외국어">외국어</a></li>
 			</ul>
 		</li>
 		<br><br><br>

@@ -69,11 +69,11 @@ public class MyBagServiceImpl implements MyBagService {
 		
 	}
 
-	@Override
-	public void finallyOrder(Map<Object, Object> orderInfo) throws Exception {
-		myBagDAO.insertOrder(orderInfo);
-		
-	}
+//	@Override
+//	public void finallyOrder(Map<Object, Object> orderInfo) throws Exception {
+//		myBagDAO.insertOrder(orderInfo);
+//		
+//	}
 
 	@Override
 	public GoodsDTO selectGoodsPro(int goodsId) throws Exception {

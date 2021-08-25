@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,9 @@ public class MainController {
 	
 	@Autowired
 	private GoodsService goodsService;
+	
+	@Autowired
+	private SqlSession sqlSession;
 
 	@RequestMapping(value= "/")
 	public ModelAndView home() throws Exception{
@@ -46,5 +50,28 @@ public class MainController {
 		
 		return mv;
 		
+	}
+	
+	@RequestMapping(value= "/main/detailGoodsSort.do")
+	public ModelAndView detailGoodsSort(@RequestParam("goodsSort")String goodsSort,HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/main/detailSort");
+		
+		mv.addObject("goodsList",sqlSession.selectList("mapper.goods.SelectDetailGoodsSort", goodsSort));
+		mv.addObject("goodsSort",goodsSort);
+		
+		
+		return mv;
+	}
+	
+	@RequestMapping(value= "/main/detailGoodsStatus.do")
+	public ModelAndView detailGoodsStatus(@RequestParam("goodsStatus")String goodsStatus,HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/main/detailStatus");
+		
+		mv.addObject("goodsList",sqlSession.selectList("mapper.goods.SelectDetailGoodsStatus", goodsStatus ));
+		mv.addObject("goodsStatus",goodsStatus);
+		
+		return mv;
 	}
 }

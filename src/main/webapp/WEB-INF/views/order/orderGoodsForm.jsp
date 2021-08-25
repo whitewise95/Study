@@ -71,21 +71,7 @@
 	            document.getElementById('roadAddress').value = fullRoadAddr;
 	            document.getElementById('jibunAddress').value = data.jibunAddress;
 	
-	            // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-	            if (data.autoRoadAddress) {
-	                //예상되는 도로명 주소에 조합형 주소를 추가한다.
-	                var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-	                document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-	
-	            } 
-	            else if (data.autoJibunAddress) {
-	                var expJibunAddr = data.autoJibunAddress;
-	                document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-	
-	            } 
-	            else {
-	                document.getElementById('guide').innerHTML = '';
-	            }
+	     
 	        }
 	    }).open();
 	}
@@ -246,7 +232,6 @@
 	var pay_orderer_hp_num;
 
 	function fn_show_order_detail() {
-		
 		goods_id = "";
 		goods_title = "";
 		
@@ -337,6 +322,11 @@
 				pay_method += "<br>" + "결제휴대폰번호:" + pay_orderer_hp_num;
 				card_com_name = "해당없음";
 				card_pay_month = "해당없음";
+				
+				if(i_pay_order_tel1.value == '' || i_pay_order_tel2.value == '' || i_pay_order_tel3.value == '' ){
+					alert("휴대폰결제번호를 정확하게 입력해주세요]");
+					return false;
+				}
 			  } 
 			 break;
 		  }
@@ -356,7 +346,24 @@
 		var i_namujiAddress    = document.getElementById("namujiAddress");
 		var i_delivery_message = document.getElementById("delivery_message");
 		var i_pay_method       = document.getElementById("pay_method");
-	
+		
+		if(i_roadAddress.value == '' || i_jibunAddress.value == '' ){
+			alert("주소를 정확하게 입력해주세요");
+			return false;
+		}
+		if(i_hp2.value.length < 4 || i_hp3.value.length < 4){
+			alert("휴대번호를 확인해주세요")
+			return false;
+		}
+		
+			
+		
+		
+		
+		
+		
+		
+		
 		order_goods_qty = h_order_goods_qty.value;
 		orderer_name = h_orderer_name.value;
 		receiver_name = i_receiver_name.value;

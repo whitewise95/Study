@@ -16,6 +16,14 @@
 		<put-attribute name="title" value="Book Management System 1.0" />
 		<put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
 	</definition>
+	<definition name="/main/detailSort" extends="baseLayout">
+		<put-attribute name="title" value="Book Management System 1.0" />
+		<put-attribute name="body" value="/WEB-INF/views/main/detailSort.jsp" />
+	</definition>
+	<definition name="/main/detailStatus" extends="baseLayout">
+		<put-attribute name="title" value="Book Management System 1.0" />
+		<put-attribute name="body" value="/WEB-INF/views/main/detailStatus.jsp" />
+	</definition>
 	
 </tiles-definitions>
 

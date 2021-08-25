@@ -1,5 +1,6 @@
 package com.bms.member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
@@ -11,5 +12,8 @@ public interface MemberDAO {
 	public MemberDTO login(Map<String,String> loginMap) throws DataAccessException;
 	public void insertNewMember(MemberDTO memberDTO) throws DataAccessException;
 	public String selectOverlappedID(String id) throws DataAccessException;
+	public List<MemberDTO> selectId(MemberDTO memberDTO) throws DataAccessException;
+	public String selectPw(MemberDTO memberDTO) throws DataAccessException;
+	public void updatePassword(Map<Object, Object> listInfo) throws DataAccessException;
 
 }

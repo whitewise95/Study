@@ -186,6 +186,11 @@
 								<select name="goodsSort" class="form-control" style="height:30; padding:0">
 									<option value="컴퓨터와 인터넷" <c:if test="${goods.goodsSort=='컴퓨터와 인터넷' }">selected </c:if>> 컴퓨터와인터넷</option>
 									<option value="디지털 기기"  <c:if test="${goods.goodsSort=='디지털 기기' }">selected </c:if>>디지털기기</option>
+									<option value="소설"  <c:if test="${goods.goodsSort=='소설' }">selected </c:if>>소설</option>
+									<option value="자기계발서"  <c:if test="${goods.goodsSort=='자기계발서' }">selected </c:if>>자기계발서</option>
+									<option value="만화"  <c:if test="${goods.goodsSort=='만화' }">selected </c:if>>만화</option>
+									<option value="잡지"  <c:if test="${goods.goodsSort=='잡지' }">selected </c:if>>잡지</option>
+									<option value="외국어"  <c:if test="${goods.goodsSort=='외국어' }">selected </c:if>>외국어</option>
 								</select>
 							</td>
 							<td><input type="button" class="btn btn-outline-primary btn-sm" value="수정" onClick="fn_modify_goods('${goods.goodsId }','goodsSort')" /></td>

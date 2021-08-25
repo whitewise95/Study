@@ -6,13 +6,60 @@
 <head>
 <meta charset="utf-8">
 <script src="${contextPath}/resources/jquery/jquery-3.5.1.min.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script >
+	   function execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+	                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var roadAddr = data.roadAddress; // 도로명 주소 변수
+	                var extraRoadAddr = ''; // 참고 항목 변수
+
+	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                if(data.bname != '' && /[동|로|가]$/g.test(data.bname)){
+	                    extraRoadAddr += data.bname;
+	                }
+	                // 건물명이 있고, 공동주택일 경우 추가한다.
+	                if(data.buildingName != '' && data.apartment == 'Y'){
+	                   extraRoadAddr += (extraRoadAddr != '' ? ', ' + data.buildingName : data.buildingName);
+	                }
+	                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                if(extraRoadAddr != ''){
+	                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+	                }
+
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById('zipcode').value = data.zonecode;
+	                document.getElementById("roadAddress").value = roadAddr;
+	                document.getElementById("jibunAddress").value = data.jibunAddress;
+	       
+	                } 
+	   		 }).open();
+	    }
+	</script>
 <script>
 
 	$().ready(function() {
 	
+	
+		
+		
 		$("#select_email").change(function(){
-			$("#email2").val($("#select_email option:selected").val());
+			
+			var select_email = $("#select_email").val();
+			
+			if(select_email == 'none'){
+				$("#email2").attr("disabled", false);
+				$("#email2").val('');
+			}
+			else{
+				$("#email2").val($("#select_email option:selected" ).val());
+				$("#email2").attr("disabled", true);
+			}
 		});
 		
 		$("#btnOverlapped").click(function(){
@@ -44,63 +91,61 @@
 		       },
 		    });
 		    
-		 });	
+		 });
+		
+		
+		
+		
+		
+		$("form").submit(function(){
+			
+			var memberId = $("#memberId").val();
+			var memberPw = $("#memberPw").val();
+			var password = $("#password").val();
+			var memberName = $("#memberName").val();
+			var Address = $("#roadAddress").val() + $("#jibunAddress").val(); 
+			var email1 = $("#email1").val();
+			var email2 = $("#email2").val();
+			var hp2 = $("#hp2").val(); 
+			var hp3 = $("#hp3").val(); 
+			 
+			
+			if(memberId == '' ){
+				alert("아이디를 입력해주세요")
+				return false;
+			}
+			if(memberPw.length < 7 ){
+				alert("비밀번호는 8자 이상 사용해주세요")
+				return false;
+			}
+			if(password != memberPw ){
+				alert("비밀번호가 같지 않습니다. 확인해주세요")
+				return false;
+			}
+			if(memberName == '' ){
+				alert("이름을 입력해주세요")
+				return false;
+			}
+			if(email1 == '' || email2==''){
+				alert("이메일을 입력해주세요")
+				return false;
+			}
+			if(hp2.length < 4 || hp3.length < 4){
+				alert("휴대번호를 확인해주세요")
+				return false;
+			}
+			
+			if(Address == '' ){
+				alert("주소를 자세히 입력해주세요")
+				return false;
+			}
+			return true;
+			
+		})
 		
 	});
-</script>
-<script>
-	function execDaumPostcode() {
-	    new daum.Postcode({
-	        oncomplete: function(data) {
-	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-	
-	            // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
-	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-	            var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
-	            var extraRoadAddr = ''; // 도로명 조합형 주소 변수
-	
-	            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-	            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-	            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-	                extraRoadAddr += data.bname;
-	            }
-	            // 건물명이 있고, 공동주택일 경우 추가한다.
-	            if (data.buildingName !== '' && data.apartment === 'Y'){
-	               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-	            }
-	            // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-	            if (extraRoadAddr !== ''){
-	                extraRoadAddr = ' (' + extraRoadAddr + ')';
-	            }
-	            // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
-	            if (fullRoadAddr !== ''){
-	                fullRoadAddr += extraRoadAddr;
-	            }
-	
-	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-	            document.getElementById('zipcode').value = data.zonecode; //5자리 새우편번호 사용
-	            document.getElementById('roadAddress').value = fullRoadAddr;
-	            document.getElementById('jibunAddress').value = data.jibunAddress;
-	
-	            // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-	            if (data.autoRoadAddress) {
-	                //예상되는 도로명 주소에 조합형 주소를 추가한다.
-	                var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-	                document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-	
-	            } 
-	            else if (data.autoJibunAddress) {
-	                var expJibunAddr = data.autoJibunAddress;
-	                document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-	
-	            } 
-	            else {
-	                document.getElementById('guide').innerHTML = '';
-	            }
-	        }
-	    }).open();
-	}
-</script>
+</script>	
+
 <link href="${contextPath }/resources/css/myStyle.css" rel="stylesheet" />
 <style>
 	td:first-child {
@@ -110,7 +155,7 @@
 </style>
 </head>
 <body>
-	<form action="${contextPath}/member/addMember.do" method="post">
+	<form action="${contextPath}/member/addMember.do" method="post" onsubmit="return isCheck()">
 	<h3>회원가입</h3>
 	<table class="table table-bordered table-hover">
 		<colgroup>
@@ -119,7 +164,7 @@
 		</colgroup>
 		<tr>
 			<td>
-				<label for="memberId">아이디</label>
+				<label for="memberId"><span style="color: red;">*</span>아이디</label>
 			</td>
 			<td>
 	            <input type="text" class="form-control" style="display:inline; width:300px;" 
@@ -129,7 +174,7 @@
 	    </tr>
         <tr>
 	        <td>
-	        	 <label class="small mb-1" for="memberPw">비밀번호</label>
+	        	 <label class="small mb-1" for="memberPw"><span style="color: red;">*</span>비밀번호</label>
 	        </td>
 	        <td>
 	        	<input class="form-control" id="memberPw" name="memberPw" type="password" placeholder="비밀번호를 입력하세요." />
@@ -137,15 +182,15 @@
         </tr>
         <tr>
 	        <td>
-	        	 <label class="small mb-1">비밀번호 확인</label>
+	        	 <label class="small mb-1"><span style="color: red;">*</span>비밀번호 확인</label>
 	        </td>
 	        <td>
-	        	<input class="form-control" type="password" placeholder="비밀번호를 입력하세요." />
+	        	<input class="form-control" type="password" name="password" id="password" placeholder="비밀번호를 입력하세요." />
 	        </td>
         </tr>         
         <tr>
 	        <td>
-	        	<label class="small mb-1" for="memberName">이름</label>
+	        	<label class="small mb-1" for="memberName"><span style="color: red;">*</span>이름</label>
 	        </td>
 	        <td>
 	        	<input type="text" class="form-control" name="memberName"  id="memberName" maxlength="15" placeholder="이름을 입력하세요." />
@@ -153,7 +198,7 @@
         </tr>                
 	    <tr>
 	        <td>
-	        	<label for="g1">성별</label>
+	        	<label for="g1"><span style="color: red;">*</span>성별</label>
 	        </td>
 	        <td>
 	        	<input class="custom-control-input" type="radio" id="g1" name="memberGender" value="101" checked />
@@ -164,7 +209,7 @@
         </tr>                              
         <tr>
 	        <td>
-	        	<label class="small mb-1" for="memberBirthY">생년월일</label>
+	        	<label class="small mb-1" for="memberBirthY"><span style="color: red;">*</span>생년월일</label>
 	        </td>
 	        <td>
                 <select class="form-control" id="memberBirthY" name="memberBirthY" style="display:inline; width:70px; padding:0" >
@@ -245,7 +290,7 @@
         </tr>                         
         <tr>
 	        <td>
-	        	<label class="small mb-1" for="hp1">핸드폰 번호</label>
+	        	<label class="small mb-1" for="hp1"><span style="color: red;">*</span>핸드폰 번호</label>
 	        </td>
 	        <td>
 	        	<select  class="form-control" id="hp1" name="hp1" style="display:inline; width:70px; padding:0">
@@ -257,15 +302,15 @@
 					<option value="018">018</option>
 					<option value="019">019</option>
 				</select> - 
-				<input class="form-control"  size="10px"  type="text" name="hp2" style="display:inline; width:100px; padding:0"> - 
-				<input class="form-control"  size="10px"  type="text"name="hp3" style="display:inline; width:100px; padding:0"><br><br>
+				<input class="form-control"  size="10px"  type="text" name="hp2"  id="hp2" style="display:inline; width:100px; padding:0" maxlength="4"> - 
+				<input class="form-control"  size="10px"  type="text"name="hp3" id="hp3" style="display:inline; width:100px; padding:0" maxlength="4"><br><br>
 				<input class="custom-control-input" id="smsstsYn" type="checkbox" name="smsstsYn"  value="Y" checked/>
                 <label for="smsstsYn" >BMS에서 발송하는 SMS 소식을 수신합니다.</label>
 	        </td>
         </tr>                         
         <tr>
 	        <td>
-	        	<label class="small mb-1" for="email1">이메일</label>
+	        	<label class="small mb-1" for="email1"><span style="color: red;">*</span>이메일</label>
 	        </td>
 	        <td>
 	        	<input class="form-control"  size="10px"  type="text" id="email1" name="email1" style="display:inline; width:100px; padding:0"> @ 
@@ -283,7 +328,7 @@
         </tr>                              
         <tr>
 	        <td>
-	        	<label class="small mb-1" for="zipcode">주소</label>
+	        	<label class="small mb-1" for="zipcode"><span style="color: red;">*</span>주소</label>
 	        </td>
 	        <td>
 	        	<input class="form-control"  size="70px"  type="text" placeholder="우편번호 입력" id="zipcode" name="zipcode" style="display:inline; width:150px; padding:0">
@@ -293,7 +338,7 @@
 				지번 주소 : <input type="text" class="form-control" id="jibunAddress" name="jibunAddress" > <br>
 				나머지 주소: <input type="text" class="form-control" name="namujiAddress"/>
 	        </td>
-        </tr>                              
+        </tr>                             
         <tr>
 	        <td colspan="2">
 	        	<input type="submit" value="회원가입하기" class="btn btn-primary btn-block" >

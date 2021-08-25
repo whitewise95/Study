@@ -33,7 +33,9 @@
 				<td><input class="form-control" id="memberPw" name="memberPw" type="password" placeholder="비밀번호를 입력하세요." /></td>
 			</tr>
 			<tr >
-				<td colspan="2" align="right"><input type="submit" class="btn btn-primary btn-sm" value="로그인"></td>
+				<td colspan="2" align="right"><input type="submit" class="btn btn-primary btn-sm" value="로그인">
+				<input type="button" class="btn btn-primary btn-sm" value="아이디찾기" onclick="location.href='${contextPath}/member/findIdAndPw.do?whatFind=id'">
+				<input type="button" class="btn btn-primary btn-sm" value="비밀번호찾기" onclick="location.href='${contextPath}/member/findIdAndPw.do?whatFind=pw'"></td>
 			</tr>
 		</table>
 		<p align="center">

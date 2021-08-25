@@ -80,6 +80,13 @@
 	}	
 	function submit(goodsId) {
 		
+		var isLogOn = document.getElementById("isLogOn").value;
+		
+			if (isLogOn=="false" || isLogOn=='' ){
+				alert("로그인 후 장바구니 이용이 가능합니다.");
+				return;
+			} 
+		
 		var orderGoodsQty = document.getElementById("orderGoodsQty");
 
 		var formObj	            = document.createElement("form");
@@ -129,7 +136,7 @@
 				<tr class="dot_line">
 					<td class="fixed">판매가</td>
 					<td class="active">
-						<span><fmt:formatNumber value="${goods.goodsPrice*0.9}" type="number" var="discountedPrice" /> ${discountedPrice}원(10%할인)</span>
+						<span><fmt:formatNumber value="${goods.goodsPrice}" type="number" var="discountedPrice" /> ${discountedPrice}원(배송비 무료기간)</span>
 				    </td>
 				</tr>
 				<tr>
@@ -156,7 +163,7 @@
 					<td class="fixed">배송료</td>
 					<c:choose>
 						<c:when test="${goods.goodsDeliveryPrice == 0}">
-							<td class="fixed"><strong>무료</strong></td>
+							<td class="fixed"><strong>무료(배송비무료 이벤트)</strong></td>
 						</c:when>
 						<c:otherwise>
 							<td class="fixed"><strong>${goods.goodsDeliveryPrice}원</strong></td>
@@ -200,13 +207,13 @@
 			<li><a href="#tab4">출판사서평</a></li>
 			<li><a href="#tab5">추천사</a></li>
 		</ul>
-		<div class="tab_container">s
+		<div class="tab_container">
 			<div class="tab_content" id="tab1">
 				<h4>책소개</h4>
-				<p>${goods.goodsIntro}</p>
-				<c:forEach var="image" items="${imageList}">
-					<img src="${contextPath}/download.do?goodsId=${goods.goodsId}&fileName=${image.fileName}">
-				</c:forEach>
+					<img alt="HTML5 &amp; CSS3"  src="${contextPath}/thumbnails.do?goodsId=${goods.goodsId}&fileName=${goods.goodsFileName}" style="margin-left: auto; margin-right: auto; display: block; width: 200px">
+
+				<p>${goods.goodsContentsOrder}</p>
+				
 			</div>
 			<div class="tab_content" id="tab2">
 				<h4>저자소개</h4>
@@ -215,7 +222,7 @@
 			</div>
 			<div class="tab_content" id="tab3">
 				<h4>책목차</h4>
-				<p>${goods.goodsContentsOrder}</p> 
+				<p>${goods.goodsIntro}</p> 
 			</div>
 			<div class="tab_content" id="tab4">
 				<h4>출판사서평</h4>

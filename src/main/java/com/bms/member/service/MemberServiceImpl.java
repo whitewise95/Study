@@ -1,5 +1,6 @@
 package com.bms.member.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,33 @@ public class MemberServiceImpl implements MemberService {
 	public String overlapped(String id) throws Exception{
 		return memberDAO.selectOverlappedID(id);
 	}
+
+
+	@Override
+	public List<MemberDTO> FindId(MemberDTO memberDTO) throws Exception {
+		
+		return memberDAO.selectId(memberDTO);
+	}
+
+
+	@Override
+	public boolean FindPw(MemberDTO memberDTO) throws Exception {
+		boolean isPw = false;
+		String memberId= memberDAO.selectPw(memberDTO);
+		if(memberId != null) {
+			isPw = true;
+		}
+		
+		return isPw;
+	}
+
+
+	@Override
+	public void passwordChage(Map<Object, Object> ListInfo) throws Exception {
+		
+		memberDAO.updatePassword(ListInfo);
+	}
+
+
 	
 }

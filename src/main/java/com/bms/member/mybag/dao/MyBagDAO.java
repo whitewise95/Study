@@ -17,7 +17,7 @@ public interface MyBagDAO {
 	public List<MyBagDTO> selectMyBagList(String memberId)throws Exception;
 	public void deleteMyBag(Map<Object, Object> deleteInfo)throws Exception;
 	public void UpdateGoodsQty(Map<Object, Object> chageInfo)throws Exception;
-	public void insertOrder(Map<Object, Object> orderInfo)throws Exception;
+//	public void insertOrder(Map<Object, Object> orderInfo)throws Exception;
 	public GoodsDTO selectGoodsPro(int goodsId)throws Exception;
 	public void insertNewOrder(List<OrderDTO> myOrderList)throws Exception; 
 	public int selectOrderID()throws Exception;
