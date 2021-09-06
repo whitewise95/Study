@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.dao.DataAccessException;
 
 import com.bms.goods.dto.GoodsDTO;
+import com.bms.member.dto.MemberDTO;
 import com.bms.member.mybag.dto.MyBagDTO;
 import com.bms.order.dto.OrderDTO;
 

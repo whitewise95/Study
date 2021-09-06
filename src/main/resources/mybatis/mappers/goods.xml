@@ -119,5 +119,18 @@
 		  	]]>
 		
 	</select>
-	
+	<select id="selectGoodsBySearchWordList" resultType="GoodsDTO" parameterType="String">
+	  <![CDATA[
+			SELECT 
+					G.*,
+					D.FILE_NAME AS goodsFileName
+			FROM 
+					T_SHOPPING_GOODS G
+					      INNER JOIN T_GOODS_DETAIL_IMAGE D
+		    					  ON G.GOODS_ID = D.GOODS_ID
+		    					 AND D.FILE_TYPE = 'main_image' 
+		    ORDER BY 
+		    		G.GOODS_CREDATE DESC
+		]]>
+	</select>
 </mapper>

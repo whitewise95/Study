@@ -8,8 +8,8 @@
 </head>
 <body>
 	<hgroup>
-		<h1>컴퓨터와 인터넷</h1>
-		<h2>오늘의 책</h2>
+		<h1>오늘의 책</h1>
+		<h2>이 상품들도 추천해요</h2>
 	</hgroup>
 	<section id="new_book">
 		<h3>새로나온 책</h3>
@@ -27,23 +27,21 @@
 				</li> 
 			   </c:when>
 			   <c:otherwise>
-			    <c:forEach var="item" items="${goodsList}" >
+			    <c:forEach var="goodsMap" items="${goodsMap}" >
 			     <li>
 					<div id="book">
-						<a href="${contextPath}/goods/goodsDetail.do?goodsId=${item.goodsId}">
-						<img width="75" alt="상품명" src="${contextPath}/thumbnails.do?goodsId=${item.goodsId}&fileName=${item.goodsFileName}">
+						<a href="${contextPath}/goods/goodsDetail.do?goodsId=${goodsMap.goodsId}">
+						<img width="75" alt="상품명" src="${contextPath}/thumbnails.do?goodsId=${goodsMap.goodsId}&fileName=${goodsMap.goodsFileName}">
 						</a>
-						<div class="sort">[컴퓨터 인터넷]</div>
+						<div class="sort">${goodsMap.goodsSort}</div>
 						<div class="title">
-							<a href="${contextPath}/goods/goodsDetail.do?goodsId=${item.goodsId}">
-							  ${item.goodsTitle}
+							<a href="${contextPath}/goods/goodsDetail.do?goodsId=${goodsMap.goodsId}">
+							  ${goodsMap.goodsTitle}
 							</a>
 						</div>
-						<div class="writer">${item.goodsWriter} | ${item.goodsPublisher}</div>
+						<div class="writer">${goodsMap.goodsWriter} | ${goodsMap.goodsPublisher}</div>
 						<div class="price">
-							<span><fmt:formatNumber  value="${item.goodsPrice}" type="number" /></span> <br>
-							<fmt:formatNumber value="${item.goodsSalesPrice}" type="number"  />
-				            (<fmt:formatNumber value="${(item.goodsPrice - item.goodsSalesPrice) / item.goodsPrice * 10}"/>%할인)
+							<fmt:formatNumber value="${goodsMap.goodsSalesPrice}" type="number"  />
 						</div>
 					</div>
 				</li>
@@ -61,7 +59,7 @@
 	</section>
 	<table id="list_view">
 		<tbody>
-		  <c:forEach var="item" items="${goodsList}"> 
+		  <c:forEach var="item" items="${goodsList}" > 
 			<tr align="center">
 				<td class="goods_image">
 					<a href="${contextPath}/goods/goodsDetail.do?goodsId=${item.goodsId}">
@@ -78,9 +76,7 @@
 					</div>
 				</td>
 				<td class="price">
-					<span><fmt:formatNumber  value="${item.goodsPrice}" type="number" /></span> <br>
 					<fmt:formatNumber value="${item.goodsSalesPrice}" type="number"  /><br>
-		            (<fmt:formatNumber value="${(item.goodsPrice - item.goodsSalesPrice) / item.goodsPrice * 10}"/>%할인)
 				</td>
 			</tr>
 			</c:forEach>

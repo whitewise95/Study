@@ -94,5 +94,23 @@
   		
   	
   </update>
+  <select id="selectCacaoId" resultType="memberDTO" parameterType="String">
+  	SELECT
+  			*
+  	FROM
+  		T_SHOPPING_MEMBER 
+  	WHERE
+  		MEMBER_ID = #{memberId}
+  
+  </select>
+  <select id="selectNaverId" resultType="String" parameterType="String">
+  	SELECT
+  			MEMBER_ID
+  	FROM
+  		T_SHOPPING_MEMBER 
+  	WHERE
+  		MEMBER_ID = #{memberId}
+  
+  </select>
   
 </mapper>

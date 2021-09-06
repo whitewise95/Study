@@ -323,7 +323,7 @@
 				card_com_name = "해당없음";
 				card_pay_month = "해당없음";
 				
-				if(i_pay_order_tel1.value == '' || i_pay_order_tel2.value == '' || i_pay_order_tel3.value == '' ){
+				if(i_pay_order_tel1.value.length < 4 || i_pay_order_tel2.value.length < 4 || i_pay_order_tel3.value.length < 4 ){
 					alert("휴대폰결제번호를 정확하게 입력해주세요]");
 					return false;
 				}

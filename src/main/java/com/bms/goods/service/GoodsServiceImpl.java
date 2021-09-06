@@ -55,6 +55,13 @@ public class GoodsServiceImpl implements GoodsService{
 	public List<GoodsDTO> searchGoods(String searchWord) throws Exception{
 		return goodsDAO.selectGoodsBySearchWord(searchWord);
 	}
+
+
+	@Override
+	public Object searchGoodsList(String searchWord) throws Exception {
+		
+		return goodsDAO.selectGoodsBySearchWordList(searchWord);
+	}
 	
 	
 }

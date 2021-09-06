@@ -115,8 +115,8 @@
 <body>
 
 
-	<h1>컴퓨터와 인터넷</h1>
-	<h2>국내외 도서 &gt; 컴퓨터와 인터넷 &gt; 웹 개발</h2>
+	<h1>${goods.goodsSort }</h1>
+	<h2>${goods.goodsStatus}  &gt; ${goods.goodsSort } &gt; ${goods.goodsTitle }</h2>
 	<h3>${goods.goodsTitle }</h3>
 	<h4>${goods.goodsWriter} &nbsp; 저| ${goods.goodsPublisher}</h4>
 	<div id="goods_image">
@@ -212,7 +212,7 @@
 				<h4>책소개</h4>
 					<img alt="HTML5 &amp; CSS3"  src="${contextPath}/thumbnails.do?goodsId=${goods.goodsId}&fileName=${goods.goodsFileName}" style="margin-left: auto; margin-right: auto; display: block; width: 200px">
 
-				<p>${goods.goodsContentsOrder}</p>
+				<p>${goods.goodsIntro}</p>
 				
 			</div>
 			<div class="tab_content" id="tab2">
@@ -222,7 +222,7 @@
 			</div>
 			<div class="tab_content" id="tab3">
 				<h4>책목차</h4>
-				<p>${goods.goodsIntro}</p> 
+				<p>${goods.goodsContentsOrder}</p> 
 			</div>
 			<div class="tab_content" id="tab4">
 				<h4>출판사서평</h4>

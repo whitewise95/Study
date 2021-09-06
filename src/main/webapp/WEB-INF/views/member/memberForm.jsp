@@ -42,7 +42,6 @@
 	    }
 	</script>
 <script>
-
 	$().ready(function() {
 	
 	
@@ -145,7 +144,53 @@
 		
 	});
 </script>	
-
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+Kakao.init('c5ed9dec78dd7f299b5fb58df983c3f4'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response);
+        	  
+        		var email = response.kakao_account.email;
+        		var gender = response.kakao_account.gender;
+        		var nickname = response.kakao_account.profile.nickname;
+        		
+        		 location.href='${contextPath}/member/cacaoRogin.do?email='+email+"&gender="+gender+"&nickname="+nickname;
+        		
+        	  
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+//카카오로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
+</script>
 <link href="${contextPath }/resources/css/myStyle.css" rel="stylesheet" />
 <style>
 	td:first-child {
@@ -344,12 +389,40 @@
 	        	<input type="submit" value="회원가입하기" class="btn btn-primary btn-block" >
 	        </td>
 	    </tr>
-	    <tr>
-	        <td colspan="2" align="center">
+	         		 <tr>
+	        <td colspan="3" align="center">
+	        	<div></div>
 	        	이미 회원가입이 되어있다면 ? <a href="${contextPath}/member/loginForm.do"><strong>로그인하기</strong></a>
 	        </td>
-        </tr>                            
+        </tr> 
+	                       
      </table>
      </form>
+		<table>
+		<tr>
+			<td style="padding-left: 300px">
+			<td colspan="2"></td>
+			<td>
+		</tr>
+			<tr >
+			<td>
+			</td>
+			 <td align="left"  >
+				 <img onclick="kakaoLogin();" alt="" src="${contextPath }/resources/image/kakao_login_medium.png" >
+			</td>
+			<td id="naver_id_login"   align="right">
+			</td>
+			</tr>
+		</table>
+     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+	 <script type="text/javascript">
+	  	var naver_id_login = new naver_id_login("krTpGmw1srdtf8k1XhLL", "http://www.wisebookshop.com/member/naver.do");
+	  	var state = naver_id_login.getUniqState();
+	  	naver_id_login.setButton("white", 2,40);
+	  	naver_id_login.setState(state);
+	  	naver_id_login.init_naver_id_login()
+	</script> 	
 </body>
 </html>

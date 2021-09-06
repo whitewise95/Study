@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+
+
 import com.bms.member.dto.MemberDTO;
 import com.bms.member.service.MemberService;
 
@@ -28,6 +30,7 @@ import com.bms.member.service.MemberService;
 @RequestMapping(value="/member")
 public class MemberController {
 	
+
 	@Autowired
 	private MemberService memberService;
 	
@@ -36,6 +39,9 @@ public class MemberController {
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	
+  
 	
 	@RequestMapping(value="/login.do" , method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam Map<String, String> loginMap, HttpServletRequest request) throws Exception {
@@ -195,6 +201,129 @@ public class MemberController {
 		return "/member/login";
 		
 	}
-	
+	@RequestMapping(value="/cacaoRogin.do" ,method = RequestMethod.GET)
+	public ModelAndView cacaoRogin(@RequestParam("email")String email ,
+			@RequestParam("gender")String gender ,
+			@RequestParam("nickname")String nickname,
+			HttpServletRequest request)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		String[] emailInfo =email.split("@");
+		String memberId = emailInfo[0]+"_cacao";
+		MemberDTO memberDTOInfo = memberService.cacaoIdCheck(memberId);
+		
+		
+		if(memberDTOInfo != null) {
+			HttpSession session = request.getSession();		// 세션 객체 생성
+			session.setAttribute("isLogOn", true);			// 로그인 true
+			session.setAttribute("memberInfo",memberDTOInfo);	// memberInfo에 로그인한 계정의 정보등록
+			String action = (String)session.getAttribute("action");
+			
+			if (action!=null && action.equals("/order/orderEachGoods.do")){ // 주문상품으로 이동
+				mv.setViewName("forward:"+action);
+			}
+			else {
+				mv.setViewName("redirect:/main/main.do");	// 메인으로 이동
+			}
+		}
+		else {
+		
+		String email1 = emailInfo[0];
+		String email2 = emailInfo[1];
+		String memberGender = "";
+		String memberName = nickname;
+		System.out.println(email1);
+		System.out.println(email2);
+		if(gender.equals("male")) {
+			memberGender = "101";
+		}
+		else {
+			memberGender = "102";
+		}
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setEmail1(email1);
+		memberDTO.setEmail2(email2);
+		memberDTO.setMemberGender(memberGender);
+		memberDTO.setMemberName(memberName);
+		memberDTO.setMemberId(memberId);
+		
+		memberService.cacaoJoin(memberDTO);
+		
+		HttpSession session = request.getSession();		// 세션 객체 생성
+		session.setAttribute("isLogOn", true);			// 로그인 true
+		session.setAttribute("memberInfo",memberDTO);	// memberInfo에 로그인한 계정의 정보등록
+		String action = (String)session.getAttribute("action");
+		
+		if (action!=null && action.equals("/order/orderEachGoods.do")){ // 주문상품으로 이동
+			mv.setViewName("forward:"+action);
+		}
+		else {
+			mv.setViewName("redirect:/main/main.do");	// 메인으로 이동
+		}
+		
+		
+		}
+		
+		return mv;
+		
+	}
+	  @RequestMapping(value="/naver.do")
+	  public String naver(){
+		return "/member/callBack";
+		  
+	  }
+	  @RequestMapping(value="/naverLoginPro.do" , method=RequestMethod.GET)
+	  public ModelAndView naverLoginPro(@RequestParam Map<Object,Object> naverInfo , HttpServletRequest request)throws Exception{
+		  ModelAndView mv = new ModelAndView();
+		  MemberDTO memberDTO = new MemberDTO();
+		  String temp = (String) naverInfo.get("email");
+		  String[] emailIfo = temp.split("@");
+		  memberDTO.setEmail1( emailIfo[0]);
+		  memberDTO.setEmail2( emailIfo[1]);
+		  if(naverInfo.get("gender").equals("M")) {
+			  memberDTO.setMemberGender("101");
+		  }
+		  else {
+			  memberDTO.setMemberGender("102");
+		  }
+		  memberDTO.setMemberName((String)naverInfo.get("name"));
+		  memberDTO.setMemberId(emailIfo[0]+"_naver");  
+		  
+		  if(memberService.naverIdCheck(memberDTO)) {
+			  HttpSession session = request.getSession();		// 세션 객체 생성
+				session.setAttribute("isLogOn", true);			// 로그인 true
+				session.setAttribute("memberInfo",memberDTO);	// memberInfo에 로그인한 계정의 정보등록
+				String action = (String)session.getAttribute("action");
+				
+				if (action!=null && action.equals("/order/orderEachGoods.do")){ // 주문상품으로 이동
+					mv.setViewName("forward:"+action);
+				}
+				else {
+					mv.setViewName("redirect:/main/main.do");	// 메인으로 이동
+				}
+		  }
+		  else{
+			  memberService.cacaoJoin(memberDTO);
+				
+				HttpSession session = request.getSession();		// 세션 객체 생성
+				session.setAttribute("isLogOn", true);			// 로그인 true
+				session.setAttribute("memberInfo",memberDTO);	// memberInfo에 로그인한 계정의 정보등록
+				String action = (String)session.getAttribute("action");
+				
+				if (action!=null && action.equals("/order/orderEachGoods.do")){ // 주문상품으로 이동
+					mv.setViewName("forward:"+action);
+				}
+				else {
+					mv.setViewName("redirect:/main/main.do");	// 메인으로 이동
+				}
+		  }
+		  
+		  
+		  
+		  
+		  
+		  return mv;
+		  
+	  }
 
 }

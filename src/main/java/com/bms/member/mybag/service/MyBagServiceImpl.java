@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bms.goods.dto.GoodsDTO;
+import com.bms.member.dto.MemberDTO;
 import com.bms.member.mybag.dao.MyBagDAO;
 import com.bms.member.mybag.dto.MyBagDTO;
 import com.bms.order.dto.OrderDTO;
@@ -96,5 +97,7 @@ public class MyBagServiceImpl implements MyBagService {
 	public int selectCount(String memberId) throws Exception {
 		return myBagDAO.selectCount(memberId);
 	}
+
+
 	
 }

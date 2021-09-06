@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bms.goods.dto.GoodsDTO;
+import com.bms.member.dto.MemberDTO;
 import com.bms.member.mybag.dto.MyBagDTO;
 import com.bms.order.dto.OrderDTO;
 
@@ -19,7 +20,7 @@ public interface MyBagService {
 //	public void finallyOrder(Map<Object, Object> orderInfo)throws Exception;
 	public GoodsDTO selectGoodsPro(int goodsId)throws Exception;
 	public void addNewOrder(List<OrderDTO> myOrderList)throws Exception;
-	public int selectCount(String memberId)throws Exception; 
+	public int selectCount(String memberId)throws Exception;
 	
 	
 }

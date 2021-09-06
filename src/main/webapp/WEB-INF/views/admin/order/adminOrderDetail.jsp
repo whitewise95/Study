@@ -31,7 +31,7 @@
 		<tbody align=center>
 			<tr style="background: #33ff00">
 			    <td>주문번호 </td>
-				<td colspan=2 class="fixed">주문상품명</td>
+				<td  class="fixed">주문상품명</td>
 				<td>수량</td>
 				<td>주문금액</td>
 				<td>배송비</td>
@@ -42,11 +42,6 @@
 				<tr>
 				    <td> ${item.orderId }</td>
 					<td class="goods_image">
-					  <a href="${contextPath}/goods/goodsDetail.do?goodsId=${item.goodsId }">
-					    <img width="75" alt="상품 이미지" src="${contextPath}/thumbnails.do?goodsId=${item.goodsId}&fileName=${item.goodsFileName}">
-					  </a>
-					</td>
-					<td>
 					  <h2>
 					     <a href="${contextPath}/goods/goodsDetail.do?goodsId=${item.goodsId }">${item.goodsTitle}</a>
 					  </h2>

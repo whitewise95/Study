@@ -47,6 +47,24 @@ public class MemberDAOImpl  implements MemberDAO{
 		sqlSession.update("mapper.member.updatePassword", listInfo);
 		
 	}
+
+	@Override
+	public void insertCacaoId(MemberDTO memberDTO) throws DataAccessException {
+		sqlSession.insert("mapper.member.insertNewMember",memberDTO);
+		
+	}
+
+	@Override
+	public MemberDTO selectCacaoId(String memberId) throws DataAccessException {
+		return sqlSession.selectOne("mapper.member.selectCacaoId",memberId);
+		
+	}
+
+	@Override
+	public String selectNaverId(String memberId) throws DataAccessException {
+		
+		return sqlSession.selectOne("mapper.member.selectNaverId",memberId);
+	}
 	
 	
 }

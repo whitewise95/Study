@@ -328,7 +328,7 @@
 						slidePosition=slideCount-2;
 						$slider.css({'left' : -slidePosition*settings.width});
 					}else if(next==slideCount-1){
-						slidePosition=1;
+						slidePosition=5;
 						$slider.css({'left' : -settings.width});
 					}else{
 						slidePosition=next;

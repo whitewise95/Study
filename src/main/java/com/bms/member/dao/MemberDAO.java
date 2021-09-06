@@ -15,5 +15,8 @@ public interface MemberDAO {
 	public List<MemberDTO> selectId(MemberDTO memberDTO) throws DataAccessException;
 	public String selectPw(MemberDTO memberDTO) throws DataAccessException;
 	public void updatePassword(Map<Object, Object> listInfo) throws DataAccessException;
+	public void insertCacaoId(MemberDTO memberDTO)throws DataAccessException;
+	public MemberDTO selectCacaoId(String memberId)throws DataAccessException;
+	public String selectNaverId(String memberId)throws DataAccessException;
 
 }

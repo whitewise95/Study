@@ -125,7 +125,7 @@
 
 <br><br><br>	
 <h1>나의 정보
-    <a href="#"> <img src="${contextPath}/resources/image/btn_more_see.jpg" /></a>
+    <a href="${contextPath }/mypage/myDetailInfo.do"> <img src="${contextPath}/resources/image/btn_more_see.jpg" /></a>
 </h1>
 <table style="border: 0; width: 100%;">
   <tr>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bms.goods.dto.GoodsDTO;
+import com.bms.member.dto.MemberDTO;
 import com.bms.member.mybag.dto.MyBagDTO;
 import com.bms.order.dto.OrderDTO;
 
@@ -99,7 +100,6 @@ public class MyBagDAOImpl implements MyBagDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("mapper.mybag.selectCount",memberId );
 	}
-	
 
 
 

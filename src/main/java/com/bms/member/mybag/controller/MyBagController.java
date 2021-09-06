@@ -34,18 +34,17 @@ public class MyBagController {
 	@Autowired
 	private MemberDTO memberDTO;
 	
+	
 	@RequestMapping(value="/myBagPage.do", method = RequestMethod.POST)
 	public ResponseEntity<Object> myBagPage(@RequestParam("goodsId")int goodsId,
 											@RequestParam("orderGoodsQty")int orderGoodsQty,
 			HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
-		
+		String message = "";
 		memberDTO = (MemberDTO)session.getAttribute("memberInfo");  //DTO정보 연결
+		if(memberDTO != null) {
 		String memberId = memberDTO.getMemberId(); //아이디 저장
 		
-		
-		
-		String message = "";
 		message= "<script>";
 		message += "if(confirm('장바구니에 담겼습니다. 확인하시겠습니까?')){";
 		message +=" location.href='"+request.getContextPath()+"/mybag/myBagPageView.do';}";
@@ -64,6 +63,17 @@ public class MyBagController {
 		myBagInfo.put("goodsTitle", goodsDTO.getGoodsTitle());
 		myBagInfo.put("memberId", memberId);
 		myBagService.mybagIn(myBagInfo);
+		}
+		else {
+			message= "<script>";
+			message += "alert('로그인 후 이용 가능 합니다.');";
+			message +=" history.go(-1);";
+			message +="</script>";
+		}
+		
+		
+		
+
 		
 		
 
@@ -126,24 +136,30 @@ public class MyBagController {
 	
 	@RequestMapping(value="/myBagOrder.do", method = RequestMethod.GET)
 	public ModelAndView myBagOrder(HttpServletRequest request) throws Exception {
+	
+		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/myBagPage/myBagOrder");
-		int goodsSalesPrice = 0;
+
 		HttpSession session = request.getSession();
 		int cnt = 0;
-		
 		MemberDTO memberInfo = (MemberDTO)session.getAttribute("memberInfo");
 		String memberId = memberInfo.getMemberId(); //아이디 저장
-		int totalPrice = myBagService.totalPrice(memberId); // 총 가격
-		int totalQTY =  myBagService.totalQTY(memberId); // 총 갯수
-		mv.addObject("mbList", myBagService.myBagList(memberId));
-		mv.addObject("totalPrice", totalPrice);
-		mv.addObject("totalQTY", totalQTY);
-		mv.addObject("goodsSalesPrice", goodsSalesPrice);
-		mv.addObject("orderer", memberInfo);
-		mv.addObject("cnt", cnt);
-		
-		
+		cnt = myBagService.selectCount(memberId);
+		if(cnt ==0 ) {
+			mv.setViewName("/mybagpage/callBack");
+		}
+		else {
+			mv.setViewName("/myBagPage/myBagOrder");
+			int goodsSalesPrice = 0;
+			int totalPrice = myBagService.totalPrice(memberId); // 총 가격
+			int totalQTY =  myBagService.totalQTY(memberId); // 총 갯수
+			mv.addObject("mbList", myBagService.myBagList(memberId));
+			mv.addObject("totalPrice", totalPrice);
+			mv.addObject("totalQTY", totalQTY);
+			mv.addObject("goodsSalesPrice", goodsSalesPrice);
+			mv.addObject("orderer", memberInfo);
+			
+		}
 		
 		return mv;
 	}
@@ -214,5 +230,11 @@ public class MyBagController {
 	
 
 	}	
+	@RequestMapping(value="/my.do" )
+	public String callback() {
+		return "/member/callBack";
+		
+	}
+	
 	
 }

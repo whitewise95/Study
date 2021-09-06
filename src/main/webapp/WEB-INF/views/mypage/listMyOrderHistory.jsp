@@ -169,31 +169,31 @@
 				<td >
 				 <strong><fmt:formatDate value="${item.payOrderTime }" pattern="yyyy-MM-dd"/> </strong> 
 				</td>
+				   <c:forEach var="item2" items="${myOrderHistList}" varStatus="j">
+				     <c:if  test="${item.orderId ==item2.orderId}" >
 				<td> 
 				    <strong>
-					   <c:forEach var="item2" items="${myOrderHistList}" varStatus="j">
-				          <c:if  test="${item.orderId ==item2.orderId}" >
 				            <a href="${contextPath}/goods/goodsDetail.do?goodsId=${item2.goodsId }">${item2.goodsTitle }</a><br>
-				         </c:if>   
-					 </c:forEach>
 					 </strong>
 				</td>
-				<td>
-				   <strong>
-				      <c:forEach var="item2" items="${myOrderHistList}" varStatus="j">
-				          <c:if  test="${item.orderId ==item2.orderId}" >
-				  <c:choose>
-					<c:when test="${item2.bagOrder eq 'mybag'}">
-						<td><h2>${item2.goodsSalesPrice}원</h2> &emsp;/ &emsp; ${item2.orderGoodsQty }(개)<br>
-					</c:when>
-					<c:otherwise>
-					<td><h2>${item2.orderGoodsQty *item2.goodsSalesPrice}원</h2> &emsp;/ &emsp; ${item2.orderGoodsQty }(개)<br></td>
-					</c:otherwise>
-				</c:choose>
-				         </c:if>   
-					 </c:forEach>
-				   </strong>
-				</td>
+				   </c:if> 
+				 </c:forEach>
+				 <c:forEach var="item2" items="${myOrderHistList}" varStatus="j">
+				    <c:if  test="${item.orderId ==item2.orderId}" >
+				 		 <c:choose>
+							<c:when test="${item2.bagOrder eq 'mybag'}">
+							<td>
+					  			 <strong>
+									<h2>${item2.goodsSalesPrice}원</h2> &emsp;/ &emsp; ${item2.orderGoodsQty }(개)<br>
+								 </strong>
+							</td>
+							</c:when>
+							<c:otherwise>
+								<td><h2>${item2.orderGoodsQty *item2.goodsSalesPrice}원</h2> &emsp;/ &emsp; ${item2.orderGoodsQty }(개)<br></td>
+							</c:otherwise>
+						</c:choose>
+				     </c:if>   
+				</c:forEach>
 				<td>
 				  <strong>
 				    <c:choose>
@@ -219,7 +219,7 @@
 				 <strong>${item.ordererName }</strong> 
 				</td>
 				<td>
-					<strong>${item.receiverName }</strong>
+				<strong>${item.receiverName }</strong>
 				</td>
 				<td>
 			     <c:choose>

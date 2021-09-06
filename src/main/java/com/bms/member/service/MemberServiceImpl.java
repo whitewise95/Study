@@ -80,5 +80,34 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
+	@Override
+	public void cacaoJoin(MemberDTO memberDTO) throws Exception {
+		memberDAO.insertCacaoId(memberDTO);
+		
+	}
+
+
+	@Override
+	public MemberDTO cacaoIdCheck(String memberId) throws Exception {
+		
+		MemberDTO memberDTO =memberDAO.selectCacaoId(memberId);
+			
+		return memberDTO;
+	}
+
+
+	@Override
+	public boolean naverIdCheck(MemberDTO memberDTO) throws Exception {
+		boolean isCheck = false;
+		String memberId = memberDTO.getMemberId();
+		memberId = memberDAO.selectNaverId(memberId);
+		if(memberId != null) {
+			isCheck = true;
+		}
+		
+		return isCheck;
+	}
+
+
 	
 }

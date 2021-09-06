@@ -13,5 +13,8 @@ public interface MemberService {
 	public List<MemberDTO> FindId(MemberDTO memberDTO) throws Exception;
 	public boolean FindPw(MemberDTO memberDTO) throws Exception;
 	public void passwordChage(Map<Object, Object> ListInfo) throws Exception;
+	public void cacaoJoin(MemberDTO memberDTO)throws Exception;
+	public MemberDTO cacaoIdCheck(String memberId)throws Exception;
+	public boolean naverIdCheck(MemberDTO memberDTO)throws Exception;
 
 }

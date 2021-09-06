@@ -129,6 +129,8 @@ public class AdminGoodsController {
 			String name  = (String)enu.nextElement();
 			String value = multipartRequest.getParameter(name);
 			newGoodsMap.put(name,value);
+			System.out.println("name : "+name);
+			System.out.println("value : "+value);
 		}
 		
 		HttpSession session = multipartRequest.getSession();
@@ -143,8 +145,9 @@ public class AdminGoodsController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		try {
-			
+			System.out.println("controller : "+newGoodsMap.get("goodsId"));
 			int goodsId = adminGoodsService.addNewGoods(newGoodsMap);
+			System.out.println("controller  2 : "+newGoodsMap.get("goodsId"));
 			if (imageFileList != null && imageFileList.size() != 0) {
 				for (ImageFileDTO  imageFileDTO : imageFileList) {
 					imageFileName = imageFileDTO.getFileName();

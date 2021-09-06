@@ -143,7 +143,7 @@
 						<a href="javascript:search_member_list('two_month')">   <img src="${contextPath}/resources/image/btn_search_2_month.jpg"></a>
 						<a href="javascript:search_member_list('three_month')"> <img src="${contextPath}/resources/image/btn_search_3_month.jpg"></a>
 						<a href="javascript:search_member_list('four_month')">  <img src="${contextPath}/resources/image/btn_search_4_month.jpg"></a>
-						&nbsp;조회
+						&nbsp;
 					</td>
 				</tr>
 				<tr>

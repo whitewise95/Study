@@ -74,4 +74,14 @@ public class MainController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value= "/main/notice.do")
+	public ModelAndView notice(@RequestParam("subject")String subject) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/main/notice");
+		mv.addObject("subject",subject);
+		
+		
+		return mv;
+	}
 }

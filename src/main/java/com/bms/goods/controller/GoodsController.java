@@ -1,5 +1,6 @@
 package com.bms.goods.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,10 @@ public class GoodsController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/goods/searchGoods");
+		Object sort = goodsService.searchGoodsList(searchWord);
+		System.out.println("sdasdsadasdsad : "+sort);
+		
+		mv.addObject("goodsMap", goodsService.searchGoodsList(searchWord));
 		mv.addObject("goodsList", goodsService.searchGoods(searchWord));
 		
 		return mv;
