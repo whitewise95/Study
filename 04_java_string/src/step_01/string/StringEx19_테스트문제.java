@@ -28,7 +28,40 @@ public class StringEx19_테스트문제 {
 								{"1003" ,"23" ,"63" , "31"},
 								{"1004" ,"45" ,"30" , "35"},
 							};
-
+		
+		
+		String[][] sum = new String[4][2];
+		
+		
+		for (int i = 0; i < students.length; i++) {
+			sum[i][0] = students[i][0];
+			int temp = 0;
+			for (int j = 1; j < scores[i].length; j++) {
+				 temp += Integer.parseInt(scores[i][j]);
+				
+			}
+			 sum[i][1] =Integer.toString(temp);
+		}
+		
+		int max = Integer.parseInt(sum[0][1]);
+		
+		for (int i = 0; i < sum.length; i++) {
+			int temp = Integer.parseInt(sum[i][1]);
+				if(max < temp) {
+					max = temp;
+				}
+			
+		}
+		
+		String temp = Integer.toString(max);
+		for (int i = 0; i < sum.length; i++) {
+			for (int j = 0; j < sum[i].length; j++) {
+				if(sum[i][j].equals(temp)) {
+					System.out.print("전체 성적(총점)이 1등인 학생 이름 :");
+					System.out.print(sum[i][0]);
+				}
+			}
+		}
 		 
 
 	}

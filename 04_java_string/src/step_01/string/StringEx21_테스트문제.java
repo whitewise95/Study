@@ -46,11 +46,14 @@ public class StringEx21_테스트문제 {
 
 		String userData = "";
 		
+		String[] name = nameData.split("\n");
+		String[] money = moneyData.split("\n");
 		
 		
 
-		
 
+		
+		
 	}
 
 }

@@ -2,7 +2,7 @@ package step_01.string;
 
 import java.util.Scanner;
 
-import org.w3c.dom.ls.LSOutput;
+
 
 /*
  * # 단어 교체하기(replace)
@@ -23,52 +23,60 @@ public class StringEx17_문제 {
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
-		int x = 0;
-		int y = 0;
 		String text = "Life is too short.";
 		System.out.println(text);
 		
 		System.out.print("변경하고 싶은 단어를 입력하세요 : ");
 		String word = scan.nextLine();
-		char[] cText = new char[text.length()];
-		int size = word.length();
-		boolean that = false;
-		for (int i = 0; i < cText.length; i++) {
-			cText[i] = text.charAt(i);
+		char[] arr = new char[text.length()];
+		for (int i = 0; i < text.length(); i++) {
+			arr[i] = text.charAt(i);
 		}
-		for (int i = 0; i < cText.length-size+1; i++) {
-			int cnt =0;
-			for (int j = 0; j < size; j++) {
-				if(cText[i+j]==word.charAt(j)) {
-					x=i;
-					y=j;
-					cnt++;
+		int startIndex = 0;
+		int wordSize  = word.length();
+		boolean isCheck = false;
+		
+		
+		
+	
+		for (int i = 0; i < arr.length-wordSize+1; i++) {
+			
+			int checkCnt = 0;
+			
+			for (int j = 0; j < wordSize; j++) {
+				if(arr[i+j] == word.charAt(j)) {
+					checkCnt ++;
 				}
 			}
-			if(cnt==size) {that=true;}
+			if(checkCnt == wordSize) {
+				startIndex = i;
+				isCheck = true;
+			}
 		}
-		if(true) {
-			System.out.println("변경할 단어를 입력해주세요");
-			String change =scan.next();
-			char[] cChange = new char[change.length()];
-			char[] temp = new char[Text.sub];
-			for (int i = 0; i < cChange.length; i++) {
-				cChange[i]=change.charAt(i);
+		System.out.print("변경할 단어를 입력하세요 : ");
+		word = scan.nextLine();
+		
+		if(isCheck) {
+			char temp[] = arr;
+			String first = "";
+			String last = "";
+			for (int i = 0; i < startIndex; i++) {
+				first += temp[i];
 				
 			}
-			int j = 0;
-			for (int i = x; i < change.length(); x++) {
-				cText[i]=cChange[j];
-				j++;
-				System.out.println(j);
-				System.out.print(cText[i]);
-			}
-			System.out.println();
-			for (int i = 0; i < cText.length; i++) {
-				System.out.print(cText[i]);
+			for (int i = startIndex+wordSize ; i < temp.length; i++) {
+				last += temp[i];
 			}
 			
+			System.out.println(first + word + last);
 		}
+		else {
+			System.out.println("그런단어는 존재하지 않습니다.");
+		}
+		 scan.close();
+		
+		
+	
 	}
 
 }
