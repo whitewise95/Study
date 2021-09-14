@@ -58,15 +58,7 @@ class StudentManager {
 	}
 	
 	void sort_data() {
-		for (int i = 0; i <studentList.size(); i++) {
-			for (int k = 0; k < studentList.size(); k++) {
-			if(studentList.get(i).id.compareTo(studentList.get(k).id)>0) {
-				StudentVO temp = studentList.get(i);
-				studentList.get(i) = g
-				
-			}
-			}
-		}
+		
 	}
 	
 	

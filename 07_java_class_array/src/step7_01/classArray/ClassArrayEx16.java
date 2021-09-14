@@ -41,7 +41,11 @@ public class ClassArrayEx16 {
 		
 		f1.name = "포도";
 		System.out.println(f1.name);
+		System.out.println(f1.price);
 		System.out.println(f2.name);
+		System.out.println(f2.price);
+		System.out.println(f3.name);
+		System.out.println(f3.price);
 	}
 
 }

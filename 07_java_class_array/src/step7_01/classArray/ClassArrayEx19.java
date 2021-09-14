@@ -183,23 +183,6 @@ public class ClassArrayEx19 {
 		System.out.println("===================================");
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 }
