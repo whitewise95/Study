@@ -1,4 +1,37 @@
+package step1_01.print;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
-//정보처리기사 산업기사 sqld 네트워크관리사 CCNA(국제)
-//리눅스 마스터2급
+class date {
+	
+	private link2 head;
+	
+	public  date() {
+		head = null;
+	}
+}
+
+
+class link2 {
+	
+	private String data;
+	public link2 link;
+	
+	public link2(){
+		this.data = null;
+		this.link = null;
+	
+	
+  }
+}
+
+public class 연습 {
+	
+	
+	public static void main(String[] args) {
+		
+		
+	}
+}
