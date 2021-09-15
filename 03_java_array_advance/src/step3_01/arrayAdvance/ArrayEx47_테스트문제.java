@@ -32,6 +32,7 @@ public class ArrayEx47_테스트문제 {
 				};
 		int x = 0;
 		int y = 0;
+		int cnt = 0;
 		int yx [][] = new int[10000][2];
 		Scanner scan = new Scanner(System.in);
 		
@@ -56,6 +57,11 @@ public class ArrayEx47_테스트문제 {
 						}
 					}
 				}
+				yx[cnt][0]= y;
+				yx[cnt][1]= x;
+				cnt++;
+				
+				
 				if(x>0) {
 					int temp = game[y][x-1];
 					game[y][x-1] = game[y][x];
@@ -119,7 +125,48 @@ public class ArrayEx47_테스트문제 {
 					continue;
 				}
 			}
-			else if(sel == 5) {}
+			else if(sel == 5) {
+				boolean isCheck = true;
+				for (int i = 0; i < game.length; i++) {
+					for (int j = 0; j < game[i].length; j++) {
+						if(game[i][j]==0) {
+							x=j;
+							y=i;
+						}
+					}
+				}
+				while(isCheck) {
+					if(cnt==0) {
+						 isCheck = false;
+					 }
+					for (int i = 0; i < game.length; i++) {
+						for (int j = 0; j < game[i].length; j++) {
+						System.out.print(game[i][j]);
+						 if(j != game[j].length-1) {
+								System.out.print(",");
+							}
+						}
+						System.out.println();
+					}
+					try {
+						Thread.sleep(1000);
+					} catch (Exception e) {}
+					
+					if(cnt > 0) {
+						int temp =game[yx[cnt-1][0]][yx[cnt-1][1]];
+						game[yx[cnt-1][0]][yx[cnt-1][1]] = game[y][x];
+						 game[y][x] = temp;
+						 y= yx[cnt-1][0];
+						 x= yx[cnt-1][1];
+						 if(cnt!=0) {
+							 cnt--;
+						 }
+						 
+					}
+					System.out.println();
+				 
+				}
+			}
 			else {
 				
 			}
