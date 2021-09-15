@@ -1,5 +1,7 @@
 package step3_01.arrayAdvance;
 
+import java.util.Scanner;
+
 /*
 문제1) 숫자 0이 플레이어이다. 
 	    
@@ -28,9 +30,104 @@ public class ArrayEx47_테스트문제 {
 					{9,10,11,12},
 					{13,14,15,0}
 				};
-		
+		int x = 0;
+		int y = 0;
 		int yx [][] = new int[10000][2];
-
+		Scanner scan = new Scanner(System.in);
+		
+		while(true) {
+			for (int i = 0; i < game.length; i++) {
+				for (int j = 0; j < game[i].length; j++) {
+					System.out.print(game[i][j]);
+					if(j != game[i].length-1) {
+						System.out.print(",");
+					}
+				}
+				System.out.println();
+			}
+			System.out.println("4) left 6)right 8)up 2)down 5)되감기");
+			int sel = scan.nextInt();
+			if(sel == 4) {
+				for (int i = 0; i < game.length; i++) {
+					for (int j = 0; j < game[i].length; j++) {
+						if(game[i][j]==0) {
+							x=j;
+							y=i;
+						}
+					}
+				}
+				if(x>0) {
+					int temp = game[y][x-1];
+					game[y][x-1] = game[y][x];
+					game[y][x] = temp;
+				}
+				else {
+					continue;
+				}
+			}
+			else if(sel == 6) {
+				for (int i = 0; i < game.length; i++) {
+					for (int j = 0; j < game[i].length; j++) {
+						if(game[i][j]==0) {
+							x=j;
+							y=i;
+						}
+					}
+				}
+				if(x<3) {
+					int temp = game[y][x+1];
+					game[y][x+1] = game[y][x];
+					game[y][x] = temp;
+				}
+				else {
+					continue;
+				}
+			}
+			else if(sel == 8) {
+				for (int i = 0; i < game.length; i++) {
+					for (int j = 0; j < game[i].length; j++) {
+						if(game[i][j]==0) {
+							x=j;
+							y=i;
+						}
+					}
+				}
+				if(y>0) {
+					int temp = game[y-1][x];
+					game[y-1][x] = game[y][x];
+					game[y][x] = temp;
+				}
+				else {
+					continue;
+				}
+			}
+			else if(sel == 2) {
+				for (int i = 0; i < game.length; i++) {
+					for (int j = 0; j < game[i].length; j++) {
+						if(game[i][j]==0) {
+							x=j;
+							y=i;
+						}
+					}
+				}
+				if(y<3 ) {
+					int temp = game[y+1][x];
+					game[y+1][x] = game[y][x];
+					game[y][x] = temp;
+				}
+				else {
+					continue;
+				}
+			}
+			else if(sel == 5) {}
+			else {
+				
+			}
+			System.out.println("=========================================");
+			System.out.println("=========================================");
+			
+		
+		}
 	}
 
 }
