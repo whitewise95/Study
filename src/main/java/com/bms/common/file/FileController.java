@@ -102,7 +102,7 @@ public class FileController {
 			
 			fileList.add(imageFileDTO);
 			
-			File file = new File(CURR_IMAGE_REPO_PATH + "/" + fileName);	// 새로 생성한 파일
+			File file = new File(CURR_IMAGE_REPO_PATH + seperatorPath + fileName);	// 새로 생성한 파일
 			if (mFile.getSize() != 0) { 									// File Null Check
 				if (!file.exists()) {										// 새로생성한 파일이 존재하지 않으면
 					if (file.getParentFile().mkdirs()){ 					// 부모파일의 폴더를 만듬
