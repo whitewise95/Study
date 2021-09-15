@@ -80,6 +80,9 @@ public class ArrayEx47_테스트문제 {
 						}
 					}
 				}
+				yx[cnt][0]= y;
+				yx[cnt][1]= x;
+				cnt++;
 				if(x<3) {
 					int temp = game[y][x+1];
 					game[y][x+1] = game[y][x];
@@ -98,6 +101,9 @@ public class ArrayEx47_테스트문제 {
 						}
 					}
 				}
+				yx[cnt][0]= y;
+				yx[cnt][1]= x;
+				cnt++;
 				if(y>0) {
 					int temp = game[y-1][x];
 					game[y-1][x] = game[y][x];
@@ -116,6 +122,9 @@ public class ArrayEx47_테스트문제 {
 						}
 					}
 				}
+				yx[cnt][0]= y;
+				yx[cnt][1]= x;
+				cnt++;
 				if(y<3 ) {
 					int temp = game[y+1][x];
 					game[y+1][x] = game[y][x];
