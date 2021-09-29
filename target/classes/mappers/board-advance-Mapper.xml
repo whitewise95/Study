@@ -5,6 +5,7 @@
 
 	<!-- 게시글의 개수를 반환하는 쿼리 -->
 	<select id="getAllBoardCount" resultType="int">
+	
 		<choose>
 			<when test="searchKeyword.equals('total')"> <!-- searchKeyword가 전체검색일 경우 -->
 				<choose>

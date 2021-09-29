@@ -55,6 +55,7 @@ public class BoardAdvanceController {
 		Map<String, String> searchCountInfo = new HashMap<String, String>();
 		searchCountInfo.put("searchKeyword", searchKeyword);
 		searchCountInfo.put("searchWord", searchWord);
+	
 		
 		// 전체페이지 개수 = 전체게시글 수 / 한페이지에서 보여지는 글수
 		int totalBoardCount = boardService.getAllBoardCount(searchCountInfo);
