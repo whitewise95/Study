@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>학번,이름,학년,선택과목을 입력해주세요</h1>
+	
+	<form>
+	<p><label for="hakbun">학번 : <input type="text" id="hakbun"></label></p>
+	<p><label for="name">이름 : <input type="text" id="name"></label></p>
+	<p><label for="grade">학년 :
+	<input type="radio" name="grade" value="1" checked>1학년
+	<input type="radio" name="grade" value="2">2학년
+	<input type="radio" name="grade" value="3">3학년
+	<input type="radio" name="grade" value="4">4학년
+	</label></p>
+	<p><label for=subject>
+	선택과목 :
+	<select name="subject">
+	 	<option  value="java">java</option>
+	 	<option  value="java1">java1</option>
+	 	<option  value="java2">java2</option>
+	</select>
+	</label></p>
+	<input type ="button" value="입력완료" onclick="alert('안뇽')">
+	<input type ="reset" value="다시쓰기">
+	
+	</form>
+
+
+
+
+</body>
+</html>
