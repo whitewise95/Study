@@ -10,6 +10,7 @@ class date {
 	
 	public  date() {
 		head = null;
+		head = null;
 	}
 }
 
